@@ -6,10 +6,9 @@ permissions:
 
 on:
   schedule:
-    # GitHub cron uses UTC. These two runs cover 12:15 PM Vancouver time
-    # across daylight saving time; the first step below skips the wrong one.
+    # GitHub cron uses UTC. Vancouver remains on year-round daylight time
+    # after B.C.'s final spring-forward on March 8, 2026, so 19:15 UTC is 12:15 PM.
     - cron: '15 19 * * *'
-    - cron: '15 20 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -17,44 +16,34 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Check Vancouver schedule
-        id: schedule-check
-        run: |
-          if [ "${{ github.event_name }}" != "schedule" ]; then
-            echo "should_run=true" >> "$GITHUB_OUTPUT"
-          elif [ "$(TZ=America/Vancouver date +'%H:%M')" = "12:15" ]; then
-            echo "should_run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "should_run=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Checkout repository
-        if: steps.schedule-check.outputs.should_run == 'true'
         uses: actions/checkout@v4
         
       - name: Setup Node.js
-        if: steps.schedule-check.outputs.should_run == 'true'
         uses: actions/setup-node@v4
         with:
           cache: npm
           
       - name: Install dependencies
-        if: steps.schedule-check.outputs.should_run == 'true'
         run: npm ci
+
+      - name: Check official website update
+        id: source-check
+        run: node scripts/scrape-flavors.js --check-source-update >> "$GITHUB_OUTPUT"
         
       - name: Install Playwright
-        if: steps.schedule-check.outputs.should_run == 'true'
+        if: steps.source-check.outputs.source_changed == 'true'
         run: npx playwright install chromium
         
       - name: Scrape flavor data
-        if: steps.schedule-check.outputs.should_run == 'true'
+        if: steps.source-check.outputs.source_changed == 'true'
         run: node scripts/scrape-flavors.js
         
       - name: Check for changes
-        if: steps.schedule-check.outputs.should_run == 'true'
+        if: steps.source-check.outputs.source_changed == 'true'
         id: check-changes
         run: |
-          if git diff --quiet src/data/flavors.json src/data/metadata.json; then
+          if git diff --quiet src/data/flavors.json src/data/flavor-descriptions.json src/data/metadata.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
@@ -65,7 +54,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add src/data/flavors.json src/data/metadata.json
+          git add src/data/flavors.json src/data/flavor-descriptions.json src/data/metadata.json
           git commit -m "Update flavor data - $(date +'%Y-%m-%d')"
           git push
 

@@ -13,6 +13,10 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const FLAVORS_OUTPUT_PATH = path.join(__dirname, '..', 'src', 'data', 'flavors.json');
+const DESCRIPTION_FALLBACK_OUTPUT_PATH = path.join(__dirname, '..', 'src', 'data', 'flavor-descriptions.json');
+const METADATA_OUTPUT_PATH = path.join(__dirname, '..', 'src', 'data', 'metadata.json');
+const SOURCE_LAST_UPDATED_PATTERN = /Last\s+updated\s+[A-Z][a-z]+\s+\d{1,2},\s+\d{4}\s+at\s+\d{1,2}(?::\d{2})?\s*(?:am|pm)/i;
 
 export const STORE_URLS = {
   fraser: 'https://earnesticecream.com/locations/fraser-st/',
@@ -30,6 +34,109 @@ export function slugify(name) {
 
 export function normalizeFlavorName(name) {
   return name.trim().replace(/\s+/g, ' ');
+}
+
+export function extractSourceLastUpdatedFromText(text) {
+  const readableText = String(text ?? '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ');
+  const normalized = normalizeFlavorName(readableText);
+  const match = normalized.match(SOURCE_LAST_UPDATED_PATTERN);
+
+  return match ? normalizeFlavorName(match[0]) : '';
+}
+
+export function buildSourceLastUpdatedSignature(sourceLastUpdatedByStore) {
+  return Object.entries(sourceLastUpdatedByStore)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([storeId, lastUpdated]) => `${storeId}:${lastUpdated}`)
+    .join('|');
+}
+
+function readMetadata(metadataPath = METADATA_OUTPUT_PATH) {
+  if (!fs.existsSync(metadataPath)) {
+    return {};
+  }
+
+  try {
+    return JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+  } catch (error) {
+    console.warn(`Could not read existing metadata: ${error.message}`);
+    return {};
+  }
+}
+
+function getExistingSourceLastUpdatedSignature(metadataPath = METADATA_OUTPUT_PATH) {
+  const metadata = readMetadata(metadataPath);
+
+  if (typeof metadata.sourceLastUpdatedSignature === 'string') {
+    return metadata.sourceLastUpdatedSignature;
+  }
+
+  if (
+    metadata.sourceLastUpdatedByStore &&
+    typeof metadata.sourceLastUpdatedByStore === 'object'
+  ) {
+    return buildSourceLastUpdatedSignature(metadata.sourceLastUpdatedByStore);
+  }
+
+  if (typeof metadata.sourceLastUpdatedText === 'string') {
+    return metadata.sourceLastUpdatedText;
+  }
+
+  return '';
+}
+
+export async function collectSourceLastUpdatedByStore(fetchImpl = fetch) {
+  const sourceLastUpdatedByStore = {};
+
+  for (const [storeId, url] of Object.entries(STORE_URLS)) {
+    const response = await fetchImpl(url);
+
+    if (!response.ok) {
+      throw new Error(`Could not fetch ${url}: ${response.status} ${response.statusText}`);
+    }
+
+    const html = await response.text();
+    sourceLastUpdatedByStore[storeId] = extractSourceLastUpdatedFromText(html);
+  }
+
+  return sourceLastUpdatedByStore;
+}
+
+export async function checkSourceNeedsUpdate({ fetchImpl = fetch, metadataPath = METADATA_OUTPUT_PATH } = {}) {
+  const sourceLastUpdatedByStore = await collectSourceLastUpdatedByStore(fetchImpl);
+  const missingStoreIds = Object.entries(sourceLastUpdatedByStore)
+    .filter(([, lastUpdated]) => !lastUpdated)
+    .map(([storeId]) => storeId);
+
+  if (missingStoreIds.length > 0) {
+    throw new Error(`Could not find official last-updated text for: ${missingStoreIds.join(', ')}`);
+  }
+
+  const sourceLastUpdatedSignature = buildSourceLastUpdatedSignature(sourceLastUpdatedByStore);
+  const existingSourceLastUpdatedSignature = getExistingSourceLastUpdatedSignature(metadataPath);
+
+  return {
+    shouldUpdate: sourceLastUpdatedSignature !== existingSourceLastUpdatedSignature,
+    sourceLastUpdatedByStore,
+    sourceLastUpdatedSignature,
+    existingSourceLastUpdatedSignature,
+  };
+}
+
+async function writeGithubSourceCheckOutput() {
+  try {
+    const result = await checkSourceNeedsUpdate();
+    console.error(`Official site timestamp: ${result.sourceLastUpdatedSignature || 'not found'}`);
+    console.error(`Stored site timestamp: ${result.existingSourceLastUpdatedSignature || 'not found'}`);
+    console.log(`source_changed=${result.shouldUpdate ? 'true' : 'false'}`);
+  } catch (error) {
+    console.error(`Could not check official site timestamp: ${error.message}`);
+    console.error('Falling back to a full scrape.');
+    console.log('source_changed=true');
+    console.log('source_check_error=true');
+  }
 }
 
 export function isVegan(name) {
@@ -204,6 +311,81 @@ export function createEmptyStoreData() {
 
 function getDescriptionForFlavor(slug, name, descriptionsBySlug, fallback) {
   return descriptionsBySlug[slug] ?? fallback(name);
+}
+
+export function descriptionFallbacksToSlugMap(fallbacks) {
+  const descriptionsBySlug = {};
+
+  for (const fallback of fallbacks) {
+    if (!fallback || typeof fallback !== 'object') {
+      continue;
+    }
+
+    const id = typeof fallback.id === 'string' ? fallback.id : slugify(fallback.name ?? '');
+    const description = normalizeFlavorName(fallback.description ?? '');
+
+    if (id && description) {
+      descriptionsBySlug[id] = description;
+    }
+  }
+
+  return descriptionsBySlug;
+}
+
+export function readFlavorDescriptionFallbacks(fallbackPath = DESCRIPTION_FALLBACK_OUTPUT_PATH) {
+  if (!fs.existsSync(fallbackPath)) {
+    return [];
+  }
+
+  try {
+    const fallbacks = JSON.parse(fs.readFileSync(fallbackPath, 'utf8'));
+    return Array.isArray(fallbacks) ? fallbacks : [];
+  } catch (error) {
+    console.warn(`Could not read flavor description fallbacks: ${error.message}`);
+    return [];
+  }
+}
+
+export function mergeFlavorDescriptionFallbacks(existingFallbacks, scrapedDescriptionsBySlug, flavorsData = []) {
+  const fallbacksBySlug = new Map();
+
+  for (const fallback of existingFallbacks) {
+    if (!fallback || typeof fallback !== 'object') {
+      continue;
+    }
+
+    const id = typeof fallback.id === 'string' ? fallback.id : slugify(fallback.name ?? '');
+    const name = normalizeFlavorName(fallback.name ?? '');
+    const description = normalizeFlavorName(fallback.description ?? '');
+
+    if (id && name && description) {
+      fallbacksBySlug.set(id, { id, name, description });
+    }
+  }
+
+  for (const flavor of flavorsData) {
+    const existing = fallbacksBySlug.get(flavor.id);
+
+    if (existing) {
+      existing.name = flavor.name;
+    }
+  }
+
+  for (const [id, description] of Object.entries(scrapedDescriptionsBySlug)) {
+    const flavor = flavorsData.find((candidate) => candidate.id === id);
+    const name = flavor?.name ?? fallbacksBySlug.get(id)?.name ?? id;
+    const normalizedDescription = normalizeFlavorName(description);
+
+    if (normalizedDescription) {
+      fallbacksBySlug.set(id, {
+        id,
+        name,
+        description: normalizedDescription,
+      });
+    }
+  }
+
+  return [...fallbacksBySlug.values()].sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function buildFlavorData(storeData, descriptionsBySlug = {}) {
@@ -473,6 +655,8 @@ export async function scrapeStorePage(page, url) {
   
   try {
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    const pageText = await page.evaluate(() => document.body?.innerText ?? '');
+    const sourceLastUpdatedText = extractSourceLastUpdatedFromText(pageText);
     await page.waitForSelector('a[href*="/flavours/"]', { timeout: 10000 });
     
     // Scrape each tab separately
@@ -480,10 +664,10 @@ export async function scrapeStorePage(page, url) {
     const pints = await scrapeTab(page, 'Pints');
     const sandwiches = await scrapeTab(page, 'Sandwiches');
     
-    return { scoops, pints, sandwiches };
+    return { scoops, pints, sandwiches, sourceLastUpdatedText };
   } catch (error) {
     console.error(`Error scraping ${url}:`, error.message);
-    return { scoops: [], pints: [], sandwiches: [] };
+    return { scoops: [], pints: [], sandwiches: [], sourceLastUpdatedText: '' };
   }
 }
 
@@ -501,20 +685,31 @@ async function main() {
   
   // Scrape each store
   const storeData = createEmptyStoreData();
+  const sourceLastUpdatedByStore = {};
   
   for (const [storeId, url] of Object.entries(STORE_URLS)) {
     const data = await scrapeStorePage(page, url);
-    storeData[storeId] = data;
+    const { sourceLastUpdatedText, ...availabilityData } = data;
+    storeData[storeId] = availabilityData;
+    sourceLastUpdatedByStore[storeId] = sourceLastUpdatedText;
     console.log(`  → ${storeId}: ${data.scoops.length} scoops, ${data.pints.length} pints, ${data.sandwiches.length} sandwiches`);
+    console.log(`    Official site ${sourceLastUpdatedText || 'last-updated text not found'}`);
   }
   
   validateStoreData(storeData);
   const flavorUrlsBySlug = collectFlavorUrlsBySlug(storeData);
+  const descriptionFallbacks = readFlavorDescriptionFallbacks();
+  const fallbackDescriptionsBySlug = descriptionFallbacksToSlugMap(descriptionFallbacks);
+  console.log(`\nLoaded ${Object.keys(fallbackDescriptionsBySlug).length} fallback descriptions`);
   console.log(`\nScraping official descriptions for ${flavorUrlsBySlug.size} unique flavor pages...`);
   const descriptionPage = await context.newPage();
   const descriptionsBySlug = await scrapeFlavorDescriptions(descriptionPage, flavorUrlsBySlug);
   console.log(`  → Found ${Object.keys(descriptionsBySlug).length} official descriptions`);
   await browser.close();
+  const effectiveDescriptionsBySlug = {
+    ...fallbackDescriptionsBySlug,
+    ...descriptionsBySlug,
+  };
   
   // Build unified flavor list
   const allScoopNames = new Set();
@@ -532,7 +727,7 @@ async function main() {
   console.log(`  Total unique pints: ${allPintNames.size}`);
   console.log(`  Total unique sandwiches: ${allSandwichNames.size}`);
   
-  const flavorsData = buildFlavorData(storeData, descriptionsBySlug);
+  const flavorsData = buildFlavorData(storeData, effectiveDescriptionsBySlug);
   
   // Print stats
   const iceCreamFlavors = flavorsData.filter(f => f.scoopStores.length > 0 || f.pintStores.length > 0);
@@ -551,12 +746,18 @@ async function main() {
   console.log(`    - Sandwich only: ${sandwichOnlyFlavors.length}`);
   
   // Write data only; application logic lives in src/data/flavors.ts.
-  const outputPath = path.join(__dirname, '..', 'src', 'data', 'flavors.json');
-  fs.writeFileSync(outputPath, `${JSON.stringify(flavorsData, null, 2)}\n`);
-  const metadataPath = path.join(__dirname, '..', 'src', 'data', 'metadata.json');
+  fs.writeFileSync(FLAVORS_OUTPUT_PATH, `${JSON.stringify(flavorsData, null, 2)}\n`);
+  const updatedDescriptionFallbacks = mergeFlavorDescriptionFallbacks(
+    descriptionFallbacks,
+    descriptionsBySlug,
+    flavorsData,
+  );
+  fs.writeFileSync(DESCRIPTION_FALLBACK_OUTPUT_PATH, `${JSON.stringify(updatedDescriptionFallbacks, null, 2)}\n`);
   const metadata = {
     lastUpdatedAt: new Date().toISOString(),
     source: 'https://earnesticecream.com',
+    sourceLastUpdatedByStore,
+    sourceLastUpdatedSignature: buildSourceLastUpdatedSignature(sourceLastUpdatedByStore),
     stores: STORE_URLS,
     counts: {
       totalItems: flavorsData.length,
@@ -567,15 +768,20 @@ async function main() {
       sandwichOnlyItems: sandwichOnlyFlavors.length,
     },
   };
-  fs.writeFileSync(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`);
+  fs.writeFileSync(METADATA_OUTPUT_PATH, `${JSON.stringify(metadata, null, 2)}\n`);
   
-  console.log(`\n✅ Updated ${outputPath}`);
-  console.log(`✅ Updated ${metadataPath}`);
+  console.log(`\n✅ Updated ${FLAVORS_OUTPUT_PATH}`);
+  console.log(`✅ Updated ${DESCRIPTION_FALLBACK_OUTPUT_PATH}`);
+  console.log(`✅ Updated ${METADATA_OUTPUT_PATH}`);
   console.log(`   Total items: ${flavorsData.length}`);
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
-  main().catch(error => {
+  const run = process.argv.includes('--check-source-update')
+    ? writeGithubSourceCheckOutput
+    : main;
+
+  run().catch(error => {
     console.error('Scraping failed:', error);
     process.exit(1);
   });

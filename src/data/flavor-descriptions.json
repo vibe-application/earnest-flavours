@@ -1,0 +1,127 @@
+[
+  {
+    "id": "carrot-cake",
+    "name": "Carrot Cake",
+    "description": "House-made spiced carrot cake and cream cheese fudge generously sprinkled through a lightly spiced ice cream, creating a classic dessert in ice cream form. Featuring spices from Gathering Place Trading and Carrots from Discovery Organics."
+  },
+  {
+    "id": "chocolate",
+    "name": "Chocolate",
+    "description": "Smooth, creamy, and oh-so-chocolatey! This ice cream is a lovely balance between our Milk Chocolate and Serious Chocolate flavours, and is sure to satisfy any chocolate-lover."
+  },
+  {
+    "id": "cinnamon-bun",
+    "name": "Cinnamon Bun",
+    "description": "Get ready for a delightful treat with our cinnamon bun ice cream. We’ve taken freshly baked cinnamon buns, crafted in-house, and blended them into our creamy ice cream base, creating a delightful light bread texture that melts in your mouth. Each scoop is swirled with a rich, gooey cinnamon sauce that brings the sweet, sugary goodness of a freshly baked cinnamon bun right to your cone. This harmonious fusion of flavours and textures promises to transport you to a cozy bakery with every delectable spoonful."
+  },
+  {
+    "id": "classic-sammie",
+    "name": "Classic Sammie",
+    "description": "Our take on a classic ice cream sandwich. Tahitian vanilla ice cream is sandwiched between chocolate cake and finished with a thin layer of fudge sauce. This flavour never goes out of style!"
+  },
+  {
+    "id": "cookies-cream",
+    "name": "Cookies + Cream",
+    "description": "Organic Chocolate Vanilla Cream Sandwich Cookies, featuring a darker chocolate flavour profile with a crisp cookie crunch. It’s all about the cookies, like a spoonful of childhood!"
+  },
+  {
+    "id": "cream-cheese",
+    "name": "Cream Cheese",
+    "description": "This ice cream is like a New York style cheesecake – smooth, creamy, and just the right amount of tartness balanced in our sweet cream base."
+  },
+  {
+    "id": "irish-cream",
+    "name": "Irish Cream",
+    "description": "Your favourite Irish cream liqueur in frozen form. It’s creamy, slightly boozy, with a hint of chocolate and coffee."
+  },
+  {
+    "id": "lemon-poppy-seed",
+    "name": "Lemon Poppy Seed",
+    "description": "A lighter, creamier frozen version of the muffin. Bright lemon ice cream speckled with dutch blue poppy seeds resulting in a beautiful, zesty treat."
+  },
+  {
+    "id": "london-fog",
+    "name": "London Fog",
+    "description": "Made with Assam and Darjeeling black tea, bergamot and vanilla, this ice cream flavour is based on the popular drink which was invented in Vancouver!"
+  },
+  {
+    "id": "matcha-green-tea",
+    "name": "Matcha Green Tea",
+    "description": "Our matcha green tea powder is supplied by Aiya and grown in Nishio, a historic tea cultivation region in Japan, from a family owned and operated farm for the last 125 years. It’s a shade-grown matcha, giving it light colour and caramel notes. Aiya are dedicated to giving back to the world through helping with the reforestation of mangrove and mahogany forests in Southeast Asia. We simply blend the matcha powder straight into our ice cream base!"
+  },
+  {
+    "id": "mint-chip",
+    "name": "Mint Chip",
+    "description": "The classic mint chocolate ice cream made with lots of house made dark chocolate chips! Like peppermint patty but better. No artificial food colouring is added so it’s white, not green. Fresh and minty, with the added crunch from the dark chocolate flakes."
+  },
+  {
+    "id": "mint-cookie-crunch-sammie",
+    "name": "Mint Cookie Crunch Sammie",
+    "description": "Fresh mint, crunchy cookies, and rich chocolate combined into one delectable sammie! Sweet minty cookie base is swirled with pieces of our creme cookies and chunks of peppermint bark, all sealed together with a layer of fudge between soft chocolate cake."
+  },
+  {
+    "id": "oatmeal-brown-sugar",
+    "name": "Oatmeal Brown Sugar",
+    "description": "Ice cream for breakfast – we think so! Simple comforting flavour made with lots of oats and brown sugar, which are cold-steeped in our ice cream base so they soften. Halfway between a bowl of cereal and a cookie, but in the form of ice cream. Friendly and comforting!"
+  },
+  {
+    "id": "salted-caramel",
+    "name": "Salted Caramel",
+    "description": "A classic for good reason. We’ve been making this one since day one and it remains a favourite still. Deeply caramelized sugar mixed with cream and salt from Vancouver Island Sea Salt Co. Its rich, creamly and buttery and the perfect balance of salty and sweet."
+  },
+  {
+    "id": "strawberry",
+    "name": "Strawberry",
+    "description": "Local strawberries from Mandair Farms are picked at the peak of the season and frozen to preserve their vibrant fruitiness to enjoy in winter. We add a touch of white balsamic to enhance and balance the natural sweetness of the strawberries. A must try for fans of strawberry ice cream!"
+  },
+  {
+    "id": "tahitian-vanilla",
+    "name": "Tahitian Vanilla",
+    "description": "This flavour has been a core since day one. Our pure vanilla extract is sourced from premium slow-grown, sun-cured vanilla beans of the “Tahitian” variety. The flavour from the beans is cold-extracted to preserve its complex bouquet. These vanilla beans are brighter and more floral than the rounder, woodsier Madagascar variety."
+  },
+  {
+    "id": "vegan-chocolate",
+    "name": "Vegan Chocolate",
+    "description": "A vegan staple we have been running since day one! Surprisingly creamy and rich, the subtle bitterness of dark chocolate and cocoa powder add depth to the creaminess of our coconut milk base."
+  },
+  {
+    "id": "vegan-chocolate-orange-sammie",
+    "name": "Vegan Chocolate Orange Sammie",
+    "description": "Creamy chocolate-orange ice cream is swirled with ribbons of orange jelly. Sandwiched with a layer of orange-fudge and chocolate cake, this sammie tastes just like a Terry’s Chocolate Orange!"
+  },
+  {
+    "id": "vegan-cookies-cream",
+    "name": "Vegan Cookies + Cream",
+    "description": "A vegan twist on a childhood favourite that is brimming with chunks of cookies in a creamy vanilla base. Fun fact, we make this flavour with the exact same organic chocolate sandwich cookies we use in our dairy cookies and cream!"
+  },
+  {
+    "id": "vegan-mocha-brownie-sammie",
+    "name": "Vegan Mocha Brownie Sammie",
+    "description": "House-made, cakey brownie chunks mixed into mocha ice cream, alongside delightfully crunchy chocolate sprinkles. Surrounded by soft chocolate cake and a layer of mocha fudge, this rich and decadent sammie is a must try for mocha fans."
+  },
+  {
+    "id": "vegan-nanaimo-bar",
+    "name": "Vegan Nanaimo Bar",
+    "description": "This is the classic BC dessert bar in ice cream form! Dark chocolate chips and nanaimo bar crumble in our creamy coconut-cashew “custard” base."
+  },
+  {
+    "id": "vegan-peaches-cream",
+    "name": "Vegan Peaches & Cream",
+    "description": "Like a roasted peach topped with vanilla ice cream and a sprinkle of cinnamon! Our oat-coconut base with an added hint of cinnamon is swirled with a bright, roasted peach compote. Fresh peaches are sourced from Jobst-Hof Orchard, a family operated orchard in the beautiful Okanagan Valley."
+  },
+  {
+    "id": "vegan-strawberry-chocolate-sprinkle-sammie",
+    "name": "Vegan Strawberry Chocolate Sprinkle Sammie",
+    "description": "Bright strawberry ice cream is speckled with deliciously chocolatey sprinkles. Sandwiched with a layer of strawberry jam on soft chocolate cake, this fruity-chocolatey treat is perfectly balanced and scrumptious!"
+  },
+  {
+    "id": "vegan-strawberry-rhubarb-ripple",
+    "name": "Vegan Strawberry Rhubarb Ripple",
+    "description": "This delightful vegan flavour is perfect for reminiscing the summer sun. Local strawberries and rhubarb create our flavoursome and vibrant compote, swirled throughout our creamy vanilla ice cream."
+  },
+  {
+    "id": "whiskey-hazelnut",
+    "name": "Whiskey Hazelnut",
+    "description": "An Earnest Ice Cream original, made from day one and remains a favourite and top-seller. Roasted, salted BC hazelnuts in Whiskey ice cream base. A smooth, boozy flavour with a buttery crunch."
+  }
+]
