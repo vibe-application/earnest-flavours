@@ -4,11 +4,15 @@ An unofficial flavor explorer for Earnest Ice Cream scoop shops around Vancouver
 
 This little site shows which flavors are available as scoops, pints, and ice cream sandwiches across Fraser Street, Quebec Street, Frances Street, and North Vancouver. It is fan-made and not affiliated with Earnest Ice Cream.
 
+![alt text](img/cover.png)
+
 ## Why I Made This
 
 I love ice cream, and I often want to see all the flavors available in the city without opening a separate page for every shop. Sometimes a favorite flavor is worth a longer trip, so I made this site to give fellow ice-cream lovers another way to decide where to go.
 
-It is also my first vibe coding project. The scope felt just right: useful, small enough to understand end to end, and a good way to practice turning a simple everyday itch into a working app.
+![alt text](img/details.png)
+
+It is also my first vibe coding project on IDE. The scope felt just right: useful, small enough to understand end to end, and a good way to practice turning a simple everyday itch into a working app.
 
 ## Features
 
