@@ -5,8 +5,11 @@ import { pathToFileURL } from 'node:url';
 
 const {
   buildFlavorData,
+  collectFlavorUrlsBySlug,
+  extractFlavorItemsFromLinks,
   extractFlavorNamesFromLinks,
   extractFlavorNamesFromTabDocument,
+  scrapeFlavorDescriptions,
   isFlavorLinkText,
   slugify,
   validateStoreData,
@@ -17,17 +20,21 @@ type FakeLink = {
   offsetWidth?: number;
   offsetHeight?: number;
   getClientRects?: () => unknown[];
+  getAttribute?: (name: string) => string | null;
+  href?: string;
 };
 
 type FakePanel = {
   querySelectorAll: (selector: string) => FakeLink[];
 };
 
-const makeLink = (textContent: string, visible = true): FakeLink => ({
+const makeLink = (textContent: string, visible = true, href?: string): FakeLink => ({
   textContent,
   offsetWidth: visible ? 10 : 0,
   offsetHeight: visible ? 10 : 0,
   getClientRects: () => (visible ? [{}] : []),
+  getAttribute: (name: string) => (name === 'href' ? href ?? null : null),
+  href,
 });
 
 const makePanel = (links: FakeLink[]): FakePanel => ({
@@ -59,6 +66,21 @@ test('extractFlavorNamesFromLinks normalizes, filters, and deduplicates links', 
   ]);
 
   assert.deepEqual(names, ['Whiskey Hazelnut', 'Classic Sammie']);
+});
+
+test('extractFlavorItemsFromLinks keeps the official flavor URL with each unique flavor', () => {
+  const items = extractFlavorItemsFromLinks([
+    makeLink('Cookies + Cream', true, '/flavours/cookies-cream/'),
+    makeLink('Cookies + Cream', true, '/flavours/cookies-cream/'),
+    makeLink('Learn more', true, '/learn-more/'),
+  ], { baseUrl: 'https://earnesticecream.com/locations/fraser-st/' });
+
+  assert.deepEqual(items, [
+    {
+      name: 'Cookies + Cream',
+      url: 'https://earnesticecream.com/flavours/cookies-cream/',
+    },
+  ]);
 });
 
 test('extractFlavorNamesFromTabDocument prefers the clicked tab target over other page flavor links', () => {
@@ -154,6 +176,8 @@ test('buildFlavorData keeps scoop, pint, and sandwich availability separate', ()
       pints: ['Whiskey Hazelnut'],
       sandwiches: ['Vegan Mocha Brownie Sammie'],
     },
+  }, {
+    'cookies-cream': 'Official Cookies + Cream description.',
   });
 
   const cookiesAndCream = flavors.find((flavor: { id: string }) => flavor.id === 'cookies-cream');
@@ -161,9 +185,50 @@ test('buildFlavorData keeps scoop, pint, and sandwich availability separate', ()
 
   assert.deepEqual(cookiesAndCream?.scoopStores, ['fraser']);
   assert.deepEqual(cookiesAndCream?.pintStores, ['quebec']);
+  assert.equal(cookiesAndCream?.description, 'Official Cookies + Cream description.');
   assert.deepEqual(classicSammie?.scoopStores, []);
   assert.deepEqual(classicSammie?.pintStores, []);
   assert.deepEqual(classicSammie?.sandwichStores, ['fraser', 'frances']);
+});
+
+test('collectFlavorUrlsBySlug keeps one official page URL per flavor id', () => {
+  const urlsBySlug = collectFlavorUrlsBySlug({
+    fraser: {
+      scoops: [
+        { name: 'Whiskey Hazelnut', url: 'https://earnesticecream.com/flavours/whiskey-hazelnut/' },
+      ],
+      pints: [
+        { name: 'Whiskey Hazelnut', url: 'https://earnesticecream.com/flavours/whiskey-hazelnut/?from=pints' },
+      ],
+      sandwiches: [],
+    },
+  });
+
+  assert.equal(urlsBySlug.size, 1);
+  assert.equal(urlsBySlug.get('whiskey-hazelnut'), 'https://earnesticecream.com/flavours/whiskey-hazelnut/');
+});
+
+test('scrapeFlavorDescriptions skips duplicate flavor ids that already have a description', async () => {
+  let visits = 0;
+  const page = {
+    goto: async () => {
+      visits += 1;
+    },
+    evaluate: async () => 'Official description from the flavor page.',
+  };
+  const duplicateUrlEntries = {
+    entries: () => [
+      ['whiskey-hazelnut', 'https://earnesticecream.com/flavours/whiskey-hazelnut/'],
+      ['whiskey-hazelnut', 'https://earnesticecream.com/flavours/whiskey-hazelnut/?duplicate=true'],
+    ][Symbol.iterator](),
+  };
+
+  const descriptions = await scrapeFlavorDescriptions(page, duplicateUrlEntries);
+
+  assert.equal(visits, 1);
+  assert.deepEqual(descriptions, {
+    'whiskey-hazelnut': 'Official description from the flavor page.',
+  });
 });
 
 test('validateStoreData rejects empty critical serving categories and duplicate names', () => {

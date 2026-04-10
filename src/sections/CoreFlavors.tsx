@@ -4,7 +4,7 @@ import { flavors } from '@/data/flavors';
 import type { Flavor } from '@/data/flavors';
 import { FlavorCard } from '@/components/custom/FlavorCard';
 import { FlavorDetailPanel } from '@/components/custom/FlavorDetailPanel';
-import { SearchFilterBar } from '@/components/custom/SearchFilterBar';
+import { FlavorDataNotice, SearchFilterBar } from '@/components/custom/SearchFilterBar';
 import type { FilterState } from '@/components/custom/SearchFilterBar';
 import {
   flavorMatchesVisualizationFilters,
@@ -31,7 +31,8 @@ export function CoreFlavors() {
     <section id="core-flavors" className="py-8 bg-muted/30 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Search and Filters */}
-        <div className="mb-6">
+        <div className="mb-6 space-y-3">
+          <FlavorDataNotice />
           <SearchFilterBar
             filters={filters}
             onFiltersChange={setFilters}

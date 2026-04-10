@@ -1,11 +1,19 @@
 import { useState, useEffect } from 'react';
-import { IceCream, Sun, Moon } from 'lucide-react';
+import { CalendarDays, IceCream, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import metadata from '@/data/metadata.json';
 
 interface NavigationProps {
   isDark: boolean;
   toggleTheme: () => void;
 }
+
+const lastUpdatedDate = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'America/Vancouver',
+}).format(new Date(metadata.lastUpdatedAt));
 
 export function Navigation({ isDark, toggleTheme }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,6 +56,11 @@ export function Navigation({ isDark, toggleTheme }: NavigationProps) {
 
           {/* Right side actions */}
           <div className="flex items-center gap-2">
+            <div className="hidden h-9 items-center gap-2 rounded-lg border border-border bg-background/70 px-3 text-xs font-medium text-muted-foreground shadow-xs sm:inline-flex">
+              <CalendarDays className="w-3.5 h-3.5" />
+              <span>Updated {lastUpdatedDate}</span>
+            </div>
+
             {/* Theme Toggle */}
             <Button
               variant="ghost"

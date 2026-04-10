@@ -21,34 +21,6 @@ export const STORE_URLS = {
   northvan: 'https://earnesticecream.com/locations/north-van/',
 };
 
-// Known flavor descriptions (these don't change often)
-export const FLAVOR_DESCRIPTIONS = {
-  'whiskey-hazelnut': 'An Earnest Ice Cream original, made from day one and remains a favourite and top-seller. Roasted, salted BC hazelnuts in Whiskey ice cream base. A smooth, boozy flavour with a buttery crunch.',
-  'salted-caramel': 'A classic for good reason. We\'ve been making this one since day one and it remains a favourite still. Deeply caramelized sugar mixed with cream and salt from Vancouver Island Sea Salt Co. Its rich, creamy and buttery and the perfect balance of salty and sweet.',
-  'cookies-cream': 'Classic vanilla ice cream loaded with chunks of chocolate sandwich cookies. A timeless favorite for all ages.',
-  'london-fog': 'Earl Grey tea infused ice cream with vanilla. Inspired by the classic Vancouver coffee shop drink, this flavour combines bergamot-scented tea with creamy vanilla for a sophisticated treat.',
-  'matcha-green-tea': 'Our matcha green tea powder is supplied by Aiya and grown in Nishio, a historic tea cultivation region in Japan, from a family owned and operated farm for the last 125 years. It\'s a shade-grown matcha, giving it light colour and caramel notes.',
-  'mint-chip': 'Fresh mint ice cream studded with dark chocolate chips. Cool, refreshing, and perfectly balanced.',
-  'chocolate': 'Smooth, creamy, and oh-so-chocolatey! This ice cream is a lovely balance between our Milk Chocolate and Serious Chocolate flavours, and is sure to satisfy any chocolate-lover.',
-  'tahitian-vanilla': 'Made with premium Tahitian vanilla beans known for their floral, fruity notes. Simple, elegant, and absolutely delicious.',
-  'strawberry': 'Fresh, fruity strawberry ice cream made with real berries. A taste of summer in every scoop.',
-  'cream-cheese': 'Tangy, rich cream cheese ice cream that tastes like cheesecake in frozen form. Surprisingly addictive!',
-  'lemon-poppyseed': 'Bright, zesty lemon ice cream with crunchy poppy seeds throughout. Refreshing and unique.',
-  'cinnamon-bun': 'Get ready for a delightful treat with our cinnamon bun ice cream. We\'ve taken freshly baked cinnamon buns, crafted in-house, and blended them into our creamy ice cream base, creating a delightful light bread texture that melts in your mouth.',
-  'irish-cream': 'Your favourite Irish cream liqueur in frozen form. It\'s creamy, slightly boozy, with a hint of chocolate and coffee.',
-  'vegan-cookies-cream': 'Plant-based cookies and cream made with our vegan vanilla base and chocolate sandwich cookies.',
-  'vegan-nanaimo-bar': 'Inspired by the classic BC treat, this vegan flavour captures the essence of chocolate, coconut, and custard in every bite.',
-  'vegan-strawberry-rhubarb': 'Tangy strawberry rhubarb ripple swirled through our plant-based vanilla base. A perfect balance of sweet and tart.',
-  'oatmeal-brown-sugar': 'Cinnamon-spiced oatmeal ice cream with ribbons of brown sugar caramel. Like a warm bowl of oatmeal cookie dough.',
-  'vegan-chocolate': 'Rich, decadent chocolate ice cream made without dairy. Creamy, smooth, and intensely chocolatey.',
-  'carrot-cake': 'Spiced carrot cake ice cream with cream cheese frosting swirls. Tastes just like the classic dessert!',
-  'vegan-peaches-cream': 'Fresh peach swirls in our plant-based cream base. A North Van exclusive that captures the essence of summer.',
-  // Sandwiches
-  'classic-sammie': 'A classic ice cream sandwich with vanilla ice cream between two chocolate cookies.',
-  'mint-cookie-crunch-sammie': 'Mint ice cream with cookie crunch pieces sandwiched between chocolate cookies.',
-  'vegan-mocha-brownie-sammie': 'Vegan mocha ice cream sandwiched between two fudgy brownie cookies.',
-};
-
 export function slugify(name) {
   return name
     .toLowerCase()
@@ -80,8 +52,28 @@ export function isFlavorLinkText(text) {
   );
 }
 
-export function extractFlavorNamesFromLinks(links, { visibleOnly = false } = {}) {
-  const names = [];
+function getFlavorItemName(item) {
+  return typeof item === 'string' ? item : item.name;
+}
+
+function getFlavorItemUrl(item) {
+  return typeof item === 'string' ? undefined : item.url;
+}
+
+function normalizeFlavorUrl(href, baseUrl) {
+  if (!href) {
+    return undefined;
+  }
+
+  try {
+    return new URL(href, baseUrl).href;
+  } catch {
+    return href;
+  }
+}
+
+export function extractFlavorItemsFromLinks(links, { visibleOnly = false, baseUrl } = {}) {
+  const itemsByName = new Map();
 
   for (const link of links) {
     const isVisible = !visibleOnly ||
@@ -93,14 +85,22 @@ export function extractFlavorNamesFromLinks(links, { visibleOnly = false } = {})
 
     const text = normalizeFlavorName(link.textContent ?? '');
     if (isFlavorLinkText(text)) {
-      names.push(text);
+      const href = link.getAttribute?.('href') ?? link.href;
+      itemsByName.set(text, {
+        name: text,
+        url: normalizeFlavorUrl(href, baseUrl),
+      });
     }
   }
 
-  return [...new Set(names)];
+  return [...itemsByName.values()];
 }
 
-export function extractFlavorNamesFromTabDocument({ targetId } = {}) {
+export function extractFlavorNamesFromLinks(links, { visibleOnly = false } = {}) {
+  return extractFlavorItemsFromLinks(links, { visibleOnly }).map((item) => item.name);
+}
+
+export function extractFlavorItemsFromTabDocument({ targetId } = {}) {
   const normalizeText = (text) => (text ?? '').trim().replace(/\s+/g, ' ');
   const isFlavorText = (text) => {
     const normalized = normalizeText(text);
@@ -116,8 +116,20 @@ export function extractFlavorNamesFromTabDocument({ targetId } = {}) {
       normalized !== 'Flavours'
     );
   };
-  const extractNames = (links, { visibleOnly = false } = {}) => {
-    const names = [];
+  const normalizeUrl = (href) => {
+    if (!href) {
+      return undefined;
+    }
+
+    try {
+      const baseUrl = typeof window === 'undefined' ? undefined : window.location?.href;
+      return new URL(href, baseUrl).href;
+    } catch {
+      return href;
+    }
+  };
+  const extractItems = (links, { visibleOnly = false } = {}) => {
+    const itemsByName = new Map();
 
     for (const link of links) {
       const isVisible = !visibleOnly ||
@@ -129,11 +141,14 @@ export function extractFlavorNamesFromTabDocument({ targetId } = {}) {
 
       const text = normalizeText(link.textContent);
       if (isFlavorText(text)) {
-        names.push(text);
+        itemsByName.set(text, {
+          name: text,
+          url: normalizeUrl(link.getAttribute?.('href') || link.href),
+        });
       }
     }
 
-    return [...new Set(names)];
+    return [...itemsByName.values()];
   };
   const candidateRoots = [];
 
@@ -156,22 +171,26 @@ export function extractFlavorNamesFromTabDocument({ targetId } = {}) {
   }
 
   for (const root of candidateRoots) {
-    const names = extractNames(root.querySelectorAll('a[href*="/flavours/"]'));
-    if (names.length > 0) {
-      return names;
+    const items = extractItems(root.querySelectorAll('a[href*="/flavours/"]'));
+    if (items.length > 0) {
+      return items;
     }
   }
 
-  const visibleNames = extractNames(
+  const visibleItems = extractItems(
     document.querySelectorAll('a[href*="/flavours/"]'),
     { visibleOnly: true },
   );
 
-  if (visibleNames.length > 0) {
-    return visibleNames;
+  if (visibleItems.length > 0) {
+    return visibleItems;
   }
 
-  return extractNames(document.querySelectorAll('a[href*="/flavours/"]'));
+  return extractItems(document.querySelectorAll('a[href*="/flavours/"]'));
+}
+
+export function extractFlavorNamesFromTabDocument({ targetId } = {}) {
+  return extractFlavorItemsFromTabDocument({ targetId }).map((item) => item.name);
 }
 
 export function createEmptyStoreData() {
@@ -183,29 +202,19 @@ export function createEmptyStoreData() {
   };
 }
 
-function getDescriptionForFlavor(slug, name, fallback) {
-  let description = FLAVOR_DESCRIPTIONS[slug];
-  if (!description) {
-    for (const [key, desc] of Object.entries(FLAVOR_DESCRIPTIONS)) {
-      if (slug.includes(key) || key.includes(slug)) {
-        description = desc;
-        break;
-      }
-    }
-  }
-
-  return description ?? fallback(name);
+function getDescriptionForFlavor(slug, name, descriptionsBySlug, fallback) {
+  return descriptionsBySlug[slug] ?? fallback(name);
 }
 
-export function buildFlavorData(storeData) {
+export function buildFlavorData(storeData, descriptionsBySlug = {}) {
   const allScoopNames = new Set();
   const allPintNames = new Set();
   const allSandwichNames = new Set();
   
   Object.values(storeData).forEach(data => {
-    data.scoops.forEach(f => allScoopNames.add(f));
-    data.pints.forEach(f => allPintNames.add(f));
-    data.sandwiches.forEach(f => allSandwichNames.add(f));
+    data.scoops.forEach(f => allScoopNames.add(getFlavorItemName(f)));
+    data.pints.forEach(f => allPintNames.add(getFlavorItemName(f)));
+    data.sandwiches.forEach(f => allSandwichNames.add(getFlavorItemName(f)));
   });
 
   const flavorsData = [];
@@ -218,13 +227,13 @@ export function buildFlavorData(storeData) {
     const sandwichStores = [];
     
     for (const [storeId, data] of Object.entries(storeData)) {
-      if (data.scoops.some(f => slugify(f) === slug || f.toLowerCase() === name.toLowerCase())) {
+      if (data.scoops.some(f => slugify(getFlavorItemName(f)) === slug || getFlavorItemName(f).toLowerCase() === name.toLowerCase())) {
         scoopStores.push(storeId);
       }
-      if (data.pints.some(f => slugify(f) === slug || f.toLowerCase() === name.toLowerCase())) {
+      if (data.pints.some(f => slugify(getFlavorItemName(f)) === slug || getFlavorItemName(f).toLowerCase() === name.toLowerCase())) {
         pintStores.push(storeId);
       }
-      if (data.sandwiches.some(f => slugify(f) === slug || f.toLowerCase() === name.toLowerCase())) {
+      if (data.sandwiches.some(f => slugify(getFlavorItemName(f)) === slug || getFlavorItemName(f).toLowerCase() === name.toLowerCase())) {
         sandwichStores.push(storeId);
       }
     }
@@ -239,6 +248,7 @@ export function buildFlavorData(storeData) {
       description: getDescriptionForFlavor(
         slug,
         name,
+        descriptionsBySlug,
         (flavorName) => `Delicious ${flavorName} ice cream from Earnest Ice Cream.`,
       ),
     });
@@ -254,7 +264,7 @@ export function buildFlavorData(storeData) {
     const sandwichStores = [];
     
     for (const [storeId, data] of Object.entries(storeData)) {
-      if (data.sandwiches.some(f => slugify(f) === slug || f.toLowerCase() === name.toLowerCase())) {
+      if (data.sandwiches.some(f => slugify(getFlavorItemName(f)) === slug || getFlavorItemName(f).toLowerCase() === name.toLowerCase())) {
         sandwichStores.push(storeId);
       }
     }
@@ -269,6 +279,7 @@ export function buildFlavorData(storeData) {
       description: getDescriptionForFlavor(
         slug,
         name,
+        descriptionsBySlug,
         () => 'Pre-made ice cream sandwich from Earnest Ice Cream.',
       ),
     });
@@ -305,13 +316,118 @@ export function validateStoreData(storeData) {
     }
 
     for (const [servingType, names] of Object.entries(data)) {
-      const normalizedNames = names.map((name) => slugify(name));
+      const normalizedNames = names.map((item) => slugify(getFlavorItemName(item)));
       const uniqueNames = new Set(normalizedNames);
       if (uniqueNames.size !== normalizedNames.length) {
         throw new Error(`Scrape for ${storeId} produced duplicate ${servingType}.`);
       }
     }
   }
+}
+
+export function collectFlavorUrlsBySlug(storeData) {
+  const urlsBySlug = new Map();
+
+  for (const data of Object.values(storeData)) {
+    for (const servingType of ['scoops', 'pints', 'sandwiches']) {
+      for (const item of data[servingType]) {
+        const name = getFlavorItemName(item);
+        const url = getFlavorItemUrl(item);
+
+        if (!url) {
+          continue;
+        }
+
+        const slug = slugify(name);
+        if (!urlsBySlug.has(slug)) {
+          urlsBySlug.set(slug, url);
+        }
+      }
+    }
+  }
+
+  return urlsBySlug;
+}
+
+export function extractFlavorDescriptionFromDocument() {
+  const normalizeText = (text) => (text ?? '').trim().replace(/\s+/g, ' ');
+  const main = document.querySelector('main') ?? document.body;
+  const excludedText = [
+    'contains ',
+    'ingredients',
+    'get the latest scoop',
+    'we promise to not share',
+    'be earnest',
+    'seriously good',
+    'newsletter',
+    'earnest ice cream ©',
+  ];
+
+  const isLikelyDescription = (text) => {
+    const normalized = normalizeText(text);
+    const lower = normalized.toLowerCase();
+
+    return (
+      normalized.length >= 30 &&
+      normalized.length <= 700 &&
+      /[.!?]/.test(normalized) &&
+      !excludedText.some((excluded) => lower.includes(excluded))
+    );
+  };
+
+  const heading = main.querySelector('h1');
+  if (heading) {
+    let node = heading.nextElementSibling;
+    while (node) {
+      const tagName = node.tagName?.toLowerCase();
+      const text = normalizeText(node.textContent);
+
+      if ((tagName === 'h2' || tagName === 'h3') && text.toLowerCase().includes('ingredients')) {
+        break;
+      }
+
+      if (isLikelyDescription(text)) {
+        return text;
+      }
+
+      node = node.nextElementSibling;
+    }
+  }
+
+  const paragraphs = [...main.querySelectorAll('p')];
+  const description = paragraphs.map((paragraph) => normalizeText(paragraph.textContent)).find(isLikelyDescription);
+
+  if (description) {
+    return description;
+  }
+
+  const metaDescription = document.querySelector('meta[name="description"]')?.getAttribute('content');
+  const normalizedMetaDescription = normalizeText(metaDescription);
+
+  return isLikelyDescription(normalizedMetaDescription) ? normalizedMetaDescription : '';
+}
+
+export async function scrapeFlavorDescriptions(page, urlsBySlug) {
+  const descriptionsBySlug = {};
+
+  for (const [slug, url] of urlsBySlug.entries()) {
+    if (descriptionsBySlug[slug]) {
+      continue;
+    }
+
+    try {
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+      const description = normalizeFlavorName(await page.evaluate(extractFlavorDescriptionFromDocument));
+
+      if (description) {
+        descriptionsBySlug[slug] = description;
+      }
+    } catch (error) {
+      console.warn(`  Could not scrape description for ${slug}: ${error.message}`);
+    }
+  }
+
+  return descriptionsBySlug;
 }
 
 export async function scrapeTab(page, tabName) {
@@ -338,9 +454,14 @@ export async function scrapeTab(page, tabName) {
       await page.waitForTimeout(500); // Wait for tab content to load
     }
     
-    const flavors = await page.evaluate(extractFlavorNamesFromTabDocument, { targetId });
+    const flavors = await page.evaluate(extractFlavorItemsFromTabDocument, { targetId });
     
-    return flavors.map(normalizeFlavorName).filter(name => name.length > 0);
+    return flavors
+      .map((item) => ({
+        ...item,
+        name: normalizeFlavorName(item.name),
+      }))
+      .filter(item => item.name.length > 0);
   } catch (error) {
     console.error(`Error scraping ${tabName}:`, error.message);
     return [];
@@ -387,8 +508,13 @@ async function main() {
     console.log(`  → ${storeId}: ${data.scoops.length} scoops, ${data.pints.length} pints, ${data.sandwiches.length} sandwiches`);
   }
   
-  await browser.close();
   validateStoreData(storeData);
+  const flavorUrlsBySlug = collectFlavorUrlsBySlug(storeData);
+  console.log(`\nScraping official descriptions for ${flavorUrlsBySlug.size} unique flavor pages...`);
+  const descriptionPage = await context.newPage();
+  const descriptionsBySlug = await scrapeFlavorDescriptions(descriptionPage, flavorUrlsBySlug);
+  console.log(`  → Found ${Object.keys(descriptionsBySlug).length} official descriptions`);
+  await browser.close();
   
   // Build unified flavor list
   const allScoopNames = new Set();
@@ -396,9 +522,9 @@ async function main() {
   const allSandwichNames = new Set();
   
   Object.values(storeData).forEach(data => {
-    data.scoops.forEach(f => allScoopNames.add(f));
-    data.pints.forEach(f => allPintNames.add(f));
-    data.sandwiches.forEach(f => allSandwichNames.add(f));
+    data.scoops.forEach(f => allScoopNames.add(getFlavorItemName(f)));
+    data.pints.forEach(f => allPintNames.add(getFlavorItemName(f)));
+    data.sandwiches.forEach(f => allSandwichNames.add(getFlavorItemName(f)));
   });
   
   console.log(`\n📊 Summary:`);
@@ -406,7 +532,7 @@ async function main() {
   console.log(`  Total unique pints: ${allPintNames.size}`);
   console.log(`  Total unique sandwiches: ${allSandwichNames.size}`);
   
-  const flavorsData = buildFlavorData(storeData);
+  const flavorsData = buildFlavorData(storeData, descriptionsBySlug);
   
   // Print stats
   const iceCreamFlavors = flavorsData.filter(f => f.scoopStores.length > 0 || f.pintStores.length > 0);

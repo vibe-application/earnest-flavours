@@ -20,6 +20,16 @@ interface SearchFilterBarProps {
   onFiltersChange: (filters: FilterState) => void;
 }
 
+export function FlavorDataNotice() {
+  return (
+    <div className="rounded-2xl border border-yellow-300 bg-yellow-100 px-4 py-3 text-sm text-yellow-950 shadow-soft dark:border-yellow-700/70 dark:bg-yellow-950/50 dark:text-yellow-100">
+      <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3">
+        <span>This is an unofficial fan-made website. Not affiliated with Earnest Ice Cream.</span>
+      </div>
+    </div>
+  );
+}
+
 export function SearchFilterBar({ filters, onFiltersChange }: SearchFilterBarProps) {
   const updateFilter = <K extends keyof FilterState>(key: K, value: FilterState[K]) => {
     onFiltersChange({ ...filters, [key]: value });
