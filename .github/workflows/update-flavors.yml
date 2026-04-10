@@ -2,6 +2,7 @@ name: Update Flavors Daily
 
 permissions:
   contents: write
+  actions: write
 
 on:
   schedule:
@@ -48,15 +49,15 @@ jobs:
           git add src/data/flavors.json src/data/metadata.json
           git commit -m "Update flavor data - $(date +'%Y-%m-%d')"
           git push
-          
-      - name: Build and deploy
+
+      - name: Trigger deploy workflow
         if: steps.check-changes.outputs.changed == 'true'
-        run: |
-          npm run build
-          
-      - name: Deploy to GitHub Pages
-        if: steps.check-changes.outputs.changed == 'true'
-        uses: peaceiris/actions-gh-pages@v3
+        uses: actions/github-script@v7
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'deploy.yml',
+              ref: 'main',
+            });
