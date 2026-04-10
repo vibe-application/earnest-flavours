@@ -1,4 +1,4 @@
-# Earnest Flavors
+# [Earnest Flavors](https://kavankfc.github.io/earnest-flavours/)
 
 An unofficial flavor explorer for Earnest Ice Cream scoop shops around Vancouver.
 
