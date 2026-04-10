@@ -1,4 +1,12 @@
 import { Heart, ExternalLink, IceCream } from 'lucide-react';
+import metadata from '@/data/metadata.json';
+
+const lastUpdatedDate = new Intl.DateTimeFormat('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'America/Vancouver',
+}).format(new Date(metadata.lastUpdatedAt));
 
 function BuyMeAnIceCreamButton() {
   return (
@@ -46,7 +54,7 @@ export function Footer() {
                 <ExternalLink className="w-3 h-3" />
               </a>
             </p>
-            <p>Last updated: April 9, 2026</p>
+            <p>Last updated: {lastUpdatedDate}</p>
           </div>
 
           {/* Note */}

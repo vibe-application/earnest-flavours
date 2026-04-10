@@ -427,8 +427,24 @@ async function main() {
   // Write data only; application logic lives in src/data/flavors.ts.
   const outputPath = path.join(__dirname, '..', 'src', 'data', 'flavors.json');
   fs.writeFileSync(outputPath, `${JSON.stringify(flavorsData, null, 2)}\n`);
+  const metadataPath = path.join(__dirname, '..', 'src', 'data', 'metadata.json');
+  const metadata = {
+    lastUpdatedAt: new Date().toISOString(),
+    source: 'https://earnesticecream.com',
+    stores: STORE_URLS,
+    counts: {
+      totalItems: flavorsData.length,
+      iceCreamFlavors: iceCreamFlavors.length,
+      scoopItems: iceCreamFlavors.filter(f => f.scoopStores.length > 0).length,
+      pintItems: iceCreamFlavors.filter(f => f.pintStores.length > 0).length,
+      sandwichItems: sandwichFlavors.length,
+      sandwichOnlyItems: sandwichOnlyFlavors.length,
+    },
+  };
+  fs.writeFileSync(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`);
   
   console.log(`\n✅ Updated ${outputPath}`);
+  console.log(`✅ Updated ${metadataPath}`);
   console.log(`   Total items: ${flavorsData.length}`);
 }
 

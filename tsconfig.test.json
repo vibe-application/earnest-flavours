@@ -13,6 +13,7 @@
   "include": [
     "src/data/flavors.ts",
     "src/data/flavors.json",
+    "src/data/metadata.json",
     "src/data/stores.ts",
     "src/lib/flavor-logic.ts",
     "tests/**/*.ts"

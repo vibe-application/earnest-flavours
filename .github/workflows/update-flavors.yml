@@ -1,0 +1,62 @@
+name: Update Flavors Daily
+
+permissions:
+  contents: write
+
+on:
+  schedule:
+    # Run daily at 6:00 AM UTC (10:00 PM PST / 11:00 PM PDT)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-flavors:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Install Playwright
+        run: npx playwright install chromium
+        
+      - name: Scrape flavor data
+        run: node scripts/scrape-flavors.js
+        
+      - name: Check for changes
+        id: check-changes
+        run: |
+          if git diff --quiet src/data/flavors.json src/data/metadata.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Commit and push changes
+        if: steps.check-changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add src/data/flavors.json src/data/metadata.json
+          git commit -m "Update flavor data - $(date +'%Y-%m-%d')"
+          git push
+          
+      - name: Build and deploy
+        if: steps.check-changes.outputs.changed == 'true'
+        run: |
+          npm run build
+          
+      - name: Deploy to GitHub Pages
+        if: steps.check-changes.outputs.changed == 'true'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist

@@ -13,6 +13,7 @@ import {
   hasSandwich,
   searchFlavors,
 } from '../src/data/flavors.js';
+import metadata from '../src/data/metadata.json' with { type: 'json' };
 import { stores } from '../src/data/stores.js';
 import type { StoreId } from '../src/data/stores.js';
 
@@ -56,6 +57,12 @@ test('all flavor store references use known store ids', () => {
       }
     }
   }
+});
+
+test('scrape metadata has a valid last updated timestamp', () => {
+  assert.equal(typeof metadata.lastUpdatedAt, 'string');
+  assert.equal(Number.isNaN(Date.parse(metadata.lastUpdatedAt)), false);
+  assert.equal(metadata.counts.totalItems, flavors.length);
 });
 
 test('vegan helper returns exactly the vegan flavors', () => {
