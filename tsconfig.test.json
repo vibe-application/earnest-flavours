@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "/tmp/ernest-filter-tests",
+    "rootDir": ".",
+    "types": ["node"],
+    "resolveJsonModule": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/data/flavors.ts",
+    "src/data/flavors.json",
+    "src/data/stores.ts",
+    "src/lib/flavor-logic.ts",
+    "tests/**/*.ts"
+  ]
+}

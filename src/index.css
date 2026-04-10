@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Marshmallow & Cereal Theme - Light Mode */
+    --background: 34 36% 96%;
+    --foreground: 24 28% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 24 28% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 28% 18%;
+    --primary: 354 42% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 42 64% 76%;
+    --secondary-foreground: 24 28% 18%;
+    --muted: 32 24% 90%;
+    --muted-foreground: 25 16% 38%;
+    --accent: 160 32% 70%;
+    --accent-foreground: 24 28% 18%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 25 20% 82%;
+    --input: 25 20% 82%;
+    --ring: 354 42% 48%;
+    --radius: 0.75rem;
+    --sidebar-background: 34 36% 96%;
+    --sidebar-foreground: 24 28% 18%;
+    --sidebar-primary: 354 42% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 32 24% 90%;
+    --sidebar-accent-foreground: 24 28% 18%;
+    --sidebar-border: 25 20% 82%;
+    --sidebar-ring: 354 42% 48%;
+  }
+
+  .dark {
+    /* Marshmallow & Cereal Theme - Dark Mode */
+    --background: 20 18% 15%;
+    --foreground: 25 30% 92%;
+    --card: 20 15% 20%;
+    --card-foreground: 25 30% 92%;
+    --popover: 20 15% 20%;
+    --popover-foreground: 25 30% 92%;
+    --primary: 355 45% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 42 30% 30%;
+    --secondary-foreground: 25 30% 92%;
+    --muted: 20 12% 25%;
+    --muted-foreground: 25 15% 60%;
+    --accent: 160 25% 35%;
+    --accent-foreground: 25 30% 92%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 20 12% 25%;
+    --input: 20 12% 25%;
+    --ring: 355 45% 65%;
+    --sidebar-background: 20 18% 15%;
+    --sidebar-foreground: 25 30% 92%;
+    --sidebar-primary: 355 45% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 20 12% 25%;
+    --sidebar-accent-foreground: 25 30% 92%;
+    --sidebar-border: 20 12% 25%;
+    --sidebar-ring: 355 45% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .gradient-marshmallow {
+    background: linear-gradient(135deg, #F5E6E8 0%, #FFFBF7 50%, #F8D7C2 100%);
+  }
+  
+  .gradient-cereal {
+    background: linear-gradient(180deg, #FDF6E3 0%, #F9E4B7 100%);
+  }
+  
+  .glass {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+  
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-md;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}
+
+/* Animation utilities */
+.animate-in {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
+.animate-delay-500 { animation-delay: 500ms; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

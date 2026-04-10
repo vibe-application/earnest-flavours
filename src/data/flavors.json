@@ -1,0 +1,424 @@
+[
+  {
+    "id": "carrot-cake",
+    "name": "Carrot Cake",
+    "isVegan": false,
+    "scoopStores": [
+      "frances"
+    ],
+    "pintStores": [
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Spiced carrot cake ice cream with cream cheese frosting swirls. Tastes just like the classic dessert!"
+  },
+  {
+    "id": "irish-cream",
+    "name": "Irish Cream",
+    "isVegan": false,
+    "scoopStores": [],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Your favourite Irish cream liqueur in frozen form. It's creamy, slightly boozy, with a hint of chocolate and coffee."
+  },
+  {
+    "id": "oatmeal-brown-sugar",
+    "name": "Oatmeal Brown Sugar",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Cinnamon-spiced oatmeal ice cream with ribbons of brown sugar caramel. Like a warm bowl of oatmeal cookie dough."
+  },
+  {
+    "id": "strawberry",
+    "name": "Strawberry",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Fresh, fruity strawberry ice cream made with real berries. A taste of summer in every scoop."
+  },
+  {
+    "id": "vegan-chocolate",
+    "name": "Vegan Chocolate",
+    "isVegan": true,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances"
+    ],
+    "sandwichStores": [],
+    "description": "Rich, decadent chocolate ice cream made without dairy. Creamy, smooth, and intensely chocolatey."
+  },
+  {
+    "id": "vegan-peaches-cream",
+    "name": "Vegan Peaches & Cream",
+    "isVegan": true,
+    "scoopStores": [
+      "quebec",
+      "northvan"
+    ],
+    "pintStores": [
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Fresh peach swirls in our plant-based cream base. A North Van exclusive that captures the essence of summer."
+  },
+  {
+    "id": "chocolate",
+    "name": "Chocolate",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Smooth, creamy, and oh-so-chocolatey! This ice cream is a lovely balance between our Milk Chocolate and Serious Chocolate flavours, and is sure to satisfy any chocolate-lover."
+  },
+  {
+    "id": "cinnamon-bun",
+    "name": "Cinnamon Bun",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Get ready for a delightful treat with our cinnamon bun ice cream. We've taken freshly baked cinnamon buns, crafted in-house, and blended them into our creamy ice cream base, creating a delightful light bread texture that melts in your mouth."
+  },
+  {
+    "id": "cookies-cream",
+    "name": "Cookies + Cream",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Classic vanilla ice cream loaded with chunks of chocolate sandwich cookies. A timeless favorite for all ages."
+  },
+  {
+    "id": "cream-cheese",
+    "name": "Cream Cheese",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Tangy, rich cream cheese ice cream that tastes like cheesecake in frozen form. Surprisingly addictive!"
+  },
+  {
+    "id": "lemon-poppy-seed",
+    "name": "Lemon Poppy Seed",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Delicious Lemon Poppy Seed ice cream from Earnest Ice Cream."
+  },
+  {
+    "id": "london-fog",
+    "name": "London Fog",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Earl Grey tea infused ice cream with vanilla. Inspired by the classic Vancouver coffee shop drink, this flavour combines bergamot-scented tea with creamy vanilla for a sophisticated treat."
+  },
+  {
+    "id": "matcha-green-tea",
+    "name": "Matcha Green Tea",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Our matcha green tea powder is supplied by Aiya and grown in Nishio, a historic tea cultivation region in Japan, from a family owned and operated farm for the last 125 years. It's a shade-grown matcha, giving it light colour and caramel notes."
+  },
+  {
+    "id": "mint-chip",
+    "name": "Mint Chip",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Fresh mint ice cream studded with dark chocolate chips. Cool, refreshing, and perfectly balanced."
+  },
+  {
+    "id": "salted-caramel",
+    "name": "Salted Caramel",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "A classic for good reason. We've been making this one since day one and it remains a favourite still. Deeply caramelized sugar mixed with cream and salt from Vancouver Island Sea Salt Co. Its rich, creamy and buttery and the perfect balance of salty and sweet."
+  },
+  {
+    "id": "tahitian-vanilla",
+    "name": "Tahitian Vanilla",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Made with premium Tahitian vanilla beans known for their floral, fruity notes. Simple, elegant, and absolutely delicious."
+  },
+  {
+    "id": "vegan-cookies-cream",
+    "name": "Vegan Cookies + Cream",
+    "isVegan": true,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Plant-based cookies and cream made with our vegan vanilla base and chocolate sandwich cookies."
+  },
+  {
+    "id": "vegan-nanaimo-bar",
+    "name": "Vegan Nanaimo Bar",
+    "isVegan": true,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Inspired by the classic BC treat, this vegan flavour captures the essence of chocolate, coconut, and custard in every bite."
+  },
+  {
+    "id": "vegan-strawberry-rhubarb-ripple",
+    "name": "Vegan Strawberry Rhubarb Ripple",
+    "isVegan": true,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Fresh, fruity strawberry ice cream made with real berries. A taste of summer in every scoop."
+  },
+  {
+    "id": "whiskey-hazelnut",
+    "name": "Whiskey Hazelnut",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "An Earnest Ice Cream original, made from day one and remains a favourite and top-seller. Roasted, salted BC hazelnuts in Whiskey ice cream base. A smooth, boozy flavour with a buttery crunch."
+  },
+  {
+    "id": "classic-sammie",
+    "name": "Classic Sammie",
+    "isVegan": false,
+    "scoopStores": [],
+    "pintStores": [],
+    "sandwichStores": [
+      "fraser",
+      "quebec",
+      "northvan"
+    ],
+    "description": "A classic ice cream sandwich with vanilla ice cream between two chocolate cookies."
+  },
+  {
+    "id": "mint-cookie-crunch-sammie",
+    "name": "Mint Cookie Crunch Sammie",
+    "isVegan": false,
+    "scoopStores": [],
+    "pintStores": [],
+    "sandwichStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "description": "Mint ice cream with cookie crunch pieces sandwiched between chocolate cookies."
+  },
+  {
+    "id": "vegan-chocolate-orange-sammie",
+    "name": "Vegan Chocolate Orange Sammie",
+    "isVegan": true,
+    "scoopStores": [],
+    "pintStores": [],
+    "sandwichStores": [
+      "northvan"
+    ],
+    "description": "Smooth, creamy, and oh-so-chocolatey! This ice cream is a lovely balance between our Milk Chocolate and Serious Chocolate flavours, and is sure to satisfy any chocolate-lover."
+  },
+  {
+    "id": "vegan-mocha-brownie-sammie",
+    "name": "Vegan Mocha Brownie Sammie",
+    "isVegan": true,
+    "scoopStores": [],
+    "pintStores": [],
+    "sandwichStores": [
+      "fraser",
+      "quebec",
+      "frances"
+    ],
+    "description": "Vegan mocha ice cream sandwiched between two fudgy brownie cookies."
+  },
+  {
+    "id": "vegan-strawberry-chocolate-sprinkle-sammie",
+    "name": "Vegan Strawberry Chocolate Sprinkle Sammie",
+    "isVegan": true,
+    "scoopStores": [],
+    "pintStores": [],
+    "sandwichStores": [
+      "northvan"
+    ],
+    "description": "Smooth, creamy, and oh-so-chocolatey! This ice cream is a lovely balance between our Milk Chocolate and Serious Chocolate flavours, and is sure to satisfy any chocolate-lover."
+  }
+]
