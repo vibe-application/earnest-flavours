@@ -6,10 +6,10 @@ permissions:
 
 on:
   schedule:
-    # GitHub cron uses UTC. These two runs cover 12:30 PM Vancouver time
+    # GitHub cron uses UTC. These two runs cover 12:15 PM Vancouver time
     # across daylight saving time; the first step below skips the wrong one.
-    - cron: '30 19 * * *'
-    - cron: '30 20 * * *'
+    - cron: '15 19 * * *'
+    - cron: '15 20 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" != "schedule" ]; then
             echo "should_run=true" >> "$GITHUB_OUTPUT"
-          elif [ "$(TZ=America/Vancouver date +'%H:%M')" = "12:30" ]; then
+          elif [ "$(TZ=America/Vancouver date +'%H:%M')" = "12:15" ]; then
             echo "should_run=true" >> "$GITHUB_OUTPUT"
           else
             echo "should_run=false" >> "$GITHUB_OUTPUT"
