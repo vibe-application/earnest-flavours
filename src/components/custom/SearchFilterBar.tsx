@@ -25,6 +25,9 @@ export function FlavorDataNotice() {
     <div className="rounded-2xl border border-yellow-300 bg-yellow-100 px-4 py-3 text-sm text-yellow-950 shadow-soft dark:border-yellow-700/70 dark:bg-yellow-950/50 dark:text-yellow-100">
       <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3">
         <span>This is an unofficial fan-made website. Not affiliated with Earnest Ice Cream.</span>
+        <span className="inline-flex items-center rounded-lg bg-yellow-200 px-2 py-1 text-xs font-semibold text-yellow-950 dark:bg-yellow-900/80 dark:text-yellow-100">
+          Data refreshes daily at 1:00 PM and 6:00 PM Vancouver time
+        </span>
       </div>
     </div>
   );
