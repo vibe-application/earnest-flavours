@@ -22,7 +22,7 @@ It is also my first vibe coding project on IDE. The scope felt just right: usefu
 - Toggle vegan-only flavors.
 - Open flavor details with per-store availability.
 - Light and dark mode.
-- Daily scraper workflow for flavor data updates.
+- Automated scraper workflow for flavor data updates twice daily.
 
 ## Tech Stack
 
@@ -46,10 +46,34 @@ Useful commands:
 npm run test
 npm run build
 npm run preview
-node scripts/scrape-flavors.js
+npm run scrape
+npm run scrape:force
 ```
 
-Generated flavor data lives in `src/data/flavors.json`. It is produced by `scripts/scrape-flavors.js`, so routine flavor updates should happen through the scraper instead of manual edits.
+## Scraper Notes
+
+`npm run scrape` checks the official Earnest site timestamp first and only refreshes local data when the source has changed.
+
+`npm run scrape:force` skips that freshness check and always performs a full scrape.
+
+Generated scrape outputs live in:
+
+- `src/data/flavors.json`
+- `src/data/flavor-descriptions.json`
+- `src/data/metadata.json`
+
+`src/data/flavor-descriptions.json` stores the latest known official flavor descriptions so they can be reused as fallbacks if a future description scrape misses a page.
+
+Routine flavor updates should go through the scraper rather than manual edits.
+
+## GitHub Actions
+
+The GitHub Actions workflow runs twice daily at:
+
+- `1:00 PM` Vancouver time
+- `6:00 PM` Vancouver time
+
+The scheduled workflow runs `npm run scrape`, so it will skip unnecessary updates when the official site timestamp has not changed.
 
 ## Disclaimer
 

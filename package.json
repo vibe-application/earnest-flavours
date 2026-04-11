@@ -8,6 +8,8 @@
     "build": "npm run test && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "scrape": "node scripts/scrape-flavors.js",
+    "scrape:force": "node scripts/scrape-flavors.js --force",
     "test": "npm run test:unit",
     "test:unit": "tsc -p tsconfig.test.json && node --test /tmp/ernest-filter-tests/tests/*.test.js"
   },
