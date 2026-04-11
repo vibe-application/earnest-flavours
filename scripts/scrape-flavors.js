@@ -125,18 +125,10 @@ export async function checkSourceNeedsUpdate({ fetchImpl = fetch, metadataPath =
   };
 }
 
-async function writeGithubSourceCheckOutput() {
-  try {
-    const result = await checkSourceNeedsUpdate();
-    console.error(`Official site timestamp: ${result.sourceLastUpdatedSignature || 'not found'}`);
-    console.error(`Stored site timestamp: ${result.existingSourceLastUpdatedSignature || 'not found'}`);
-    console.log(`source_changed=${result.shouldUpdate ? 'true' : 'false'}`);
-  } catch (error) {
-    console.error(`Could not check official site timestamp: ${error.message}`);
-    console.error('Falling back to a full scrape.');
-    console.log('source_changed=true');
-    console.log('source_check_error=true');
-  }
+export function parseCliOptions(argv = process.argv.slice(2)) {
+  return {
+    force: argv.includes('--force'),
+  };
 }
 
 export function isVegan(name) {
@@ -671,7 +663,7 @@ export async function scrapeStorePage(page, url) {
   }
 }
 
-async function main() {
+async function runScrape() {
   console.log('╔════════════════════════════════════════════════════════════╗');
   console.log('║     Earnest Ice Cream Flavor Scraper                      ║');
   console.log('╚════════════════════════════════════════════════════════════╝\n');
@@ -776,12 +768,36 @@ async function main() {
   console.log(`   Total items: ${flavorsData.length}`);
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const run = process.argv.includes('--check-source-update')
-    ? writeGithubSourceCheckOutput
-    : main;
+async function main(options = {}) {
+  const { force = false } = options;
 
-  run().catch(error => {
+  if (!force) {
+    try {
+      const sourceCheck = await checkSourceNeedsUpdate();
+      console.log(`Official site timestamp: ${sourceCheck.sourceLastUpdatedSignature}`);
+      console.log(`Stored site timestamp: ${sourceCheck.existingSourceLastUpdatedSignature || 'not found'}`);
+
+      if (!sourceCheck.shouldUpdate) {
+        console.log('Source has not changed; skipping scrape.');
+        return;
+      }
+
+      console.log('Source changed; continuing with full scrape.\n');
+    } catch (error) {
+      console.warn(`Could not check official site timestamp: ${error.message}`);
+      console.warn('Falling back to a full scrape.\n');
+    }
+  } else {
+    console.log('Force mode enabled; skipping source freshness check.\n');
+  }
+
+  await runScrape();
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  const options = parseCliOptions();
+
+  main(options).catch(error => {
     console.error('Scraping failed:', error);
     process.exit(1);
   });

@@ -15,6 +15,7 @@ const {
   extractFlavorItemsFromLinks,
   extractFlavorNamesFromLinks,
   extractFlavorNamesFromTabDocument,
+  parseCliOptions,
   mergeFlavorDescriptionFallbacks,
   scrapeFlavorDescriptions,
   isFlavorLinkText,
@@ -75,6 +76,11 @@ test('extractSourceLastUpdatedFromText finds the official source timestamp', () 
     'Last updated April 9, 2026 at 12pm',
   );
   assert.equal(extractSourceLastUpdatedFromText('No update copy here'), '');
+});
+
+test('parseCliOptions enables force mode only when requested', () => {
+  assert.deepEqual(parseCliOptions([]), { force: false });
+  assert.deepEqual(parseCliOptions(['--force']), { force: true });
 });
 
 test('checkSourceNeedsUpdate compares official source timestamps with stored metadata', async () => {

@@ -27,20 +27,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check official website update
-        id: source-check
-        run: node scripts/scrape-flavors.js --check-source-update >> "$GITHUB_OUTPUT"
-        
       - name: Install Playwright
-        if: steps.source-check.outputs.source_changed == 'true'
         run: npx playwright install chromium
         
       - name: Scrape flavor data
-        if: steps.source-check.outputs.source_changed == 'true'
         run: node scripts/scrape-flavors.js
         
       - name: Check for changes
-        if: steps.source-check.outputs.source_changed == 'true'
         id: check-changes
         run: |
           if git diff --quiet src/data/flavors.json src/data/flavor-descriptions.json src/data/metadata.json; then
