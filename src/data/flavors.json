@@ -7,6 +7,7 @@
       "frances"
     ],
     "pintStores": [
+      "quebec",
       "frances",
       "northvan"
     ],
@@ -368,6 +369,7 @@
     "sandwichStores": [
       "fraser",
       "quebec",
+      "frances",
       "northvan"
     ],
     "description": "Our take on a classic ice cream sandwich. Tahitian vanilla ice cream is sandwiched between chocolate cake and finished with a thin layer of fudge sauce. This flavour never goes out of style!"
