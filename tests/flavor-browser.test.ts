@@ -76,6 +76,20 @@ test('isDefaultBrowseState matches the shared default browse filters', () => {
   assert.equal(
     isDefaultBrowseState({
       ...DEFAULT_BROWSE_FILTERS,
+      servingType: 'pint',
+    }),
+    true,
+  );
+  assert.equal(
+    isDefaultBrowseState({
+      ...DEFAULT_BROWSE_FILTERS,
+      servingType: 'sandwich',
+    }),
+    true,
+  );
+  assert.equal(
+    isDefaultBrowseState({
+      ...DEFAULT_BROWSE_FILTERS,
       veganOnly: true,
     }),
     false,

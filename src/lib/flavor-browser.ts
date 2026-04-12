@@ -47,7 +47,6 @@ export const isDefaultBrowseState = (filters: FilterState): boolean => {
   return (
     filters.searchQuery === DEFAULT_BROWSE_FILTERS.searchQuery &&
     filters.location === DEFAULT_BROWSE_FILTERS.location &&
-    filters.servingType === DEFAULT_BROWSE_FILTERS.servingType &&
     filters.veganOnly === DEFAULT_BROWSE_FILTERS.veganOnly
   );
 };

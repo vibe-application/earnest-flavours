@@ -147,3 +147,9 @@
 - `Navigation.tsx` now uses the shared freshness helper, so Vancouver-calendar-day "today" semantics and fallback date formatting are centralized instead of living inline in the nav component.
 
 - `tests/flavor-browser.test.ts` covers the new contracts directly: default browse state detection, Vancouver-day same-day behavior, fallback freshness labeling, alphabetical ordering, objective highlight ordering with omitted empty buckets, and a combined `location + veganOnly` browse filter case.
+
+## 2026-04-12 - Browse default-state rejection fix
+
+- The plan-level default browse gate is narrower than `DEFAULT_BROWSE_FILTERS`: `isDefaultBrowseState()` must ignore `servingType` and only check `searchQuery === ''`, `location === 'all'`, and `veganOnly === false`.
+- The selected serving type still matters for browse results and highlight derivation, but it is not part of the "show default browse state" decision.
+- `tests/flavor-browser.test.ts` now locks this in with explicit `pint` and `sandwich` assertions so future refactors cannot accidentally make non-scoop states non-default again.
