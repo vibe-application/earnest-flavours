@@ -52,3 +52,8 @@
 - `lsp_diagnostics` could not run for the modified TypeScript files in this environment because `typescript-language-server` is not installed (`Command not found: typescript-language-server`). Verification fell back to the repo's compile/test/build pipeline instead: `npm run test` and `npm run build` both passed.
 
 - During integration, `CoreFlavors.tsx` briefly imported `getStoresForServingType` from `src/lib/flavor-browser.ts` instead of `src/lib/flavor-logic.ts`. The full build caught this immediately, and the final state keeps serving-store derivation in `flavor-logic` while `flavor-browser` composes higher-level browse helpers on top of it.
+
+## 2026-04-12 - Flavor finder hero gotchas
+
+- The plan requires search to stay visually primary without hiding any other control, so the refactor cannot collapse serving/location filters into a popover or drawer even on mobile. The final layout keeps all controls mounted in-flow and instead shifts hierarchy with spacing, grouped surfaces, and a dedicated hero wrapper.
+- `DEFAULT_BROWSE_FILTERS` is the required reset target, but plan-level "default browse state" semantics elsewhere intentionally ignore `servingType`. For the hero clear button, the active/disabled check must compare all four fields directly so resetting from `pint` or `sandwich` still returns to the canonical scoop default.

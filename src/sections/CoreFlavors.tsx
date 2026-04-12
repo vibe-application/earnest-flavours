@@ -4,7 +4,7 @@ import { flavors } from '@/data/flavors';
 import type { Flavor } from '@/data/flavors';
 import { FlavorCard } from '@/components/custom/FlavorCard';
 import { FlavorDetailPanel } from '@/components/custom/FlavorDetailPanel';
-import { FlavorDataNotice, SearchFilterBar } from '@/components/custom/SearchFilterBar';
+import { FlavorFinderHero } from '@/components/custom/FlavorFinderHero';
 import { getStoresForServingType } from '@/lib/flavor-logic';
 import {
   DEFAULT_BROWSE_FILTERS,
@@ -22,26 +22,20 @@ export function CoreFlavors() {
   }, [filters]);
 
   return (
-    <section id="core-flavors" className="py-8 bg-muted/30 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Search and Filters */}
-        <div className="mb-6 space-y-3">
-          <FlavorDataNotice />
-          <SearchFilterBar
+    <section id="core-flavors" className="min-h-screen bg-muted/30 py-6 sm:py-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <FlavorFinderHero
             filters={filters}
             onFiltersChange={setFilters}
+            resultCount={filteredFlavors.length}
           />
-        </div>
-
-        {/* Results count */}
-        <div className="mb-4 text-sm text-muted-foreground">
-          Showing {filteredFlavors.length} item{filteredFlavors.length !== 1 ? 's' : ''}
         </div>
 
         {/* Flavor Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         >
           <AnimatePresence mode="popLayout">
             {filteredFlavors.map((flavor) => (

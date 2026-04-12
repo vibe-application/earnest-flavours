@@ -160,3 +160,10 @@
 - The plan-level default browse gate is narrower than `DEFAULT_BROWSE_FILTERS`: `isDefaultBrowseState()` must ignore `servingType` and only check `searchQuery === ''`, `location === 'all'`, and `veganOnly === false`.
 - The selected serving type still matters for browse results and highlight derivation, but it is not part of the "show default browse state" decision.
 - `tests/flavor-browser.test.ts` now locks this in with explicit `pint` and `sandwich` assertions so future refactors cannot accidentally make non-scoop states non-default again.
+
+## 2026-04-12 - Flavor finder hero refactor
+
+- `src/sections/CoreFlavors.tsx` now enters the browse experience with `FlavorFinderHero` instead of stacking shell-style disclaimer copy above a dense filter slab. This keeps the first screen focused on search and active browse context rather than repeating provenance messaging that now lives in the navigation/footer shell.
+- `src/components/custom/FlavorFinderHero.tsx` establishes the lighter editorial wrapper with existing tokens only: `max-w-7xl` shell rhythm, semantic surfaces (`bg-card`, `bg-background`, `bg-muted`, `border-border`), Quicksand heading typography, and soft shadows.
+- `src/components/custom/SearchFilterBar.tsx` now treats search as the primary control by placing the large `data-testid="hero-search-input"` field first, followed by directly visible serving, location, vegan, and clear controls—no secondary tray or hidden drawer.
+- Clear/reset now stays wired to `DEFAULT_BROWSE_FILTERS` from `src/lib/flavor-browser.ts`, and the clear button remains mounted with `data-testid="clear-filters"` even when disabled so automated checks have a stable target.
