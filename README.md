@@ -71,7 +71,7 @@ Routine flavor updates should go through the scraper rather than manual edits.
 The GitHub Actions workflow runs twice daily at:
 
 - `1:00 PM` Vancouver time
-- `6:00 PM` Vancouver time
+- `4:30 PM` Vancouver time
 
 The scheduled workflow runs `npm run scrape`, so it will skip unnecessary updates when the official site timestamp has not changed.
 

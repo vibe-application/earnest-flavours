@@ -27,7 +27,7 @@ export function FlavorDataNotice() {
         <span>
           This is an unofficial fan-made website. Not affiliated with Earnest Ice Cream.
           <br />
-          Data refreshes daily at 1:00 PM and 6:00 PM Vancouver time
+          Data refreshes daily at 1:00 PM and 4:30 PM Vancouver time
         </span>
       </div>
     </div>

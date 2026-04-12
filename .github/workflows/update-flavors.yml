@@ -8,9 +8,9 @@ on:
   schedule:
     # GitHub cron uses UTC. Vancouver remains on year-round daylight time
     # after B.C.'s final spring-forward on March 8, 2026, so these run at 1:00 PM
-    # and 6:00 PM Vancouver time.
+    # and 4:30 PM Vancouver time.
     - cron: '0 20 * * *'
-    - cron: '0 1 * * *'
+    - cron: '30 23 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
