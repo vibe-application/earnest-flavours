@@ -167,3 +167,9 @@
 - `src/components/custom/FlavorFinderHero.tsx` establishes the lighter editorial wrapper with existing tokens only: `max-w-7xl` shell rhythm, semantic surfaces (`bg-card`, `bg-background`, `bg-muted`, `border-border`), Quicksand heading typography, and soft shadows.
 - `src/components/custom/SearchFilterBar.tsx` now treats search as the primary control by placing the large `data-testid="hero-search-input"` field first, followed by directly visible serving, location, vegan, and clear controls—no secondary tray or hidden drawer.
 - Clear/reset now stays wired to `DEFAULT_BROWSE_FILTERS` from `src/lib/flavor-browser.ts`, and the clear button remains mounted with `data-testid="clear-filters"` even when disabled so automated checks have a stable target.
+
+## 2026-04-12 - Mobile above-fold hero fix
+
+- The rejected mobile issue was mostly vertical rhythm, not missing functionality: helper copy, summary chips, and desktop-sized panel spacing were pushing the vegan switch below the fold in a `375x812` viewport.
+- The fix kept the same control set and selectors but tightened the phone layout only: smaller mobile hero padding, hidden non-essential helper/chip content below `sm`, shorter control heights, and a more compact vegan card while preserving the same desktop presentation from `sm` upward.
+- Playwright verification against the live app confirmed the required elements now sit above the fold at `375x812`: search input bottom `345.5`, serving filter bottom `438.5`, location filter bottom `571.5`, vegan toggle bottom `616.6875`.
