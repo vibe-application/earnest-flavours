@@ -173,3 +173,18 @@
 - The rejected mobile issue was mostly vertical rhythm, not missing functionality: helper copy, summary chips, and desktop-sized panel spacing were pushing the vegan switch below the fold in a `375x812` viewport.
 - The fix kept the same control set and selectors but tightened the phone layout only: smaller mobile hero padding, hidden non-essential helper/chip content below `sm`, shorter control heights, and a more compact vegan card while preserving the same desktop presentation from `sm` upward.
 - Playwright verification against the live app confirmed the required elements now sit above the fold at `375x812`: search input bottom `345.5`, serving filter bottom `438.5`, location filter bottom `571.5`, vegan toggle bottom `616.6875`.
+
+## 2026-04-12 - Browse modes orchestration
+
+- `src/sections/CoreFlavors.tsx` now treats browse mode as an explicit state machine driven by the shared helper contracts instead of inline condition drift:
+  - default browse mode = `isDefaultBrowseState(filters)`
+  - results list = `getBrowseResults(flavors, filters)`
+  - objective highlights = `deriveObjectiveHighlightBuckets(flavors, filters.servingType)`
+- Because `isDefaultBrowseState()` intentionally ignores `servingType`, changing scoop/pint/sandwich while search is empty, location is `all`, and vegan is off still keeps the page in the default browse mode. That preserves the plan requirement that serving-type changes alone do not hide the browse highlights.
+- `src/components/custom/FlavorBrowseHighlights.tsx` keeps the highlight area non-interactive and objective by showing fixed-order modules (`all-locations`, `vegan`, `single-location`) with counts plus short alphabetized previews instead of a second full grid. The only interactive detail-opening list remains the shared `data-testid="flavor-result-list"` section below.
+- The new stable selectors now cover the browse-mode transitions directly:
+  - `data-testid="highlight-${bucket.id}"` for objective modules
+  - `data-testid="browse-results-summary"` for active filtered/search state
+  - `data-testid="flavor-result-list"` for the visible results grid
+  - `data-testid="flavor-empty-state"` and `data-testid="empty-state-reset"` for the recovery path
+- Highlight freshness copy now comes from the shared Task 1 helper (`getFreshnessLabel`) rather than ad-hoc text, so the module copy stays aligned with the Vancouver-time freshness semantics already established elsewhere.

@@ -57,3 +57,8 @@
 
 - The plan requires search to stay visually primary without hiding any other control, so the refactor cannot collapse serving/location filters into a popover or drawer even on mobile. The final layout keeps all controls mounted in-flow and instead shifts hierarchy with spacing, grouped surfaces, and a dedicated hero wrapper.
 - `DEFAULT_BROWSE_FILTERS` is the required reset target, but plan-level "default browse state" semantics elsewhere intentionally ignore `servingType`. For the hero clear button, the active/disabled check must compare all four fields directly so resetting from `pint` or `sandwich` still returns to the canonical scoop default.
+
+## 2026-04-12 - Browse mode orchestration gotchas
+
+- The new highlight surface cannot call `Date.now()` inside component render when building freshness copy. The repo's React purity lint rule flags that as an impure render path, so the shared freshness label must be computed outside render or otherwise stabilized.
+- To avoid duplicating the full list inside browse highlights, the objective modules should stay at summary/preview depth only. The acceptance criteria still require the canonical alphabetical list to remain visible exactly once as the main `flavor-result-list` grid.
