@@ -1,14 +1,8 @@
 import type { Flavor } from '../data/flavors.js';
 import type { StoreId } from '../data/stores.js';
+import type { FilterState, ServingType } from './flavor-browser.js';
 
-export type ServingType = 'scoop' | 'pint' | 'sandwich';
-
-export interface FlavorVisualizationFilters {
-  searchQuery: string;
-  location: StoreId | 'all';
-  servingType: ServingType;
-  veganOnly: boolean;
-}
+export type FlavorVisualizationFilters = FilterState;
 
 export interface StoreServingAvailability {
   storeId: StoreId;

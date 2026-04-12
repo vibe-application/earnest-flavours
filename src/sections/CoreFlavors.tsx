@@ -5,26 +5,20 @@ import type { Flavor } from '@/data/flavors';
 import { FlavorCard } from '@/components/custom/FlavorCard';
 import { FlavorDetailPanel } from '@/components/custom/FlavorDetailPanel';
 import { FlavorDataNotice, SearchFilterBar } from '@/components/custom/SearchFilterBar';
-import type { FilterState } from '@/components/custom/SearchFilterBar';
+import { getStoresForServingType } from '@/lib/flavor-logic';
 import {
-  flavorMatchesVisualizationFilters,
-  getStoresForServingType,
-} from '@/lib/flavor-logic';
+  DEFAULT_BROWSE_FILTERS,
+  getBrowseResults,
+  type FilterState,
+} from '@/lib/flavor-browser';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function CoreFlavors() {
-  const [filters, setFilters] = useState<FilterState>({
-    searchQuery: '',
-    location: 'all',
-    servingType: 'scoop',
-    veganOnly: false,
-  });
+  const [filters, setFilters] = useState<FilterState>(DEFAULT_BROWSE_FILTERS);
   const [selectedFlavor, setSelectedFlavor] = useState<Flavor | null>(null);
 
   const filteredFlavors = useMemo(() => {
-    return [...flavors]
-      .filter((flavor) => flavorMatchesVisualizationFilters(flavor, filters))
-      .sort((a, b) => a.name.localeCompare(b.name));
+    return getBrowseResults(flavors, filters);
   }, [filters]);
 
   return (

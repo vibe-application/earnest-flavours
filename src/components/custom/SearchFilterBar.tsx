@@ -5,15 +5,9 @@ import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { stores } from '@/data/stores';
 import type { StoreId } from '@/data/stores';
+import { DEFAULT_BROWSE_FILTERS, type FilterState, type ServingType } from '@/lib/flavor-browser';
 
-export type ServingType = 'scoop' | 'pint' | 'sandwich';
-
-export interface FilterState {
-  searchQuery: string;
-  location: StoreId | 'all';
-  servingType: ServingType;
-  veganOnly: boolean;
-}
+export type { FilterState, ServingType } from '@/lib/flavor-browser';
 
 interface SearchFilterBarProps {
   filters: FilterState;
@@ -40,12 +34,7 @@ export function SearchFilterBar({ filters, onFiltersChange }: SearchFilterBarPro
   };
 
   const clearFilters = () => {
-    onFiltersChange({
-      searchQuery: '',
-      location: 'all',
-      servingType: 'scoop',
-      veganOnly: false,
-    });
+    onFiltersChange(DEFAULT_BROWSE_FILTERS);
   };
 
   const hasActiveFilters = filters.location !== 'all' || filters.servingType !== 'scoop' || filters.veganOnly;
