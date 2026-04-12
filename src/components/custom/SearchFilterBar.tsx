@@ -105,7 +105,7 @@ export function SearchFilterBar({ filters, onFiltersChange }: SearchFilterBarPro
               <p className="hidden text-sm text-muted-foreground sm:block">Keep every neighbourhood visible or zoom into one shop.</p>
             </div>
 
-            <div className="mt-2 grid grid-cols-3 gap-1.5 sm:mt-3 sm:grid-cols-5 sm:gap-2">
+            <div className="mt-2 grid grid-cols-2 gap-1.5 sm:mt-3 sm:grid-cols-5 sm:gap-2">
               {locationOptions.map(({ value, label }) => {
                 const isSelected = filters.location === value;
                 const compactLabel =
@@ -170,15 +170,17 @@ export function SearchFilterBar({ filters, onFiltersChange }: SearchFilterBarPro
             onClick={clearFilters}
             disabled={!hasChanges}
             data-testid="clear-filters"
-            className="h-11 items-center justify-start gap-3 rounded-xl border-border/70 bg-background/80 px-3 text-left shadow-xs hover:bg-background disabled:pointer-events-auto disabled:cursor-not-allowed disabled:opacity-55 sm:h-auto sm:min-h-[5.25rem] sm:items-start sm:rounded-2xl sm:px-4 sm:py-4"
+            className="min-w-0 items-center justify-start gap-3 rounded-xl border-border/70 bg-background/80 px-3 py-3 text-left shadow-xs hover:bg-background disabled:pointer-events-auto disabled:cursor-not-allowed disabled:opacity-55 sm:min-h-[5.25rem] sm:items-start sm:rounded-2xl sm:px-4 sm:py-4"
           >
-            <span className="rounded-full bg-muted p-1.5 text-muted-foreground sm:p-2">
+            <span className="shrink-0 rounded-full bg-muted p-1.5 text-muted-foreground sm:p-2">
               <RotateCcw className="size-4" />
             </span>
 
-            <span className="space-y-1">
-              <span className="block text-sm font-semibold text-foreground">Clear filters</span>
-              <span className="hidden text-sm font-normal text-muted-foreground sm:block">
+            <span className="min-w-0 space-y-1">
+              <span className="block whitespace-normal text-sm font-semibold leading-5 text-foreground">
+                Clear filters
+              </span>
+              <span className="hidden whitespace-normal text-sm font-normal leading-5 text-muted-foreground sm:block">
                 Reset the browser to the default scoop view.
               </span>
             </span>

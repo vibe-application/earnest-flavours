@@ -25,7 +25,7 @@ export function FlavorFinderHero({
 
   return (
     <div className="relative overflow-hidden rounded-[1.75rem] border border-border/70 bg-card/95 shadow-soft-lg sm:rounded-[2rem]">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-r from-secondary/35 via-background to-accent/20 dark:from-secondary/15 dark:via-card dark:to-accent/10 sm:h-28" />
+      <div className="pointer-events-none absolute left-4 top-4 h-24 w-[calc(100%-2rem)] max-w-3xl rounded-[1.5rem] bg-gradient-to-r from-secondary/45 via-background/85 to-accent/30 opacity-90 blur-2xl dark:from-secondary/20 dark:via-card/95 dark:to-accent/15 sm:left-8 sm:top-6 sm:h-32 sm:w-[36rem]" />
 
       <div className="relative space-y-4 px-4 py-5 sm:space-y-6 sm:px-8 sm:py-8">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
@@ -43,7 +43,7 @@ export function FlavorFinderHero({
             </div>
           </div>
 
-          <div className="hidden flex-wrap gap-2 text-xs font-medium text-muted-foreground sm:flex" aria-live="polite">
+          <div className="flex flex-wrap gap-2 text-xs font-medium text-muted-foreground" aria-live="polite">
             <span className="inline-flex items-center rounded-full border border-border/70 bg-background/85 px-3 py-1.5 shadow-xs">
               {resultCount} item{resultCount === 1 ? '' : 's'} showing
             </span>

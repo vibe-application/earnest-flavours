@@ -1,8 +1,6 @@
-import metadata from '@/data/metadata.json';
 import { stores } from '@/data/stores';
 import type { Flavor } from '@/data/flavors';
 import {
-  getFreshnessLabel,
   type FlavorHighlightBucket,
   type FlavorHighlightBucketId,
   type ServingType,
@@ -21,7 +19,6 @@ const servingTypeLabels: Record<ServingType, string> = {
 };
 
 const previewLimit = 4;
-const freshnessLabel = `${getFreshnessLabel(metadata.lastUpdatedAt, Date.now())} · Vancouver time`;
 
 const bucketCopy: Record<
   FlavorHighlightBucketId,
@@ -69,7 +66,7 @@ export function FlavorBrowseHighlights({
 
   return (
     <section className="space-y-4" aria-label="Objective flavor highlights">
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+      <div className="space-y-1">
         <div className="space-y-1">
           <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-primary/80">
             Browse highlights
@@ -78,10 +75,6 @@ export function FlavorBrowseHighlights({
             Objective cues for the current {servingType} view.
           </h2>
         </div>
-
-        <span className="inline-flex items-center self-start rounded-full border border-border/70 bg-background/85 px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-xs">
-          {freshnessLabel}
-        </span>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
