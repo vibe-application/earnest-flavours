@@ -3,9 +3,7 @@
     "id": "carrot-cake",
     "name": "Carrot Cake",
     "isVegan": false,
-    "scoopStores": [
-      "frances"
-    ],
+    "scoopStores": [],
     "pintStores": [
       "quebec",
       "frances",
