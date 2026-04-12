@@ -4,11 +4,10 @@ import { flavors } from '@/data/flavors';
 import { stores } from '@/data/stores';
 import type { Flavor } from '@/data/flavors';
 import { Button } from '@/components/ui/button';
-import { FlavorCard } from '@/components/custom/FlavorCard';
+import { FlavorResultRow } from '@/components/custom/FlavorResultRow';
 import { FlavorBrowseHighlights } from '@/components/custom/FlavorBrowseHighlights';
 import { FlavorDetailPanel } from '@/components/custom/FlavorDetailPanel';
 import { FlavorFinderHero } from '@/components/custom/FlavorFinderHero';
-import { getStoresForServingType } from '@/lib/flavor-logic';
 import {
   DEFAULT_BROWSE_FILTERS,
   deriveObjectiveHighlightBuckets,
@@ -129,7 +128,7 @@ export function CoreFlavors() {
 
               <motion.div
                 layout
-                className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                className="space-y-3"
               >
                 <AnimatePresence mode="popLayout">
                   {browseResults.map((flavor) => (
@@ -141,10 +140,10 @@ export function CoreFlavors() {
                       exit={{ opacity: 0, scale: 0.9 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <FlavorCard
+                      <FlavorResultRow
                         flavor={flavor}
-                        locationStoreIds={getStoresForServingType(flavor, filters.servingType)}
-                        onClick={() => setSelectedFlavor(flavor)}
+                        servingType={filters.servingType}
+                        onSelect={() => setSelectedFlavor(flavor)}
                       />
                     </motion.div>
                   ))}
@@ -189,6 +188,7 @@ export function CoreFlavors() {
       {/* Flavor Detail Panel */}
       <FlavorDetailPanel
         flavor={selectedFlavor}
+        servingType={filters.servingType}
         isOpen={!!selectedFlavor}
         onClose={() => setSelectedFlavor(null)}
       />
