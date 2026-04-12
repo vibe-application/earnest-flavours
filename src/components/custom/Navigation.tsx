@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { CalendarDays, IceCream, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import metadata from '@/data/metadata.json';
+import { getRuntimeMetadata } from '@/data/runtime-data';
+
+const metadata = getRuntimeMetadata();
 
 interface NavigationProps {
   isDark: boolean;

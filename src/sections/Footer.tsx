@@ -1,5 +1,7 @@
 import { ExternalLink } from 'lucide-react';
-import metadata from '@/data/metadata.json';
+import { getRuntimeMetadata } from '@/data/runtime-data';
+
+const metadata = getRuntimeMetadata();
 
 export function Footer() {
   return (

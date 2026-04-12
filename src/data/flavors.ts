@@ -1,6 +1,6 @@
 import type { StoreId } from './stores.js';
-import flavorData from './flavors.json' with { type: 'json' };
 import { normalizeFlavorSearchText } from '../lib/flavor-logic.js';
+import { getRuntimeFlavors } from './runtime-data.js';
 
 export interface Flavor {
   id: string;
@@ -12,7 +12,7 @@ export interface Flavor {
   description: string;
 }
 
-export const flavors: Flavor[] = flavorData as Flavor[];
+export const flavors: Flavor[] = getRuntimeFlavors();
 
 // Helper to check if a flavor is available as a sandwich at any store
 export const hasSandwich = (flavor: Flavor): boolean => {
