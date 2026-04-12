@@ -16,11 +16,12 @@
     "id": "irish-cream",
     "name": "Irish Cream",
     "isVegan": false,
-    "scoopStores": [],
+    "scoopStores": [
+      "frances"
+    ],
     "pintStores": [
       "fraser",
       "quebec",
-      "frances",
       "northvan"
     ],
     "sandwichStores": [],
@@ -83,7 +84,6 @@
     "name": "Vegan Peaches & Cream",
     "isVegan": true,
     "scoopStores": [
-      "quebec",
       "northvan"
     ],
     "pintStores": [
