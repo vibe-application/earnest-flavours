@@ -29,14 +29,12 @@ export function Navigation({ isDark, toggleTheme }: NavigationProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-background/80 backdrop-blur-lg shadow-soft'
-          : 'bg-transparent'
+      className={`fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-lg transition-shadow duration-300 ${
+        isScrolled ? 'shadow-soft' : ''
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between gap-3">
           {/* Logo */}
           <a
             href="#"
@@ -46,7 +44,7 @@ export function Navigation({ isDark, toggleTheme }: NavigationProps) {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            <div className="p-2 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+            <div className="rounded-xl bg-primary/10 p-2 transition-colors group-hover:bg-primary/20">
               <IceCream className="w-5 h-5 text-primary" />
             </div>
             <span className="font-heading font-bold text-lg text-foreground">
@@ -56,11 +54,6 @@ export function Navigation({ isDark, toggleTheme }: NavigationProps) {
 
           {/* Right side actions */}
           <div className="flex items-center gap-2">
-            <div className="hidden h-9 items-center gap-2 rounded-lg border border-border bg-background/70 px-3 text-xs font-medium text-muted-foreground shadow-xs sm:inline-flex">
-              <CalendarDays className="w-3.5 h-3.5" />
-              <span>Updated {lastUpdatedDate}</span>
-            </div>
-
             {/* Theme Toggle */}
             <Button
               variant="ghost"
@@ -82,6 +75,19 @@ export function Navigation({ isDark, toggleTheme }: NavigationProps) {
                 />
               </div>
             </Button>
+          </div>
+        </div>
+
+        <div className="border-t border-border/60 py-2.5">
+          <div className="flex flex-wrap items-center gap-2 text-[11px] font-medium text-muted-foreground sm:text-xs">
+            <span className="inline-flex items-center rounded-full bg-muted/70 px-3 py-1.5 shadow-xs">
+              Fan-made, unofficial
+            </span>
+
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-background/80 px-3 py-1.5 shadow-xs">
+              <CalendarDays className="size-3.5" />
+              <span>Updated {lastUpdatedDate} · Vancouver time</span>
+            </span>
           </div>
         </div>
       </div>
