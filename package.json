@@ -11,7 +11,10 @@
     "scrape": "node scripts/scrape-flavors.js",
     "scrape:force": "node scripts/scrape-flavors.js --force",
     "test": "npm run test:unit",
-    "test:unit": "tsc -p tsconfig.test.json && node --test /tmp/ernest-filter-tests/tests/*.test.js"
+    "test:unit": "tsc -p tsconfig.test.json && node --test /tmp/ernest-filter-tests/tests/*.test.js",
+    "test:e2e": "npx playwright test",
+    "test:e2e:update": "npx playwright test --update-snapshots",
+    "test:e2e:docker": "docker run --rm -v $(pwd):/workspace -w /workspace mcr.microsoft.com/playwright:v1.49.0-jammy npx playwright test --update-snapshots"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -63,6 +66,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.59.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",

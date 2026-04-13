@@ -1,0 +1,58 @@
+name: UI Validation
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ui:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium
+
+      - name: Run unit tests
+        run: npm run test
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run build
+        run: npm run build
+
+      - name: Run browser tests
+        run: npx playwright test
+        
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
+          
+      - name: Upload Linux snapshots (if tests fail due to missing baselines)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-snapshots
+          path: tests/e2e/flavor-visual.spec.ts-snapshots/*-linux.png
+          retention-days: 7
+          if-no-files-found: ignore
