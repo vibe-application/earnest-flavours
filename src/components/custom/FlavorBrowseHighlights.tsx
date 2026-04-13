@@ -87,7 +87,7 @@ export function FlavorBrowseHighlights({
             <article
               key={bucket.id}
               data-testid={`highlight-${bucket.id}`}
-              className="rounded-[1.75rem] border border-border/70 bg-card/95 p-5 shadow-soft sm:p-6"
+              className="glass-pane rounded-[1.75rem] p-5 shadow-soft sm:p-6"
             >
               <div className="space-y-2">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">

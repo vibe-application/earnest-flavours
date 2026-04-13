@@ -10,7 +10,7 @@ function App() {
     <div className="flex min-h-screen flex-col bg-background text-foreground transition-colors duration-300">
       <Navigation isDark={isDark} toggleTheme={toggleTheme} />
 
-      <main className="flex-1 pt-32 sm:pt-28">
+      <main className="waffle-background flex-1 pt-32 sm:pt-28">
         <CoreFlavors />
       </main>
 

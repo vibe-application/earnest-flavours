@@ -27,22 +27,22 @@ const storeAccentClasses: Record<
   }
 > = {
   fraser: {
-    available: 'border-store-fraser/30 bg-store-fraser/10 text-store-fraser',
+    available: 'border-store-fraser/40 bg-store-fraser/25 text-rose-900 dark:border-store-fraser/35 dark:bg-store-fraser/20 dark:text-rose-100',
     unavailable: 'border-border/60 bg-muted/45 text-muted-foreground',
     icon: 'text-store-fraser',
   },
   quebec: {
-    available: 'border-store-quebec/30 bg-store-quebec/10 text-store-quebec',
+    available: 'border-store-quebec/40 bg-store-quebec/25 text-sky-950 dark:border-store-quebec/35 dark:bg-store-quebec/20 dark:text-sky-100',
     unavailable: 'border-border/60 bg-muted/45 text-muted-foreground',
     icon: 'text-store-quebec',
   },
   frances: {
-    available: 'border-store-frances/30 bg-store-frances/10 text-store-frances',
+    available: 'border-store-frances/40 bg-store-frances/30 text-amber-950 dark:border-store-frances/35 dark:bg-store-frances/20 dark:text-amber-100',
     unavailable: 'border-border/60 bg-muted/45 text-muted-foreground',
     icon: 'text-store-frances',
   },
   northvan: {
-    available: 'border-store-northvan/30 bg-store-northvan/10 text-store-northvan',
+    available: 'border-store-northvan/40 bg-store-northvan/25 text-emerald-950 dark:border-store-northvan/35 dark:bg-store-northvan/20 dark:text-emerald-100',
     unavailable: 'border-border/60 bg-muted/45 text-muted-foreground',
     icon: 'text-store-northvan',
   },
@@ -58,7 +58,7 @@ export function FlavorResultRow({
   return (
     <article
       data-testid={`flavor-result-${flavor.id}`}
-      className="rounded-[1.5rem] border border-border/70 bg-card/95 p-3.5 shadow-soft transition-colors duration-200 hover:border-primary/25 sm:p-4"
+      className="glass-pane rounded-[1.5rem] p-3.5 shadow-soft transition-colors duration-200 hover:border-primary/25 sm:p-4"
     >
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0 flex-1 space-y-2">
@@ -110,7 +110,7 @@ export function FlavorResultRow({
             type="button"
             variant="outline"
             onClick={onSelect}
-            className="w-full rounded-xl border-border/70 bg-background/85 px-3 py-2 text-sm font-semibold shadow-xs hover:bg-background sm:w-auto"
+            className="glass-pane rounded-[1.5rem] w-full rounded-xl border-border/70 bg-background/85 px-3 py-2 text-sm font-semibold shadow-xs hover:bg-background sm:w-auto"
           >
             View details
             <ArrowRight className="size-4" />

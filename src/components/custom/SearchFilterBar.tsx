@@ -33,7 +33,7 @@ const locationOptions: Array<{
   ...stores.map((store) => ({ value: store.id, label: store.shortName })),
 ];
 
-const controlPanelClass = 'rounded-xl border border-border/70 bg-background/70 p-2.5 shadow-xs sm:rounded-2xl sm:p-4';
+const controlPanelClass = 'glass-pane rounded-xl p-2.5 shadow-xs sm:rounded-2xl sm:p-4';
 const sectionLabelClass = 'text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-[11px] sm:tracking-[0.24em]';
 
 export function SearchFilterBar({ filters, onFiltersChange }: SearchFilterBarProps) {

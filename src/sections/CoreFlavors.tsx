@@ -74,7 +74,7 @@ export function CoreFlavors() {
           ) : (
             <section
               data-testid="browse-results-summary"
-              className="rounded-[1.75rem] border border-border/70 bg-card/95 p-5 shadow-soft sm:p-6"
+              className="glass-pane rounded-[1.75rem] p-5 shadow-soft sm:p-6"
             >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div className="space-y-2">
@@ -153,7 +153,7 @@ export function CoreFlavors() {
           ) : (
             <section
               data-testid="flavor-empty-state"
-              className="rounded-[1.75rem] border border-dashed border-border/80 bg-card/80 px-6 py-12 text-center shadow-soft"
+              className="glass-pane rounded-[1.75rem] border-dashed px-6 py-12 text-center shadow-soft"
             >
               <div className="mx-auto max-w-xl space-y-4">
                 <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-muted text-muted-foreground shadow-xs">

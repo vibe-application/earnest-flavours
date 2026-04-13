@@ -96,7 +96,7 @@ export function FlavorDetailPanel({
     }}>
       <SheetContent
         data-testid="flavor-detail-sheet"
-        className="!w-full overflow-y-auto border-l border-border/70 bg-background px-4 py-6 sm:!max-w-lg sm:px-6"
+        className="!w-full overflow-y-auto border-l px-4 py-6 sm:!max-w-lg sm:px-6"
       >
         <SheetHeader className="border-b border-border/70 px-0 pb-6 pt-0">
           <div className="flex items-start justify-between gap-4">
@@ -104,39 +104,9 @@ export function FlavorDetailPanel({
               {flavor.name}
             </SheetTitle>
           </div>
-          <SheetDescription className="sr-only">
-            Serving details and current store availability for {flavor.name}.
-          </SheetDescription>
           
           {/* Badges */}
           <div className="flex flex-wrap gap-2 mt-4">
-            {hasScoop && (
-              <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl ${scoopAtAll ? 'bg-primary/10' : 'bg-muted'}`}>
-                <IceCream className={`w-4 h-4 ${scoopAtAll ? 'text-primary' : 'text-muted-foreground'}`} />
-                <span className={`text-sm font-medium ${scoopAtAll ? 'text-primary' : 'text-muted-foreground'}`}>
-                  Scoop
-                </span>
-              </div>
-            )}
-            
-            {hasPint && (
-              <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl ${pintAtAll ? 'bg-cereal-cream/30' : 'bg-muted'}`}>
-                <Cylinder className={`w-4 h-4 ${pintAtAll ? 'text-amber-700' : 'text-muted-foreground'}`} />
-                <span className={`text-sm font-medium ${pintAtAll ? 'text-amber-700' : 'text-muted-foreground'}`}>
-                  Pint
-                </span>
-              </div>
-            )}
-            
-            {flavorHasSandwich && (
-              <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl ${sandwichAtAll ? 'bg-chocolate/10' : 'bg-muted'}`}>
-                <Sandwich className={`w-4 h-4 ${sandwichAtAll ? 'text-chocolate' : 'text-muted-foreground'}`} />
-                <span className={`text-sm font-medium ${sandwichAtAll ? 'text-chocolate' : 'text-muted-foreground'}`}>
-                  Sandwich
-                </span>
-              </div>
-            )}
-
             {flavor.isVegan && (
               <Badge
                 variant="outline"
@@ -146,21 +116,11 @@ export function FlavorDetailPanel({
                 Vegan
               </Badge>
             )}
-            
-            {selectedServingAtAllStores && (
-              <Badge
-                variant="outline"
-                className="bg-marshmallow-pink/10 text-primary border-primary/30"
-              >
-                <Store className="w-3 h-3 mr-1" />
-                All Locations · {selectedServingLabel}
-              </Badge>
-            )}
           </div>
         </SheetHeader>
 
         <div className="space-y-6 px-0 py-6 sm:space-y-7">
-          <div className="rounded-[1.5rem] border border-border/70 bg-card/95 p-5 shadow-soft">
+          <div className="glass-pane rounded-[1.5rem] p-5 shadow-soft">
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/80">
               Current {selectedServingLabel.toLowerCase()} view
             </p>
@@ -205,22 +165,22 @@ export function FlavorDetailPanel({
 
                     <div className="mt-3 flex flex-wrap gap-2">
                       {hasScoopAtStore && (
-                        <span className="rounded-full bg-primary/15 px-3 py-1.5 text-xs font-medium text-primary">
+                        <span className="rounded-full border border-primary/40 bg-primary/25 px-3 py-1.5 text-xs font-medium text-rose-900 dark:border-primary/35 dark:bg-primary/20 dark:text-rose-100">
                           Scoop
                         </span>
                       )}
                       {hasPintAtStore && (
-                        <span className="rounded-full bg-cereal-cream/50 px-3 py-1.5 text-xs font-medium text-amber-800">
+                        <span className="rounded-full border border-amber-500/35 bg-cereal-cream/60 px-3 py-1.5 text-xs font-medium text-amber-950 dark:border-amber-400/30 dark:bg-cereal-cream/20 dark:text-amber-100">
                           Pint
                         </span>
                       )}
                       {hasSandwichAtStore && (
-                        <span className="rounded-full bg-chocolate/20 px-3 py-1.5 text-xs font-medium text-chocolate">
+                        <span className="rounded-full border border-chocolate/35 bg-chocolate/25 px-3 py-1.5 text-xs font-medium text-amber-950 dark:border-chocolate/30 dark:bg-chocolate/25 dark:text-amber-100">
                           Sandwich
                         </span>
                       )}
                       {!hasAnyServing && (
-                        <span className="rounded-full border border-border/70 bg-background/85 px-3 py-1.5 text-xs font-medium text-muted-foreground">
+                        <span className="rounded-full border border-border/70 border bg-background/85 px-3 py-1.5 text-xs font-medium text-muted-foreground">
                           Not listed currently
                         </span>
                       )}

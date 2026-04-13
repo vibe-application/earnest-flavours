@@ -24,7 +24,7 @@ export function FlavorFinderHero({
       : stores.find((store) => store.id === filters.location)?.shortName ?? 'Selected location';
 
   return (
-    <div className="relative overflow-hidden rounded-[1.75rem] border border-border/70 bg-card/95 shadow-soft-lg sm:rounded-[2rem]">
+    <div className="glass-pane relative overflow-hidden rounded-[1.75rem] shadow-soft-lg sm:rounded-[2rem]">
       <div className="pointer-events-none absolute left-4 top-4 h-24 w-[calc(100%-2rem)] max-w-3xl rounded-[1.5rem] bg-gradient-to-r from-secondary/45 via-background/85 to-accent/30 opacity-90 blur-2xl dark:from-secondary/20 dark:via-card/95 dark:to-accent/15 sm:left-8 sm:top-6 sm:h-32 sm:w-[36rem]" />
 
       <div className="relative space-y-4 px-4 py-5 sm:space-y-6 sm:px-8 sm:py-8">
