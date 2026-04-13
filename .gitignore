@@ -14,3 +14,4 @@ pnpm-debug.log*
 playwright-report/
 test-results/
 task*.png
+.sisyphus/
