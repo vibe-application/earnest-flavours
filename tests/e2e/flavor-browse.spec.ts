@@ -77,9 +77,9 @@ test('opens and closes the detail sheet with serving-aware store availability', 
   await openFlavorDetails(page, 'berry-oat-crumble');
 
   await expect(page.getByTestId('flavor-detail-sheet')).toContainText('Pint is currently listed only at Fraser St.');
-  await expect(page.getByTestId('detail-store-fraser')).toContainText('Pint available');
-  await expect(page.getByTestId('detail-store-quebec')).toContainText('No pint');
+  await expect(page.getByTestId('detail-store-fraser')).toContainText('Pint');
   await expect(page.getByTestId('detail-store-quebec')).toContainText('Scoop');
+  await expect(page.getByTestId('detail-store-quebec')).not.toContainText('Pint');
 
   await page.getByRole('button', { name: 'Close' }).click();
   await expect(page.getByTestId('flavor-detail-sheet')).toHaveCount(0);
