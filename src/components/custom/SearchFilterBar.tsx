@@ -1,4 +1,4 @@
-import { Search, Leaf, IceCream, Box, Sandwich, RotateCcw } from 'lucide-react';
+import { Search, Leaf, IceCream, Cylinder, Sandwich, RotateCcw } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
@@ -21,7 +21,7 @@ const servingOptions: Array<{
   icon: typeof IceCream;
 }> = [
   { value: 'scoop', label: 'Scoop', icon: IceCream },
-  { value: 'pint', label: 'Pint', icon: Box },
+  { value: 'pint', label: 'Pint', icon: Cylinder },
   { value: 'sandwich', label: 'Sandwich', icon: Sandwich },
 ];
 

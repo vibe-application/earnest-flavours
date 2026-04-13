@@ -1,4 +1,4 @@
-import { Leaf, Store, IceCream, Box, Sandwich } from 'lucide-react';
+import { Leaf, Store, IceCream, Cylinder, Sandwich } from 'lucide-react';
 import type { Flavor } from '@/data/flavors';
 import { hasSandwich, isScoopAtAllStores, isPintAtAllStores, isSandwichAtAllStores } from '@/data/flavors';
 import type { StoreId } from '@/data/stores';
@@ -81,7 +81,6 @@ export function FlavorDetailPanel({
 
   const storeAvailability = getStoreServingAvailability(flavor);
   const selectedServingStores = getStoresForServingType(flavor, servingType);
-  const selectedServingStoreIds = new Set(selectedServingStores);
   const selectedServingLabel = servingTypeLabels[servingType];
   const selectedServingAtAllStores = selectedServingStores.length === stores.length;
   const selectedServingSummary = getSelectedServingSummary(flavor, servingType);
@@ -122,7 +121,7 @@ export function FlavorDetailPanel({
             
             {hasPint && (
               <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl ${pintAtAll ? 'bg-cereal-cream/30' : 'bg-muted'}`}>
-                <Box className={`w-4 h-4 ${pintAtAll ? 'text-amber-700' : 'text-muted-foreground'}`} />
+                <Cylinder className={`w-4 h-4 ${pintAtAll ? 'text-amber-700' : 'text-muted-foreground'}`} />
                 <span className={`text-sm font-medium ${pintAtAll ? 'text-amber-700' : 'text-muted-foreground'}`}>
                   Pint
                 </span>
@@ -185,7 +184,6 @@ export function FlavorDetailPanel({
                 const hasScoopAtStore = availability?.hasScoop ?? false;
                 const hasPintAtStore = availability?.hasPint ?? false;
                 const hasSandwichAtStore = availability?.hasSandwich ?? false;
-                const hasSelectedServing = selectedServingStoreIds.has(store.id);
                 const hasAnyServing = hasScoopAtStore || hasPintAtStore || hasSandwichAtStore;
 
                 return (
@@ -197,27 +195,12 @@ export function FlavorDetailPanel({
                       hasAnyServing ? storeColors[store.id] : 'border-border/70 bg-muted/35',
                     )}
                   >
-                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                      <div className="min-w-0 flex items-start gap-3">
-                        <div className={`mt-1 size-3 shrink-0 rounded-full ${store.bgColor}`} />
-                        <div className="min-w-0">
-                          <p className="font-medium text-foreground">{store.name}</p>
-                          <p className="text-sm leading-5 text-muted-foreground">{store.address}</p>
-                        </div>
+                    <div className="min-w-0 flex items-start gap-3">
+                      <div className={`mt-1 size-3 shrink-0 rounded-full ${store.bgColor}`} />
+                      <div className="min-w-0">
+                        <p className="font-medium text-foreground">{store.name}</p>
+                        <p className="text-sm leading-5 text-muted-foreground">{store.address}</p>
                       </div>
-
-                      <span
-                        className={cn(
-                          'inline-flex self-start rounded-full border px-3 py-1.5 text-xs font-semibold shadow-xs',
-                          hasSelectedServing
-                            ? 'border-primary/25 bg-primary/10 text-primary'
-                            : 'border-border/70 bg-background/85 text-muted-foreground',
-                        )}
-                      >
-                        {hasSelectedServing
-                          ? `${selectedServingLabel} available`
-                          : `No ${selectedServingLabel.toLowerCase()}`}
-                      </span>
                     </div>
 
                     <div className="mt-3 flex flex-wrap gap-2">
