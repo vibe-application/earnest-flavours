@@ -1,6 +1,5 @@
-import { Leaf, Store, IceCream, Cylinder, Sandwich } from 'lucide-react';
+import { Leaf } from 'lucide-react';
 import type { Flavor } from '@/data/flavors';
-import { hasSandwich, isScoopAtAllStores, isPintAtAllStores, isSandwichAtAllStores } from '@/data/flavors';
 import type { StoreId } from '@/data/stores';
 import { stores } from '@/data/stores';
 import { getStoreServingAvailability, getStoresForServingType } from '@/lib/flavor-logic';
@@ -8,7 +7,6 @@ import type { ServingType } from '@/lib/flavor-browser';
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
 } from '@/components/ui/sheet';
@@ -71,18 +69,8 @@ export function FlavorDetailPanel({
 }: FlavorDetailPanelProps) {
   if (!flavor) return null;
 
-  const flavorHasSandwich = hasSandwich(flavor);
-  const scoopAtAll = isScoopAtAllStores(flavor);
-  const pintAtAll = isPintAtAllStores(flavor);
-  const sandwichAtAll = isSandwichAtAllStores(flavor);
-  
-  const hasScoop = flavor.scoopStores.length > 0;
-  const hasPint = flavor.pintStores.length > 0;
-
   const storeAvailability = getStoreServingAvailability(flavor);
-  const selectedServingStores = getStoresForServingType(flavor, servingType);
   const selectedServingLabel = servingTypeLabels[servingType];
-  const selectedServingAtAllStores = selectedServingStores.length === stores.length;
   const selectedServingSummary = getSelectedServingSummary(flavor, servingType);
   const storeAvailabilityById = new Map(
     storeAvailability.map((availability) => [availability.storeId, availability]),
