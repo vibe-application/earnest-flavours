@@ -5,9 +5,7 @@
     "isVegan": false,
     "scoopStores": [],
     "pintStores": [
-      "quebec",
-      "frances",
-      "northvan"
+      "quebec"
     ],
     "sandwichStores": [],
     "description": "House-made spiced carrot cake and cream cheese fudge generously sprinkled through a lightly spiced ice cream, creating a classic dessert in ice cream form. Featuring spices from Gathering Place Trading and Carrots from Discovery Organics."
@@ -16,9 +14,7 @@
     "id": "irish-cream",
     "name": "Irish Cream",
     "isVegan": false,
-    "scoopStores": [
-      "frances"
-    ],
+    "scoopStores": [],
     "pintStores": [
       "fraser",
       "quebec",
