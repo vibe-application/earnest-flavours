@@ -59,6 +59,17 @@
     "description": "Local strawberries from Mandair Farms are picked at the peak of the season and frozen to preserve their vibrant fruitiness to enjoy in winter. We add a touch of white balsamic to enhance and balance the natural sweetness of the strawberries. A must try for fans of strawberry ice cream!"
   },
   {
+    "id": "vegan-black-forest",
+    "name": "Vegan Black Forest",
+    "isVegan": true,
+    "scoopStores": [],
+    "pintStores": [
+      "quebec"
+    ],
+    "sandwichStores": [],
+    "description": "Light coconut ice cream is sprinkled with dark chocolate flakes and generous handfuls of rich, gluten-friendly chocolate cake. Bright cherry compote is swirled throughout for a pop of bright fruitiness. Each bite is a symphony of decadent textures and flavours – everything you want from a black forest cake!"
+  },
+  {
     "id": "vegan-chocolate",
     "name": "Vegan Chocolate",
     "isVegan": true,

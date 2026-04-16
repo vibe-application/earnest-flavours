@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-04-14T00:04:10.155Z",
+  "lastUpdatedAt": "2026-04-16T00:04:43.070Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated April 11, 2026 at 12pm",
-    "quebec": "Last updated April 11, 2026 at 12pm",
+    "quebec": "Last updated April 15, 2026 at 12pm",
     "frances": "Last updated April 12, 2026 at 12pm",
     "northvan": "Last updated April 13, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 12, 2026 at 12pm|fraser:Last updated April 11, 2026 at 12pm|northvan:Last updated April 13, 2026 at 12pm|quebec:Last updated April 11, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated April 12, 2026 at 12pm|fraser:Last updated April 11, 2026 at 12pm|northvan:Last updated April 13, 2026 at 12pm|quebec:Last updated April 15, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,10 +15,10 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "counts": {
-    "totalItems": 25,
-    "iceCreamFlavors": 20,
+    "totalItems": 26,
+    "iceCreamFlavors": 21,
     "scoopItems": 18,
-    "pintItems": 20,
+    "pintItems": 21,
     "sandwichItems": 5,
     "sandwichOnlyItems": 5
   }

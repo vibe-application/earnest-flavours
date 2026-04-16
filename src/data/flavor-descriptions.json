@@ -80,6 +80,11 @@
     "description": "This flavour has been a core since day one. Our pure vanilla extract is sourced from premium slow-grown, sun-cured vanilla beans of the “Tahitian” variety. The flavour from the beans is cold-extracted to preserve its complex bouquet. These vanilla beans are brighter and more floral than the rounder, woodsier Madagascar variety."
   },
   {
+    "id": "vegan-black-forest",
+    "name": "Vegan Black Forest",
+    "description": "Light coconut ice cream is sprinkled with dark chocolate flakes and generous handfuls of rich, gluten-friendly chocolate cake. Bright cherry compote is swirled throughout for a pop of bright fruitiness. Each bite is a symphony of decadent textures and flavours – everything you want from a black forest cake!"
+  },
+  {
     "id": "vegan-chocolate",
     "name": "Vegan Chocolate",
     "description": "A vegan staple we have been running since day one! Surprisingly creamy and rich, the subtle bitterness of dark chocolate and cocoa powder add depth to the creaminess of our coconut milk base."
