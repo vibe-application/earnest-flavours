@@ -98,7 +98,7 @@ test('checkSourceNeedsUpdate compares official source timestamps with stored met
     frances: 'Last updated April 9, 2026 at 12pm',
     northvan: 'Last updated April 9, 2026 at 12pm',
   };
-  const metadataPath = path.join(os.tmpdir(), `ernest-metadata-${Date.now()}.json`);
+  const metadataPath = path.join(os.tmpdir(), `earnest-metadata-${Date.now()}.json`);
   fs.writeFileSync(
     metadataPath,
     JSON.stringify({

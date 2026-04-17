@@ -11,7 +11,7 @@
     "scrape": "node scripts/scrape-flavors.js",
     "scrape:force": "node scripts/scrape-flavors.js --force",
     "test": "npm run test:unit",
-    "test:unit": "rm -rf /tmp/ernest-filter-tests && tsc -p tsconfig.test.json && node --test /tmp/ernest-filter-tests/tests/*.test.js",
+    "test:unit": "rm -rf /tmp/earnest-filter-tests && tsc -p tsconfig.test.json && node --test /tmp/earnest-filter-tests/tests/*.test.js",
     "test:e2e": "npx playwright test",
     "test:e2e:update": "npx playwright test --update-snapshots",
     "test:e2e:docker": "docker run --rm -v $(pwd):/workspace -w /workspace mcr.microsoft.com/playwright:v1.49.0-jammy npx playwright test --update-snapshots"

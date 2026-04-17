@@ -57,7 +57,7 @@ Why it works here:
 - tests stay dependency-light
 - build and CI remain fast
 
-One quirk worth remembering: test files compile to `/tmp/ernest-filter-tests`, and imports use `.js` paths because the test config uses `NodeNext`.
+One quirk worth remembering: test files compile to `/tmp/earnest-filter-tests`, and imports use `.js` paths because the test config uses `NodeNext`.
 
 ### 5. Static deployment has small but important config details
 
