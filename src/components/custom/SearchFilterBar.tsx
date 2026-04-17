@@ -70,7 +70,6 @@ export function SearchFilterBar({ filters, onFiltersChange }: SearchFilterBarPro
           <div data-testid="serving-filter" className={controlPanelClass}>
             <div className="flex items-center justify-between gap-2">
               <Label className={sectionLabelClass}>Serving type</Label>
-              <p className="hidden text-sm text-muted-foreground sm:block">Choose how you want to browse the menu.</p>
             </div>
 
             <div className="mt-2 grid grid-cols-3 gap-1.5 sm:mt-3 sm:gap-2">
@@ -102,7 +101,6 @@ export function SearchFilterBar({ filters, onFiltersChange }: SearchFilterBarPro
           <div data-testid="location-filter" className={controlPanelClass}>
             <div className="flex items-center justify-between gap-2">
               <Label className={sectionLabelClass}>Location</Label>
-              <p className="hidden text-sm text-muted-foreground sm:block">Keep every neighbourhood visible or zoom into one shop.</p>
             </div>
 
             <div className="mt-2 grid grid-cols-2 gap-1.5 sm:mt-3 sm:grid-cols-5 sm:gap-2">
@@ -137,20 +135,17 @@ export function SearchFilterBar({ filters, onFiltersChange }: SearchFilterBarPro
         </div>
 
         <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3 xl:grid-cols-1">
-          <div className="rounded-xl border border-emerald-300/70 bg-emerald-100/80 p-3 shadow-xs dark:border-emerald-700/70 dark:bg-emerald-950/40 sm:rounded-2xl sm:p-4">
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex min-w-0 items-center gap-3">
-                <div className="rounded-full bg-background/80 p-1.5 text-emerald-700 shadow-xs dark:bg-emerald-900/70 dark:text-emerald-200 sm:p-2">
+          <div className="h-11 sm:h-14 rounded-xl border border-emerald-300/70 bg-emerald-100/80 p-2.5 shadow-xs dark:border-emerald-700/70 dark:bg-emerald-950/40 sm:rounded-2xl sm:p-3.5">
+            <div className="flex items-center justify-between gap-2.5 sm:gap-3">
+              <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+                <div className="rounded-full bg-background/80 p-1.5 text-emerald-700 shadow-xs dark:bg-emerald-900/70 dark:text-emerald-200">
                   <Leaf className="size-3.5 sm:size-4" />
                 </div>
 
                 <div className="min-w-0">
-                  <Label htmlFor="vegan-only" className="text-sm font-semibold text-foreground">
+                  <Label htmlFor="vegan-only" className="text-sm font-semibold leading-none text-foreground sm:text-[15px]">
                     Vegan only
                   </Label>
-                  <p className="hidden text-sm text-emerald-900/80 dark:text-emerald-100/80 sm:block">
-                    Surface the dairy-free options first.
-                  </p>
                 </div>
               </div>
 
@@ -170,18 +165,15 @@ export function SearchFilterBar({ filters, onFiltersChange }: SearchFilterBarPro
             onClick={clearFilters}
             disabled={!hasChanges}
             data-testid="clear-filters"
-            className="min-w-0 items-center justify-start gap-3 rounded-xl border-border/70 bg-background/80 px-3 py-3 text-left shadow-xs hover:bg-background disabled:pointer-events-auto disabled:cursor-not-allowed disabled:opacity-55 sm:min-h-[5.25rem] sm:items-start sm:rounded-2xl sm:px-4 sm:py-4"
+            className="min-w-0 h-11 sm:h-14 items-center justify-start gap-2 rounded-xl border-border/70 bg-background/80 px-3 text-left shadow-xs hover:bg-background disabled:pointer-events-auto disabled:cursor-not-allowed disabled:opacity-55 sm:rounded-2xl sm:px-3"
           >
-            <span className="shrink-0 rounded-full bg-muted p-1.5 text-muted-foreground sm:p-2">
+            <span className="shrink-0 rounded-full bg-muted p-1 text-muted-foreground">
               <RotateCcw className="size-4" />
             </span>
 
-            <span className="min-w-0 space-y-1">
-              <span className="block whitespace-normal text-sm font-semibold leading-5 text-foreground">
+            <span className="min-w-0">
+              <span className="block whitespace-normal text-sm font-semibold leading-5 text-foreground sm:text-[15px]">
                 Clear filters
-              </span>
-              <span className="hidden whitespace-normal text-sm font-normal leading-5 text-muted-foreground sm:block">
-                Reset the browser to the default scoop view.
               </span>
             </span>
           </Button>

@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react';
 import { SearchX } from 'lucide-react';
 import { flavors } from '@/data/flavors';
-import { stores } from '@/data/stores';
+import { getRuntimeMetadata, getRuntimeNow } from '@/data/runtime-data';
+import { stores, type StoreId } from '@/data/stores';
 import type { Flavor } from '@/data/flavors';
 import { Button } from '@/components/ui/button';
 import { FlavorResultRow } from '@/components/custom/FlavorResultRow';
@@ -12,6 +13,7 @@ import {
   DEFAULT_BROWSE_FILTERS,
   deriveObjectiveHighlightBuckets,
   getBrowseResults,
+  hasCurrentPreviousDayAvailabilityDiff,
   isDefaultBrowseState,
   type FilterState,
 } from '@/lib/flavor-browser';
@@ -23,17 +25,43 @@ const servingTypeLabels = {
   sandwich: 'Sandwiches',
 } as const;
 
+const storeIds = new Set(stores.map((store) => store.id));
+
 export function CoreFlavors() {
   const [filters, setFilters] = useState<FilterState>(DEFAULT_BROWSE_FILTERS);
   const [selectedFlavor, setSelectedFlavor] = useState<Flavor | null>(null);
+  const runtimeMetadata = useMemo(() => getRuntimeMetadata(), []);
+  const runtimeNow = useMemo(() => getRuntimeNow(), []);
 
   const browseResults = useMemo(() => {
     return getBrowseResults(flavors, filters);
   }, [filters]);
 
   const highlightBuckets = useMemo(() => {
-    return deriveObjectiveHighlightBuckets(flavors, filters.servingType);
-  }, [filters.servingType]);
+    return deriveObjectiveHighlightBuckets(
+      flavors,
+      filters.servingType,
+      runtimeMetadata,
+      runtimeNow,
+    );
+  }, [filters.servingType, runtimeMetadata, runtimeNow]);
+
+  const removedSinceYesterday = useMemo<Array<{ id: string; name: string; storeIds: StoreId[] }>>(() => {
+    const previousDayAvailabilityDiff = runtimeMetadata.previousDayAvailabilityDiff;
+
+    if (!previousDayAvailabilityDiff || !hasCurrentPreviousDayAvailabilityDiff(runtimeMetadata, runtimeNow)) {
+      return [];
+    }
+
+    return Object.entries(previousDayAvailabilityDiff.servingTypes[filters.servingType].removed)
+      .map(([id, entry]) => ({
+        id,
+        name: entry.name,
+        storeIds: entry.storeIds.filter((storeId): storeId is StoreId => storeIds.has(storeId as StoreId)),
+      }))
+      .filter((entry) => entry.name.length > 0 && entry.storeIds.length > 0)
+      .sort((left, right) => left.name.localeCompare(right.name));
+  }, [filters.servingType, runtimeMetadata, runtimeNow]);
 
   const defaultBrowseState = isDefaultBrowseState(filters);
   const selectedLocation =
@@ -69,6 +97,7 @@ export function CoreFlavors() {
           {defaultBrowseState ? (
             <FlavorBrowseHighlights
               buckets={highlightBuckets}
+              removedSinceYesterday={removedSinceYesterday}
               servingType={filters.servingType}
             />
           ) : (

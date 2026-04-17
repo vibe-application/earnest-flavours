@@ -26,6 +26,69 @@ export const earnestTestData: EarnestRuntimeOverride = {
       sandwichItems: 2,
       sandwichOnlyItems: 2,
     },
+    previousDayBaselineSnapshot: {
+      baselineDay: '2026-04-11',
+      observedAt: '2026-04-11T17:45:00.000Z',
+      flavorNamesByFlavorId: {
+        'almond-brittle': 'Almond Brittle',
+        'berry-oat-crumble': 'Berry Oat Crumble',
+        'caramel-ripple': 'Caramel Ripple',
+        'midnight-fudge': 'Midnight Fudge',
+        'mochi-mint-sammie': 'Mochi Mint Sammie',
+        'salted-honeycomb': 'Salted Honeycomb',
+        'toasted-vanilla': 'Toasted Vanilla',
+        'vegan-mocha-sammie': 'Vegan Mocha Sammie',
+      },
+      servingTypes: {
+        scoop: {
+          'almond-brittle': ['fraser', 'quebec', 'frances', 'northvan'],
+          'salted-honeycomb': ['fraser', 'frances'],
+          'toasted-vanilla': ['frances', 'northvan'],
+        },
+        pint: {
+          'almond-brittle': ['quebec'],
+          'caramel-ripple': ['fraser', 'quebec', 'frances', 'northvan'],
+          'midnight-fudge': ['quebec'],
+        },
+        sandwich: {
+          'mochi-mint-sammie': ['frances', 'northvan'],
+        },
+      },
+    },
+    previousDayAvailabilityDiff: {
+      currentDay: '2026-04-12',
+      previousDay: '2026-04-11',
+      servingTypes: {
+        scoop: {
+          added: {
+            'berry-oat-crumble': ['quebec', 'northvan'],
+          },
+          removed: {
+            'salted-honeycomb': {
+              name: 'Salted Honeycomb',
+              storeIds: ['fraser', 'frances'],
+            },
+          },
+        },
+        pint: {
+          added: {
+            'berry-oat-crumble': ['fraser'],
+          },
+          removed: {
+            'midnight-fudge': {
+              name: 'Midnight Fudge',
+              storeIds: ['quebec'],
+            },
+          },
+        },
+        sandwich: {
+          added: {
+            'vegan-mocha-sammie': ['fraser'],
+          },
+          removed: {},
+        },
+      },
+    },
   },
   flavors: [
     {

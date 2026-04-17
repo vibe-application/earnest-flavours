@@ -10,9 +10,25 @@ import {
 test('shows the default browse state against deterministic fixture data', async ({ page }) => {
   await gotoApp(page);
 
+  await expect(page.getByTestId('highlight-added-since-yesterday')).toBeVisible();
+  await expect(page.getByTestId('highlight-removed-since-yesterday')).toBeVisible();
   await expect(page.getByTestId('highlight-all-locations')).toBeVisible();
   await expect(page.getByTestId('highlight-vegan')).toBeVisible();
   await expect(page.getByTestId('highlight-single-location')).toBeVisible();
+  await expect(page.getByTestId('highlight-added-since-yesterday-row-berry-oat-crumble')).toBeVisible();
+  await expect(page.getByTestId('highlight-added-since-yesterday-badge-berry-oat-crumble-quebec')).toContainText(
+    'Quebec St',
+  );
+  await expect(page.getByTestId('highlight-added-since-yesterday-badge-berry-oat-crumble-northvan')).toContainText(
+    'North Van',
+  );
+  await expect(page.getByTestId('highlight-removed-since-yesterday-row-salted-honeycomb')).toBeVisible();
+  await expect(page.getByTestId('highlight-removed-since-yesterday-badge-salted-honeycomb-fraser')).toContainText(
+    'Fraser St',
+  );
+  await expect(page.getByTestId('highlight-removed-since-yesterday-badge-salted-honeycomb-frances')).toContainText(
+    'Frances',
+  );
   await expect(page.getByTestId('browse-results-summary')).toHaveCount(0);
   await expectVisibleResultIds(page, [
     'almond-brittle',
@@ -28,6 +44,8 @@ test('filters by search query with stable result selectors', async ({ page }) =>
   await page.getByTestId('hero-search-input').fill('berry');
 
   await expect(page.getByTestId('browse-results-summary')).toBeVisible();
+  await expect(page.getByTestId('highlight-added-since-yesterday')).toHaveCount(0);
+  await expect(page.getByTestId('highlight-removed-since-yesterday')).toHaveCount(0);
   await expect(page.getByTestId('highlight-all-locations')).toHaveCount(0);
   await expectVisibleResultIds(page, ['berry-oat-crumble']);
 });
@@ -37,6 +55,16 @@ test('switches serving type without relying on live scraped data', async ({ page
 
   await page.getByTestId('serving-filter').getByRole('button', { name: 'Pint' }).click();
 
+  await expect(page.getByTestId('highlight-added-since-yesterday')).toBeVisible();
+  await expect(page.getByTestId('highlight-added-since-yesterday-row-berry-oat-crumble')).toBeVisible();
+  await expect(page.getByTestId('highlight-added-since-yesterday-badge-berry-oat-crumble-fraser')).toContainText(
+    'Fraser St',
+  );
+  await expect(page.getByTestId('highlight-removed-since-yesterday')).toBeVisible();
+  await expect(page.getByTestId('highlight-removed-since-yesterday-row-midnight-fudge')).toBeVisible();
+  await expect(page.getByTestId('highlight-removed-since-yesterday-badge-midnight-fudge-quebec')).toContainText(
+    'Quebec St',
+  );
   await expect(page.getByTestId('highlight-all-locations')).toBeVisible();
   await expectVisibleResultIds(page, ['almond-brittle', 'berry-oat-crumble', 'caramel-ripple']);
   await expect(page.getByTestId('availability-caramel-ripple-frances-pint')).toContainText('Frances');
