@@ -25,6 +25,7 @@ export function Footer() {
               Source: earnesticecream.com
               <ExternalLink className="w-3 h-3" />
             </a>
+
           </div>
 
           <a
