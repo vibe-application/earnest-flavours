@@ -35,10 +35,10 @@ export function FlavorFinderHero({
             </p>
             <div className="space-y-2">
               <h1 className="max-w-2xl text-2xl text-balance text-foreground sm:text-4xl">
-                Search first, then narrow the city&apos;s menu in one calm pass.
+                Search flavors, then narrow the list.
               </h1>
               <p className="hidden max-w-2xl text-sm text-muted-foreground sm:block sm:text-base">
-                Start with a flavor name, then refine by serving style, neighbourhood, or vegan-only options without opening extra panels.
+                Filter by serving type, location, or vegan-only flavors.
               </p>
             </div>
           </div>
