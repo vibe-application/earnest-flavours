@@ -25,6 +25,34 @@ export const STORE_URLS = {
   northvan: 'https://earnesticecream.com/locations/north-van/',
 };
 
+const VANCOUVER_TIME_ZONE = 'America/Vancouver';
+const vancouverDayFormatter = new Intl.DateTimeFormat('en-CA', {
+  timeZone: VANCOUVER_TIME_ZONE,
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+});
+const servingTypes = ['scoop', 'pint', 'sandwich'];
+const servingTypeStoreKeys = {
+  scoop: 'scoopStores',
+  pint: 'pintStores',
+  sandwich: 'sandwichStores',
+};
+const orderedStoreIds = Object.keys(STORE_URLS);
+const VANCOUVER_DAY_KEY_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+const emptyAvailabilitySnapshotByServingType = () => ({
+  scoop: {},
+  pint: {},
+  sandwich: {},
+});
+const emptyPreviousDayAvailabilityDiff = () => ({
+  scoop: { added: {}, removed: {} },
+  pint: { added: {}, removed: {} },
+  sandwich: { added: {}, removed: {} },
+});
+
+const isPlainObject = (value) => Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+
 export function slugify(name) {
   return name
     .toLowerCase()
@@ -53,6 +81,273 @@ export function buildSourceLastUpdatedSignature(sourceLastUpdatedByStore) {
     .join('|');
 }
 
+export function getVancouverDayKey(value) {
+  return vancouverDayFormatter.format(new Date(value));
+}
+
+export function getPreviousVancouverDayKey(value) {
+  const formatterParts = vancouverDayFormatter.formatToParts(new Date(value));
+  const year = Number(formatterParts.find((part) => part.type === 'year')?.value);
+  const month = Number(formatterParts.find((part) => part.type === 'month')?.value);
+  const day = Number(formatterParts.find((part) => part.type === 'day')?.value);
+
+  return getVancouverDayKey(new Date(Date.UTC(year, month - 1, day - 1, 12)));
+}
+
+function normalizeVancouverDayKey(value) {
+  return typeof value === 'string' && VANCOUVER_DAY_KEY_PATTERN.test(value)
+    ? value
+    : getVancouverDayKey(value);
+}
+
+function sortStoreIds(storeIds) {
+  return [...storeIds].sort((left, right) => {
+    const leftIndex = orderedStoreIds.indexOf(left);
+    const rightIndex = orderedStoreIds.indexOf(right);
+
+    if (leftIndex === -1 || rightIndex === -1) {
+      return left.localeCompare(right);
+    }
+
+    return leftIndex - rightIndex;
+  });
+}
+
+function getFlavorStoreIds(flavor, storeKey) {
+  return Array.isArray(flavor?.[storeKey]) ? sortStoreIds(flavor[storeKey]) : [];
+}
+
+export function buildAvailabilitySnapshotByServingType(flavors) {
+  if (!Array.isArray(flavors)) {
+    throw new Error('Flavor snapshot must be an array');
+  }
+
+  const snapshot = emptyAvailabilitySnapshotByServingType();
+
+  for (const flavor of flavors) {
+    if (!isPlainObject(flavor) || typeof flavor.id !== 'string' || flavor.id.length === 0) {
+      throw new Error('Flavor snapshot contains an item without a valid id');
+    }
+
+    for (const servingType of servingTypes) {
+      const storeIds = getFlavorStoreIds(flavor, servingTypeStoreKeys[servingType]);
+
+      if (storeIds.length > 0) {
+        snapshot[servingType][flavor.id] = storeIds;
+      }
+    }
+  }
+
+  return snapshot;
+}
+
+function buildFlavorNameRegistry(flavors) {
+  if (!Array.isArray(flavors)) {
+    throw new Error('Flavor snapshot must be an array');
+  }
+
+  const namesByFlavorId = {};
+
+  for (const flavor of flavors) {
+    if (!isPlainObject(flavor) || typeof flavor.id !== 'string' || flavor.id.length === 0) {
+      throw new Error('Flavor snapshot contains an item without a valid id');
+    }
+
+    if (typeof flavor.name === 'string' && flavor.name.length > 0) {
+      namesByFlavorId[flavor.id] = flavor.name;
+    }
+  }
+
+  return namesByFlavorId;
+}
+
+function diffAvailabilitySnapshotMaps(currentSnapshot, previousSnapshot, previousFlavorNames = {}) {
+  const diff = emptyPreviousDayAvailabilityDiff();
+
+  for (const servingType of servingTypes) {
+    const flavorIds = new Set([
+      ...Object.keys(currentSnapshot[servingType] ?? {}),
+      ...Object.keys(previousSnapshot[servingType] ?? {}),
+    ]);
+
+    for (const flavorId of flavorIds) {
+      const currentStores = currentSnapshot[servingType][flavorId] ?? [];
+      const previousStores = previousSnapshot[servingType][flavorId] ?? [];
+      const currentStoreSet = new Set(currentStores);
+      const previousStoreSet = new Set(previousStores);
+      const addedStores = currentStores.filter((storeId) => !previousStoreSet.has(storeId));
+      const removedStores = previousStores.filter((storeId) => !currentStoreSet.has(storeId));
+
+      if (addedStores.length > 0) {
+        diff[servingType].added[flavorId] = addedStores;
+      }
+
+      if (removedStores.length > 0) {
+        diff[servingType].removed[flavorId] = {
+          name: previousFlavorNames[flavorId] ?? flavorId,
+          storeIds: removedStores,
+        };
+      }
+    }
+  }
+
+  return diff;
+}
+
+export function diffAvailabilitySnapshots(currentFlavors, previousFlavors) {
+  const currentSnapshot = buildAvailabilitySnapshotByServingType(currentFlavors);
+  const previousSnapshot = buildAvailabilitySnapshotByServingType(previousFlavors);
+  const previousFlavorNames = buildFlavorNameRegistry(previousFlavors);
+  return diffAvailabilitySnapshotMaps(currentSnapshot, previousSnapshot, previousFlavorNames);
+}
+
+export function buildPreviousDayBaselineSnapshot(flavors, {
+  baselineDay = new Date().toISOString(),
+  observedAt = new Date().toISOString(),
+} = {}) {
+  return {
+    baselineDay: normalizeVancouverDayKey(baselineDay),
+    observedAt,
+    flavorNamesByFlavorId: buildFlavorNameRegistry(flavors),
+    servingTypes: buildAvailabilitySnapshotByServingType(flavors),
+  };
+}
+
+function normalizePreviousDayBaselineSnapshot(snapshot) {
+  if (!isPlainObject(snapshot)) {
+    return undefined;
+  }
+
+  return {
+    baselineDay: typeof snapshot.baselineDay === 'string' ? snapshot.baselineDay : '',
+    observedAt: typeof snapshot.observedAt === 'string' ? snapshot.observedAt : '',
+    flavorNamesByFlavorId: isPlainObject(snapshot.flavorNamesByFlavorId)
+      ? snapshot.flavorNamesByFlavorId
+      : {},
+    servingTypes: {
+      scoop: isPlainObject(snapshot.servingTypes?.scoop) ? snapshot.servingTypes.scoop : {},
+      pint: isPlainObject(snapshot.servingTypes?.pint) ? snapshot.servingTypes.pint : {},
+      sandwich: isPlainObject(snapshot.servingTypes?.sandwich) ? snapshot.servingTypes.sandwich : {},
+    },
+  };
+}
+
+export function migrateLegacyPreviousDayBaselineSnapshot(currentFlavors, previousDayAvailabilityDiff) {
+  if (!isPlainObject(previousDayAvailabilityDiff)) {
+    return undefined;
+  }
+
+  const currentSnapshot = buildAvailabilitySnapshotByServingType(currentFlavors);
+  const currentFlavorNames = buildFlavorNameRegistry(currentFlavors);
+  const baselineSnapshot = emptyAvailabilitySnapshotByServingType();
+
+  for (const servingType of servingTypes) {
+    const diffEntry = isPlainObject(previousDayAvailabilityDiff.servingTypes?.[servingType])
+      ? previousDayAvailabilityDiff.servingTypes[servingType]
+      : { added: {}, removed: {} };
+    const addedEntries = isPlainObject(diffEntry.added) ? diffEntry.added : {};
+    const removedEntries = isPlainObject(diffEntry.removed) ? diffEntry.removed : {};
+    const flavorIds = new Set([
+      ...Object.keys(currentSnapshot[servingType]),
+      ...Object.keys(addedEntries),
+      ...Object.keys(removedEntries),
+    ]);
+
+    for (const flavorId of flavorIds) {
+      const currentStoreIds = currentSnapshot[servingType][flavorId] ?? [];
+      const addedStoreIds = new Set(Array.isArray(addedEntries[flavorId]) ? addedEntries[flavorId] : []);
+      const removedEntry = isPlainObject(removedEntries[flavorId]) ? removedEntries[flavorId] : {};
+      const removedStoreIds = Array.isArray(removedEntry.storeIds) ? removedEntry.storeIds : [];
+      const baselineStoreIds = sortStoreIds([
+        ...new Set([
+          ...currentStoreIds.filter((storeId) => !addedStoreIds.has(storeId)),
+          ...removedStoreIds,
+        ]),
+      ]);
+
+      if (baselineStoreIds.length > 0) {
+        baselineSnapshot[servingType][flavorId] = baselineStoreIds;
+      }
+
+      if (typeof removedEntry.name === 'string' && removedEntry.name.length > 0) {
+        currentFlavorNames[flavorId] = removedEntry.name;
+      }
+    }
+  }
+
+  return {
+    baselineDay: typeof previousDayAvailabilityDiff.previousDay === 'string'
+      ? previousDayAvailabilityDiff.previousDay
+      : '',
+    observedAt: '',
+    flavorNamesByFlavorId: currentFlavorNames,
+    servingTypes: baselineSnapshot,
+  };
+}
+
+export function resolvePreviousDayBaselineSnapshot({
+  observedAt = new Date().toISOString(),
+  existingFlavors = [],
+  existingMetadata = {},
+} = {}) {
+  const previousDay = getPreviousVancouverDayKey(observedAt);
+  const storedBaselineSnapshot = normalizePreviousDayBaselineSnapshot(existingMetadata.previousDayBaselineSnapshot);
+
+  if (storedBaselineSnapshot?.baselineDay === previousDay) {
+    return storedBaselineSnapshot;
+  }
+
+  if (
+    typeof existingMetadata.lastUpdatedAt === 'string' &&
+    existingMetadata.lastUpdatedAt.length > 0 &&
+    getVancouverDayKey(existingMetadata.lastUpdatedAt) === previousDay &&
+    Array.isArray(existingFlavors)
+  ) {
+    return buildPreviousDayBaselineSnapshot(existingFlavors, {
+      baselineDay: previousDay,
+      observedAt: existingMetadata.lastUpdatedAt,
+    });
+  }
+
+  if (!storedBaselineSnapshot && Array.isArray(existingFlavors)) {
+    const migratedSnapshot = migrateLegacyPreviousDayBaselineSnapshot(
+      existingFlavors,
+      existingMetadata.previousDayAvailabilityDiff,
+    );
+
+    if (migratedSnapshot?.baselineDay === previousDay) {
+      return {
+        ...migratedSnapshot,
+        observedAt: typeof existingMetadata.lastUpdatedAt === 'string' ? existingMetadata.lastUpdatedAt : '',
+      };
+    }
+  }
+
+  return undefined;
+}
+
+export function buildPreviousDayAvailabilityDiffFromBaseline(currentFlavors, previousDayBaselineSnapshot, {
+  observedAt = new Date().toISOString(),
+} = {}) {
+  const normalizedBaselineSnapshot = normalizePreviousDayBaselineSnapshot(previousDayBaselineSnapshot);
+  const currentDay = getVancouverDayKey(observedAt);
+  const previousDay = getPreviousVancouverDayKey(observedAt);
+
+  if (!normalizedBaselineSnapshot || normalizedBaselineSnapshot.baselineDay !== previousDay) {
+    return undefined;
+  }
+
+  return {
+    currentDay,
+    previousDay,
+    servingTypes: diffAvailabilitySnapshotMaps(
+      buildAvailabilitySnapshotByServingType(currentFlavors),
+      normalizedBaselineSnapshot.servingTypes,
+      normalizedBaselineSnapshot.flavorNamesByFlavorId,
+    ),
+  };
+}
+
 function readMetadata(metadataPath = METADATA_OUTPUT_PATH) {
   if (!fs.existsSync(metadataPath)) {
     return {};
@@ -63,6 +358,21 @@ function readMetadata(metadataPath = METADATA_OUTPUT_PATH) {
   } catch (error) {
     console.warn(`Could not read existing metadata: ${error.message}`);
     return {};
+  }
+}
+
+function readFlavorSnapshot(outputPath = FLAVORS_OUTPUT_PATH) {
+  if (!fs.existsSync(outputPath)) {
+    return [];
+  }
+
+  try {
+    const flavors = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+
+    return Array.isArray(flavors) ? flavors : [];
+  } catch (error) {
+    console.warn(`Could not read existing flavor snapshot: ${error.message}`);
+    return [];
   }
 }
 
@@ -737,6 +1047,20 @@ async function runScrape() {
   console.log(`  Sandwich flavors: ${sandwichFlavors.length}`);
   console.log(`    - Sandwich only: ${sandwichOnlyFlavors.length}`);
   
+  const observedAt = new Date().toISOString();
+  const existingMetadata = readMetadata();
+  const existingFlavors = readFlavorSnapshot();
+  const previousDayBaselineSnapshot = resolvePreviousDayBaselineSnapshot({
+    observedAt,
+    existingFlavors,
+    existingMetadata,
+  });
+  const previousDayAvailabilityDiff = buildPreviousDayAvailabilityDiffFromBaseline(
+    flavorsData,
+    previousDayBaselineSnapshot,
+    { observedAt },
+  );
+
   // Write data only; application logic lives in src/data/flavors.ts.
   fs.writeFileSync(FLAVORS_OUTPUT_PATH, `${JSON.stringify(flavorsData, null, 2)}\n`);
   const updatedDescriptionFallbacks = mergeFlavorDescriptionFallbacks(
@@ -746,11 +1070,13 @@ async function runScrape() {
   );
   fs.writeFileSync(DESCRIPTION_FALLBACK_OUTPUT_PATH, `${JSON.stringify(updatedDescriptionFallbacks, null, 2)}\n`);
   const metadata = {
-    lastUpdatedAt: new Date().toISOString(),
+    lastUpdatedAt: observedAt,
     source: 'https://earnesticecream.com',
     sourceLastUpdatedByStore,
     sourceLastUpdatedSignature: buildSourceLastUpdatedSignature(sourceLastUpdatedByStore),
     stores: STORE_URLS,
+    previousDayBaselineSnapshot,
+    previousDayAvailabilityDiff,
     counts: {
       totalItems: flavorsData.length,
       iceCreamFlavors: iceCreamFlavors.length,
@@ -794,7 +1120,7 @@ async function main(options = {}) {
   await runScrape();
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const options = parseCliOptions();
 
   main(options).catch(error => {

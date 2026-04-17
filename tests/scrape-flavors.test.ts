@@ -6,18 +6,26 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const {
+  buildAvailabilitySnapshotByServingType,
+  buildPreviousDayAvailabilityDiffFromBaseline,
+  buildPreviousDayBaselineSnapshot,
   buildFlavorData,
   buildSourceLastUpdatedSignature,
   checkSourceNeedsUpdate,
+  diffAvailabilitySnapshots,
   collectFlavorUrlsBySlug,
   descriptionFallbacksToSlugMap,
   extractSourceLastUpdatedFromText,
   extractFlavorItemsFromLinks,
   extractFlavorNamesFromLinks,
   extractFlavorNamesFromTabDocument,
+  getPreviousVancouverDayKey,
+  getVancouverDayKey,
   parseCliOptions,
   mergeFlavorDescriptionFallbacks,
+  migrateLegacyPreviousDayBaselineSnapshot,
   scrapeFlavorDescriptions,
+  resolvePreviousDayBaselineSnapshot,
   isFlavorLinkText,
   slugify,
   validateStoreData,
@@ -219,6 +227,111 @@ test('extractFlavorNamesFromTabDocument falls back to visible links when no tab 
   }
 });
 
+test('Vancouver day helpers keep exact previous-day semantics across UTC boundaries', () => {
+  assert.equal(getVancouverDayKey('2026-04-12T06:50:00.000Z'), '2026-04-11');
+  assert.equal(getVancouverDayKey('2026-04-12T18:00:00.000Z'), '2026-04-12');
+  assert.equal(getPreviousVancouverDayKey('2026-04-12T18:00:00.000Z'), '2026-04-11');
+});
+
+test('buildAvailabilitySnapshotByServingType keeps serving-type availability separate', () => {
+  assert.deepEqual(
+    buildAvailabilitySnapshotByServingType([
+      {
+        id: 'berry-oat-crumble',
+        scoopStores: ['northvan', 'quebec'],
+        pintStores: ['fraser'],
+        sandwichStores: [],
+      },
+      {
+        id: 'classic-sammie',
+        scoopStores: [],
+        pintStores: [],
+        sandwichStores: ['frances'],
+      },
+    ]),
+    {
+      scoop: {
+        'berry-oat-crumble': ['quebec', 'northvan'],
+      },
+      pint: {
+        'berry-oat-crumble': ['fraser'],
+      },
+      sandwich: {
+        'classic-sammie': ['frances'],
+      },
+    },
+  );
+});
+
+test('diffAvailabilitySnapshots tracks added and removed stores per serving type', () => {
+  assert.deepEqual(
+    diffAvailabilitySnapshots(
+      [
+        {
+          id: 'berry-oat-crumble',
+          name: 'Berry Oat Crumble',
+          scoopStores: ['quebec', 'northvan'],
+          pintStores: ['fraser'],
+          sandwichStores: [],
+        },
+        {
+          id: 'classic-sammie',
+          name: 'Classic Sammie',
+          scoopStores: [],
+          pintStores: [],
+          sandwichStores: ['frances'],
+        },
+      ],
+      [
+        {
+          id: 'berry-oat-crumble',
+          name: 'Berry Oat Crumble',
+          scoopStores: ['quebec'],
+          pintStores: ['quebec'],
+          sandwichStores: [],
+        },
+        {
+          id: 'retired-sammie',
+          name: 'Retired Sammie',
+          scoopStores: [],
+          pintStores: [],
+          sandwichStores: ['northvan'],
+        },
+      ],
+    ),
+    {
+      scoop: {
+        added: {
+          'berry-oat-crumble': ['northvan'],
+        },
+        removed: {},
+      },
+      pint: {
+        added: {
+          'berry-oat-crumble': ['fraser'],
+        },
+        removed: {
+          'berry-oat-crumble': {
+            name: 'Berry Oat Crumble',
+            storeIds: ['quebec'],
+          },
+        },
+      },
+      sandwich: {
+        added: {
+          'classic-sammie': ['frances'],
+        },
+        removed: {
+          'retired-sammie': {
+            name: 'Retired Sammie',
+            storeIds: ['northvan'],
+          },
+        },
+      },
+    },
+  );
+});
+
 test('buildFlavorData keeps scoop, pint, and sandwich availability separate', () => {
   const flavors = buildFlavorData({
     fraser: {
@@ -254,6 +367,326 @@ test('buildFlavorData keeps scoop, pint, and sandwich availability separate', ()
   assert.deepEqual(classicSammie?.scoopStores, []);
   assert.deepEqual(classicSammie?.pintStores, []);
   assert.deepEqual(classicSammie?.sandwichStores, ['fraser', 'frances']);
+});
+
+test('buildPreviousDayBaselineSnapshot stores one exact-day availability baseline', () => {
+  assert.deepEqual(
+    buildPreviousDayBaselineSnapshot(
+      [
+        {
+          id: 'berry-oat-crumble',
+          name: 'Berry Oat Crumble',
+          scoopStores: ['northvan', 'quebec'],
+          pintStores: ['fraser'],
+          sandwichStores: [],
+        },
+      ],
+      {
+        baselineDay: '2026-04-11T20:00:00.000Z',
+        observedAt: '2026-04-11T20:00:00.000Z',
+      },
+    ),
+    {
+      baselineDay: '2026-04-11',
+      observedAt: '2026-04-11T20:00:00.000Z',
+      flavorNamesByFlavorId: {
+        'berry-oat-crumble': 'Berry Oat Crumble',
+      },
+      servingTypes: {
+        scoop: {
+          'berry-oat-crumble': ['quebec', 'northvan'],
+        },
+        pint: {
+          'berry-oat-crumble': ['fraser'],
+        },
+        sandwich: {},
+      },
+    },
+  );
+});
+
+test('buildPreviousDayAvailabilityDiffFromBaseline recomputes the net today-vs-yesterday diff from the stored baseline', () => {
+  const previousDayBaselineSnapshot = {
+    baselineDay: '2026-04-11',
+    observedAt: '2026-04-11T23:30:00.000Z',
+    flavorNamesByFlavorId: {
+      'berry-oat-crumble': 'Berry Oat Crumble',
+      'retired-sammie': 'Retired Sammie',
+    },
+    servingTypes: {
+      scoop: {
+        'berry-oat-crumble': ['quebec'],
+      },
+      pint: {
+        'berry-oat-crumble': ['quebec'],
+      },
+      sandwich: {
+        'retired-sammie': ['northvan'],
+      },
+    },
+  };
+
+  assert.deepEqual(
+    buildPreviousDayAvailabilityDiffFromBaseline(
+      [
+        {
+          id: 'berry-oat-crumble',
+          name: 'Berry Oat Crumble',
+          scoopStores: ['quebec', 'northvan'],
+          pintStores: ['fraser'],
+          sandwichStores: [],
+        },
+      ],
+      previousDayBaselineSnapshot,
+      {
+        observedAt: '2026-04-12T18:00:00.000Z',
+      },
+    ),
+    {
+      currentDay: '2026-04-12',
+      previousDay: '2026-04-11',
+      servingTypes: {
+        scoop: {
+          added: {
+            'berry-oat-crumble': ['northvan'],
+          },
+          removed: {},
+        },
+        pint: {
+          added: {
+            'berry-oat-crumble': ['fraser'],
+          },
+          removed: {
+            'berry-oat-crumble': {
+              name: 'Berry Oat Crumble',
+              storeIds: ['quebec'],
+            },
+          },
+        },
+        sandwich: {
+          added: {},
+          removed: {
+            'retired-sammie': {
+              name: 'Retired Sammie',
+              storeIds: ['northvan'],
+            },
+          },
+        },
+      },
+    },
+  );
+});
+
+test('buildPreviousDayAvailabilityDiffFromBaseline omits diff data when the stored baseline is not exact yesterday', () => {
+  assert.equal(
+    buildPreviousDayAvailabilityDiffFromBaseline([], {
+      baselineDay: '2026-04-10',
+      observedAt: '2026-04-10T20:00:00.000Z',
+      flavorNamesByFlavorId: {},
+      servingTypes: {
+        scoop: {},
+        pint: {},
+        sandwich: {},
+      },
+    }, {
+      observedAt: '2026-04-12T18:00:00.000Z',
+    }),
+    undefined,
+  );
+});
+
+test('resolvePreviousDayBaselineSnapshot seeds a new baseline from the prior successful scrape after Vancouver day rollover', () => {
+  assert.deepEqual(
+    resolvePreviousDayBaselineSnapshot({
+      observedAt: '2026-04-12T18:00:00.000Z',
+      existingMetadata: {
+        lastUpdatedAt: '2026-04-11T23:30:00.000Z',
+      },
+      existingFlavors: [
+        {
+          id: 'berry-oat-crumble',
+          name: 'Berry Oat Crumble',
+          scoopStores: ['quebec'],
+          pintStores: ['quebec'],
+          sandwichStores: [],
+        },
+      ],
+    }),
+    {
+      baselineDay: '2026-04-11',
+      observedAt: '2026-04-11T23:30:00.000Z',
+      flavorNamesByFlavorId: {
+        'berry-oat-crumble': 'Berry Oat Crumble',
+      },
+      servingTypes: {
+        scoop: {
+          'berry-oat-crumble': ['quebec'],
+        },
+        pint: {
+          'berry-oat-crumble': ['quebec'],
+        },
+        sandwich: {},
+      },
+    },
+  );
+});
+
+test('resolvePreviousDayBaselineSnapshot keeps the existing exact-yesterday baseline on same-day reruns', () => {
+  const storedBaseline = {
+    baselineDay: '2026-04-11',
+    observedAt: '2026-04-11T23:30:00.000Z',
+    flavorNamesByFlavorId: {
+      'berry-oat-crumble': 'Berry Oat Crumble',
+    },
+    servingTypes: {
+      scoop: {
+        'berry-oat-crumble': ['quebec'],
+      },
+      pint: {},
+      sandwich: {},
+    },
+  };
+
+  assert.deepEqual(
+    resolvePreviousDayBaselineSnapshot({
+      observedAt: '2026-04-12T19:00:00.000Z',
+      existingMetadata: {
+        lastUpdatedAt: '2026-04-12T18:00:00.000Z',
+        previousDayBaselineSnapshot: storedBaseline,
+      },
+      existingFlavors: [],
+    }),
+    storedBaseline,
+  );
+});
+
+test('migrateLegacyPreviousDayBaselineSnapshot reconstructs yesterday\'s baseline from legacy diff data', () => {
+  assert.deepEqual(
+    migrateLegacyPreviousDayBaselineSnapshot(
+      [
+        {
+          id: 'berry-oat-crumble',
+          name: 'Berry Oat Crumble',
+          scoopStores: ['quebec', 'northvan'],
+          pintStores: ['fraser'],
+          sandwichStores: [],
+        },
+      ],
+      {
+        currentDay: '2026-04-12',
+        previousDay: '2026-04-11',
+        servingTypes: {
+          scoop: {
+            added: {
+              'berry-oat-crumble': ['northvan'],
+            },
+            removed: {},
+          },
+          pint: {
+            added: {
+              'berry-oat-crumble': ['fraser'],
+            },
+            removed: {
+              'berry-oat-crumble': {
+                name: 'Berry Oat Crumble',
+                storeIds: ['quebec'],
+              },
+            },
+          },
+          sandwich: {
+            added: {},
+            removed: {
+              'retired-sammie': {
+                name: 'Retired Sammie',
+                storeIds: ['northvan'],
+              },
+            },
+          },
+        },
+      },
+    ),
+    {
+      baselineDay: '2026-04-11',
+      observedAt: '',
+      flavorNamesByFlavorId: {
+        'berry-oat-crumble': 'Berry Oat Crumble',
+        'retired-sammie': 'Retired Sammie',
+      },
+      servingTypes: {
+        scoop: {
+          'berry-oat-crumble': ['quebec'],
+        },
+        pint: {
+          'berry-oat-crumble': ['quebec'],
+        },
+        sandwich: {
+          'retired-sammie': ['northvan'],
+        },
+      },
+    },
+  );
+});
+
+test('resolvePreviousDayBaselineSnapshot migrates legacy diff metadata when baseline storage is absent', () => {
+  assert.deepEqual(
+    resolvePreviousDayBaselineSnapshot({
+      observedAt: '2026-04-12T18:00:00.000Z',
+      existingMetadata: {
+        lastUpdatedAt: '2026-04-12T17:00:00.000Z',
+        previousDayAvailabilityDiff: {
+          currentDay: '2026-04-12',
+          previousDay: '2026-04-11',
+          servingTypes: {
+            scoop: {
+              added: {
+                'berry-oat-crumble': ['northvan'],
+              },
+              removed: {},
+            },
+            pint: {
+              added: {},
+              removed: {},
+            },
+            sandwich: {
+              added: {},
+              removed: {
+                'retired-sammie': {
+                  name: 'Retired Sammie',
+                  storeIds: ['northvan'],
+                },
+              },
+            },
+          },
+        },
+      },
+      existingFlavors: [
+        {
+          id: 'berry-oat-crumble',
+          name: 'Berry Oat Crumble',
+          scoopStores: ['quebec', 'northvan'],
+          pintStores: [],
+          sandwichStores: [],
+        },
+      ],
+    }),
+    {
+      baselineDay: '2026-04-11',
+      observedAt: '2026-04-12T17:00:00.000Z',
+      flavorNamesByFlavorId: {
+        'berry-oat-crumble': 'Berry Oat Crumble',
+        'retired-sammie': 'Retired Sammie',
+      },
+      servingTypes: {
+        scoop: {
+          'berry-oat-crumble': ['quebec'],
+        },
+        pint: {},
+        sandwich: {
+          'retired-sammie': ['northvan'],
+        },
+      },
+    },
+  );
 });
 
 test('description fallbacks provide descriptions when official extraction misses', () => {
