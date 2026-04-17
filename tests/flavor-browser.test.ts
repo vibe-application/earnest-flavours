@@ -2,12 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import type { Flavor } from '../src/data/flavors.js';
+import type { FlavorMetadata } from '../src/data/runtime-data.js';
 import {
   DEFAULT_BROWSE_FILTERS,
   deriveObjectiveHighlightBuckets,
   formatVancouverDate,
   getBrowseResults,
   getFreshnessLabel,
+  hasCurrentPreviousDayAvailabilityDiff,
   isDefaultBrowseState,
   isSameVancouverDay,
   sortFlavorsAlphabetically,
@@ -71,6 +73,76 @@ const browseFixtureFlavors: Flavor[] = [
   alphabeticallyFirstSingleLocationFlavor,
 ];
 
+const metadataFixture: FlavorMetadata = {
+  lastUpdatedAt: '2026-04-12T18:00:00.000Z',
+  source: 'https://fixtures.example.test',
+  sourceLastUpdatedByStore: {
+    fraser: 'Fixture Fraser',
+    quebec: 'Fixture Quebec',
+    frances: 'Fixture Frances',
+    northvan: 'Fixture North Van',
+  },
+  sourceLastUpdatedSignature: 'fixture-signature',
+  stores: {
+    fraser: 'https://fixtures.example.test/fraser',
+    quebec: 'https://fixtures.example.test/quebec',
+    frances: 'https://fixtures.example.test/frances',
+    northvan: 'https://fixtures.example.test/northvan',
+  },
+  previousDayBaselineSnapshot: {
+    baselineDay: '2026-04-11',
+    observedAt: '2026-04-11T18:00:00.000Z',
+    flavorNamesByFlavorId: {
+      'single-location-special': 'Single Location Special',
+      'vegan-berry': 'Vegan Berry Swirl',
+      'retired-flavor': 'Retired Flavor',
+    },
+    servingTypes: {
+      scoop: {
+        'retired-flavor': ['fraser'],
+      },
+      pint: {},
+      sandwich: {},
+    },
+  },
+  previousDayAvailabilityDiff: {
+    currentDay: '2026-04-12',
+    previousDay: '2026-04-11',
+    servingTypes: {
+      scoop: {
+        added: {
+          'single-location-special': ['fraser'],
+          'vegan-berry': ['quebec', 'northvan'],
+        },
+        removed: {
+          'retired-flavor': {
+            name: 'Retired Flavor',
+            storeIds: ['fraser'],
+          },
+        },
+      },
+      pint: {
+        added: {
+          'pint-only-hidden': ['frances'],
+        },
+        removed: {},
+      },
+      sandwich: {
+        added: {},
+        removed: {},
+      },
+    },
+  },
+  counts: {
+    totalItems: 5,
+    iceCreamFlavors: 5,
+    scoopItems: 4,
+    pintItems: 2,
+    sandwichItems: 0,
+    sandwichOnlyItems: 0,
+  },
+};
+
 test('isDefaultBrowseState matches the shared default browse filters', () => {
   assert.equal(isDefaultBrowseState(DEFAULT_BROWSE_FILTERS), true);
   assert.equal(
@@ -118,6 +190,23 @@ test('getFreshnessLabel uses today for same-day updates and falls back to a Vanc
   );
 });
 
+test('hasCurrentPreviousDayAvailabilityDiff requires both today and the exact previous Vancouver day', () => {
+  assert.equal(hasCurrentPreviousDayAvailabilityDiff(metadataFixture, '2026-04-12T18:00:00.000Z'), true);
+  assert.equal(
+    hasCurrentPreviousDayAvailabilityDiff(
+      {
+        ...metadataFixture,
+        previousDayAvailabilityDiff: {
+          ...metadataFixture.previousDayAvailabilityDiff!,
+          previousDay: '2026-04-10',
+        },
+      },
+      '2026-04-12T18:00:00.000Z',
+    ),
+    false,
+  );
+});
+
 test('sortFlavorsAlphabetically returns a new alphabetical array', () => {
   const input = [singleLocationFlavor, alphabeticallyFirstSingleLocationFlavor, veganFlavor];
 
@@ -155,19 +244,23 @@ test('deriveObjectiveHighlightBuckets preserves fixed order, alphabetizes bucket
     deriveObjectiveHighlightBuckets(browseFixtureFlavors, 'scoop').map((bucket) => ({
       id: bucket.id,
       names: bucket.flavors.map((flavor) => flavor.name),
+      storeIdsByFlavorId: bucket.storeIdsByFlavorId,
     })),
     [
       {
         id: 'all-locations',
         names: ['All Location Classic'],
+        storeIdsByFlavorId: {},
       },
       {
         id: 'vegan',
         names: ['Vegan Berry Swirl'],
+        storeIdsByFlavorId: {},
       },
       {
         id: 'single-location',
         names: ['Alpaca Vanilla', 'Single Location Special'],
+        storeIdsByFlavorId: {},
       },
     ],
   );
@@ -175,5 +268,132 @@ test('deriveObjectiveHighlightBuckets preserves fixed order, alphabetizes bucket
   assert.deepEqual(
     deriveObjectiveHighlightBuckets([hiddenPintFlavor], 'scoop'),
     [],
+  );
+});
+
+test('deriveObjectiveHighlightBuckets adds a new-today bucket from previous-day availability diff data', () => {
+  assert.deepEqual(
+    deriveObjectiveHighlightBuckets(
+      browseFixtureFlavors,
+      'scoop',
+      metadataFixture,
+      '2026-04-12T18:00:00.000Z',
+    ).map((bucket) => ({
+      id: bucket.id,
+      names: bucket.flavors.map((flavor) => flavor.name),
+      storeIdsByFlavorId: bucket.storeIdsByFlavorId,
+    })),
+    [
+      {
+        id: 'new-today',
+        names: ['Single Location Special', 'Vegan Berry Swirl'],
+        storeIdsByFlavorId: {
+          'single-location-special': ['fraser'],
+          'vegan-berry': ['quebec', 'northvan'],
+        },
+      },
+      {
+        id: 'all-locations',
+        names: ['All Location Classic'],
+        storeIdsByFlavorId: {},
+      },
+      {
+        id: 'vegan',
+        names: ['Vegan Berry Swirl'],
+        storeIdsByFlavorId: {},
+      },
+      {
+        id: 'single-location',
+        names: ['Alpaca Vanilla', 'Single Location Special'],
+        storeIdsByFlavorId: {},
+      },
+    ],
+  );
+});
+
+test('deriveObjectiveHighlightBuckets omits new-today when diff metadata is missing, stale, or not from exact yesterday', () => {
+  assert.deepEqual(
+    deriveObjectiveHighlightBuckets(browseFixtureFlavors, 'scoop', undefined, '2026-04-12T18:00:00.000Z').map((bucket) => ({
+      id: bucket.id,
+      storeIdsByFlavorId: bucket.storeIdsByFlavorId,
+    })),
+    [
+      {
+        id: 'all-locations',
+        storeIdsByFlavorId: {},
+      },
+      {
+        id: 'vegan',
+        storeIdsByFlavorId: {},
+      },
+      {
+        id: 'single-location',
+        storeIdsByFlavorId: {},
+      },
+    ],
+  );
+
+  assert.deepEqual(
+    deriveObjectiveHighlightBuckets(
+      browseFixtureFlavors,
+      'scoop',
+      {
+        ...metadataFixture,
+        previousDayAvailabilityDiff: {
+          ...metadataFixture.previousDayAvailabilityDiff!,
+          currentDay: '2026-04-11',
+        },
+      },
+      '2026-04-12T18:00:00.000Z',
+    ).map((bucket) => ({
+      id: bucket.id,
+      storeIdsByFlavorId: bucket.storeIdsByFlavorId,
+    })),
+    [
+      {
+        id: 'all-locations',
+        storeIdsByFlavorId: {},
+      },
+      {
+        id: 'vegan',
+        storeIdsByFlavorId: {},
+      },
+      {
+        id: 'single-location',
+        storeIdsByFlavorId: {},
+      },
+    ],
+  );
+
+  assert.deepEqual(
+    deriveObjectiveHighlightBuckets(
+      browseFixtureFlavors,
+      'scoop',
+      {
+        ...metadataFixture,
+        previousDayAvailabilityDiff: {
+          ...metadataFixture.previousDayAvailabilityDiff!,
+          previousDay: '2026-04-10',
+        },
+      },
+      '2026-04-12T18:00:00.000Z',
+    ).map((bucket) => ({
+      id: bucket.id,
+      storeIdsByFlavorId: bucket.storeIdsByFlavorId,
+    })),
+    [
+      {
+        id: 'all-locations',
+        storeIdsByFlavorId: {},
+      },
+      {
+        id: 'vegan',
+        storeIdsByFlavorId: {},
+      },
+      {
+        id: 'single-location',
+        storeIdsByFlavorId: {},
+      },
+    ],
   );
 });
