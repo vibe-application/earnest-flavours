@@ -3,7 +3,7 @@
     "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "outDir": "/tmp/ernest-filter-tests",
+    "outDir": "/tmp/earnest-filter-tests",
     "rootDir": ".",
     "types": ["node"],
     "resolveJsonModule": true,

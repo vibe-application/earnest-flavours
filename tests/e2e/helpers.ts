@@ -1,6 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
-import { earnestTestData } from './fixtures/ernest-test-data';
+import { earnestTestData } from './fixtures/earnest-test-data';
 
 export async function gotoApp(
   page: Page,
@@ -13,11 +13,11 @@ export async function gotoApp(
   await page.addInitScript(
     ({ data, selectedTheme }) => {
       const runtimeWindow = window as Window & {
-        __ERNEST_TEST_DATA__?: typeof data;
+        __earnest_TEST_DATA__?: typeof data;
       };
 
       window.localStorage.setItem('theme', selectedTheme);
-      runtimeWindow.__ERNEST_TEST_DATA__ = data;
+      runtimeWindow.__earnest_TEST_DATA__ = data;
       document.documentElement.classList.toggle('dark', selectedTheme === 'dark');
     },
     { data: earnestTestData, selectedTheme: theme },

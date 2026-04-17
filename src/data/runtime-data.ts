@@ -54,16 +54,16 @@ export interface EarnestRuntimeOverride {
 }
 
 type RuntimeGlobal = typeof globalThis & {
-  __ERNEST_TEST_DATA__?: EarnestRuntimeOverride;
+  __earnest_TEST_DATA__?: EarnestRuntimeOverride;
   window?: {
-    __ERNEST_TEST_DATA__?: EarnestRuntimeOverride;
+    __earnest_TEST_DATA__?: EarnestRuntimeOverride;
   };
 };
 
 const getRuntimeOverride = (): EarnestRuntimeOverride | undefined => {
   const runtimeGlobal = globalThis as RuntimeGlobal;
 
-  return runtimeGlobal.__ERNEST_TEST_DATA__ ?? runtimeGlobal.window?.__ERNEST_TEST_DATA__;
+  return runtimeGlobal.__earnest_TEST_DATA__ ?? runtimeGlobal.window?.__earnest_TEST_DATA__;
 };
 
 const normalizeRemovedDiffEntries = (

@@ -9,7 +9,7 @@ import {
 } from '../src/data/runtime-data.js';
 
 const runtimeGlobal = globalThis as typeof globalThis & {
-  __ERNEST_TEST_DATA__?: EarnestRuntimeOverride;
+  __earnest_TEST_DATA__?: EarnestRuntimeOverride;
 };
 
 test('runtime data falls back to the bundled scrape outputs', () => {
@@ -30,7 +30,7 @@ test('runtime data falls back to the bundled scrape outputs', () => {
 });
 
 test('runtime data prefers injected override data when present', () => {
-  runtimeGlobal.__ERNEST_TEST_DATA__ = {
+  runtimeGlobal.__earnest_TEST_DATA__ = {
     flavors: [
       {
         id: 'fixture-flavor',
@@ -141,12 +141,12 @@ test('runtime data prefers injected override data when present', () => {
     );
     assert.equal(getRuntimeNow(), '2026-04-12T18:00:00.000Z');
   } finally {
-    delete runtimeGlobal.__ERNEST_TEST_DATA__;
+    delete runtimeGlobal.__earnest_TEST_DATA__;
   }
 });
 
 test('runtime metadata normalizes removed diff entries to name and storeIds defaults', () => {
-  runtimeGlobal.__ERNEST_TEST_DATA__ = {
+  runtimeGlobal.__earnest_TEST_DATA__ = {
     metadata: {
       lastUpdatedAt: '2026-04-09T19:15:00.000Z',
       source: 'https://fixtures.example.test',
@@ -193,12 +193,12 @@ test('runtime metadata normalizes removed diff entries to name and storeIds defa
       },
     );
   } finally {
-    delete runtimeGlobal.__ERNEST_TEST_DATA__;
+    delete runtimeGlobal.__earnest_TEST_DATA__;
   }
 });
 
 test('runtime metadata migrates a legacy previous-day diff into a baseline snapshot when needed', () => {
-  runtimeGlobal.__ERNEST_TEST_DATA__ = {
+  runtimeGlobal.__earnest_TEST_DATA__ = {
     flavors: [
       {
         id: 'fixture-flavor',
@@ -269,12 +269,12 @@ test('runtime metadata migrates a legacy previous-day diff into a baseline snaps
       },
     });
   } finally {
-    delete runtimeGlobal.__ERNEST_TEST_DATA__;
+    delete runtimeGlobal.__earnest_TEST_DATA__;
   }
 });
 
 test('runtime metadata normalizes missing previous-day data', () => {
-  runtimeGlobal.__ERNEST_TEST_DATA__ = {
+  runtimeGlobal.__earnest_TEST_DATA__ = {
     metadata: {
       lastUpdatedAt: '2026-04-09T19:15:00.000Z',
       source: 'https://fixtures.example.test',
@@ -296,6 +296,6 @@ test('runtime metadata normalizes missing previous-day data', () => {
     assert.equal(getRuntimeMetadata().previousDayBaselineSnapshot, undefined);
     assert.equal(getRuntimeMetadata().previousDayAvailabilityDiff, undefined);
   } finally {
-    delete runtimeGlobal.__ERNEST_TEST_DATA__;
+    delete runtimeGlobal.__earnest_TEST_DATA__;
   }
 });
