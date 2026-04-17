@@ -14,10 +14,12 @@ import {
   searchFlavors,
 } from '../src/data/flavors.js';
 import metadata from '../src/data/metadata.json' with { type: 'json' };
+import type { FlavorMetadata, PreviousDayRemovedAvailabilityDiffEntry } from '../src/data/runtime-data.js';
 import { stores } from '../src/data/stores.js';
 import type { StoreId } from '../src/data/stores.js';
 
 const validStoreIds = new Set<StoreId>(stores.map((store) => store.id));
+const typedMetadata = metadata as FlavorMetadata;
 
 const hasAnyServingType = (flavor: (typeof flavors)[number]): boolean => {
   return (
@@ -60,9 +62,63 @@ test('all flavor store references use known store ids', () => {
 });
 
 test('scrape metadata has a valid last updated timestamp', () => {
-  assert.equal(typeof metadata.lastUpdatedAt, 'string');
-  assert.equal(Number.isNaN(Date.parse(metadata.lastUpdatedAt)), false);
-  assert.equal(metadata.counts.totalItems, flavors.length);
+  assert.equal(typeof typedMetadata.lastUpdatedAt, 'string');
+  assert.equal(Number.isNaN(Date.parse(typedMetadata.lastUpdatedAt)), false);
+  assert.equal(typedMetadata.counts.totalItems, flavors.length);
+});
+
+test('scrape metadata previous-day diff, when present, uses serving-type store registries', () => {
+  if (!typedMetadata.previousDayAvailabilityDiff) {
+    return;
+  }
+
+  assert.match(typedMetadata.previousDayAvailabilityDiff.currentDay, /^\d{4}-\d{2}-\d{2}$/);
+  assert.match(typedMetadata.previousDayAvailabilityDiff.previousDay, /^\d{4}-\d{2}-\d{2}$/);
+
+  for (const servingType of ['scoop', 'pint', 'sandwich'] as const) {
+    const diffEntry: { added: Record<string, string[]>; removed: Record<string, PreviousDayRemovedAvailabilityDiffEntry> } =
+      typedMetadata.previousDayAvailabilityDiff.servingTypes[servingType];
+
+    for (const flavorStoreIds of Object.values(diffEntry.added) as string[][]) {
+      assert.equal(Array.isArray(flavorStoreIds), true);
+      for (const storeId of flavorStoreIds) {
+        assert.equal(validStoreIds.has(storeId as StoreId), true, `Invalid ${servingType} diff store: ${storeId}`);
+      }
+    }
+
+    for (const removedEntry of Object.values(diffEntry.removed) as PreviousDayRemovedAvailabilityDiffEntry[]) {
+      assert.equal(typeof removedEntry.name, 'string');
+      assert.equal(Array.isArray(removedEntry.storeIds), true);
+      for (const storeId of removedEntry.storeIds) {
+        assert.equal(validStoreIds.has(storeId as StoreId), true, `Invalid ${servingType} diff store: ${storeId}`);
+      }
+    }
+  }
+});
+
+test('scrape metadata previous-day baseline snapshot, when present, keeps one exact-day serving snapshot', () => {
+  if (!typedMetadata.previousDayBaselineSnapshot) {
+    return;
+  }
+
+  assert.match(typedMetadata.previousDayBaselineSnapshot.baselineDay, /^\d{4}-\d{2}-\d{2}$/);
+  assert.equal(typeof typedMetadata.previousDayBaselineSnapshot.observedAt, 'string');
+
+  for (const servingType of ['scoop', 'pint', 'sandwich'] as const) {
+    const snapshotEntry: Record<string, string[]> =
+      typedMetadata.previousDayBaselineSnapshot.servingTypes[servingType];
+
+    for (const flavorStoreIds of Object.values(snapshotEntry)) {
+      assert.equal(Array.isArray(flavorStoreIds), true);
+      for (const storeId of flavorStoreIds) {
+        assert.equal(
+          validStoreIds.has(storeId as StoreId),
+          true,
+          `Invalid ${servingType} baseline store: ${storeId}`,
+        );
+      }
+    }
+  }
 });
 
 test('vegan helper returns exactly the vegan flavors', () => {
