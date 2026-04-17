@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { CalendarDays, IceCream, Sun, Moon } from 'lucide-react';
+import { CalendarDays, Github, IceCream, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getRuntimeMetadata } from '@/data/runtime-data';
 
 const metadata = getRuntimeMetadata();
+const githubProjectUrl = 'https://github.com/kavankfc/earnest-flavours';
 
 interface NavigationProps {
   isDark: boolean;
@@ -56,6 +57,22 @@ export function Navigation({ isDark, toggleTheme }: NavigationProps) {
 
           {/* Right side actions */}
           <div className="flex items-center gap-2">
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="rounded-xl hover:bg-muted transition-all duration-300 [&_svg]:size-5"
+            >
+              <a
+                href={githubProjectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View this project on GitHub"
+              >
+                <Github />
+              </a>
+            </Button>
+
             {/* Theme Toggle */}
             <Button
               variant="ghost"
