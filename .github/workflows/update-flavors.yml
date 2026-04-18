@@ -1,7 +1,8 @@
 name: Update Flavors Daily
 
 permissions:
-  contents: read
+  contents: write
+  actions: write
 
 on:
   schedule:
@@ -17,19 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Create app token
-        id: app-token
-        uses: actions/create-github-app-token@v2
-        with:
-          app-id: ${{ vars.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: main
-          token: ${{ steps.app-token.outputs.token }}
-          persist-credentials: false
         
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -57,17 +47,16 @@ jobs:
       - name: Commit and push changes
         if: steps.check-changes.outputs.changed == 'true'
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add src/data/flavors.json src/data/flavor-descriptions.json src/data/metadata.json
           git commit -m "Update flavor data - $(date +'%Y-%m-%d')"
-          git push origin HEAD:main
+          git push
 
       - name: Trigger deploy workflow
         if: steps.check-changes.outputs.changed == 'true'
         uses: actions/github-script@v7
         with:
-          github-token: ${{ steps.app-token.outputs.token }}
           script: |
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
