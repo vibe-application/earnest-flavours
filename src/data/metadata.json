@@ -1,5 +1,5 @@
 {
-  "lastUpdatedAt": "2026-04-18T21:58:03.959Z",
+  "lastUpdatedAt": "2026-04-18T18:04:26.977Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated April 11, 2026 at 12pm",
@@ -13,6 +13,306 @@
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
     "frances": "https://earnesticecream.com/locations/frances-st/",
     "northvan": "https://earnesticecream.com/locations/north-van/"
+  },
+  "previousDayBaselineSnapshot": {
+    "baselineDay": "2026-04-17",
+    "observedAt": "2026-04-17T06:04:26.977Z",
+    "flavorNamesByFlavorId": {
+      "carrot-cake": "Carrot Cake",
+      "irish-cream": "Irish Cream",
+      "oatmeal-brown-sugar": "Oatmeal Brown Sugar",
+      "strawberry": "Strawberry",
+      "vegan-black-forest": "Vegan Black Forest",
+      "vegan-chocolate": "Vegan Chocolate",
+      "vegan-peaches-cream": "Vegan Peaches & Cream",
+      "chocolate": "Chocolate",
+      "cinnamon-bun": "Cinnamon Bun",
+      "cookies-cream": "Cookies + Cream",
+      "cream-cheese": "Cream Cheese",
+      "lemon-poppy-seed": "Lemon Poppy Seed",
+      "london-fog": "London Fog",
+      "matcha-green-tea": "Matcha Green Tea",
+      "mint-chip": "Mint Chip",
+      "salted-caramel": "Salted Caramel",
+      "tahitian-vanilla": "Tahitian Vanilla",
+      "vegan-cookies-cream": "Vegan Cookies + Cream",
+      "vegan-nanaimo-bar": "Vegan Nanaimo Bar",
+      "vegan-strawberry-rhubarb-ripple": "Vegan Strawberry Rhubarb Ripple",
+      "whiskey-hazelnut": "Whiskey Hazelnut",
+      "classic-sammie": "Classic Sammie",
+      "mint-cookie-crunch-sammie": "Mint Cookie Crunch Sammie",
+      "vegan-chocolate-orange-sammie": "Vegan Chocolate Orange Sammie",
+      "vegan-mocha-brownie-sammie": "Vegan Mocha Brownie Sammie"
+    },
+    "servingTypes": {
+      "scoop": {
+        "oatmeal-brown-sugar": [
+          "fraser",
+          "quebec",
+          "northvan"
+        ],
+        "strawberry": [
+          "fraser",
+          "quebec",
+          "frances"
+        ],
+        "vegan-chocolate": [
+          "fraser",
+          "quebec",
+          "frances"
+        ],
+        "vegan-peaches-cream": [
+          "northvan"
+        ],
+        "chocolate": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "cinnamon-bun": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "cookies-cream": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "cream-cheese": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "lemon-poppy-seed": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "london-fog": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "matcha-green-tea": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "mint-chip": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "salted-caramel": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "tahitian-vanilla": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "vegan-cookies-cream": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "vegan-nanaimo-bar": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "vegan-strawberry-rhubarb-ripple": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "whiskey-hazelnut": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ]
+      },
+      "pint": {
+        "carrot-cake": [
+          "quebec"
+        ],
+        "irish-cream": [
+          "fraser",
+          "quebec",
+          "northvan"
+        ],
+        "oatmeal-brown-sugar": [
+          "fraser",
+          "quebec",
+          "northvan"
+        ],
+        "strawberry": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "vegan-black-forest": [
+          "quebec"
+        ],
+        "vegan-chocolate": [
+          "fraser",
+          "quebec",
+          "frances"
+        ],
+        "vegan-peaches-cream": [
+          "northvan"
+        ],
+        "chocolate": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "cinnamon-bun": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "cookies-cream": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "cream-cheese": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "lemon-poppy-seed": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "london-fog": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "matcha-green-tea": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "mint-chip": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "salted-caramel": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "tahitian-vanilla": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "vegan-cookies-cream": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "vegan-nanaimo-bar": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "vegan-strawberry-rhubarb-ripple": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "whiskey-hazelnut": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ]
+      },
+      "sandwich": {
+        "classic-sammie": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "mint-cookie-crunch-sammie": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "vegan-chocolate-orange-sammie": [
+          "northvan"
+        ],
+        "vegan-mocha-brownie-sammie": [
+          "fraser",
+          "quebec",
+          "frances"
+        ]
+      }
+    }
+  },
+  "previousDayAvailabilityDiff": {
+    "currentDay": "2026-04-18",
+    "previousDay": "2026-04-17",
+    "servingTypes": {
+      "scoop": {
+        "added": {},
+        "removed": {}
+      },
+      "pint": {
+        "added": {},
+        "removed": {}
+      },
+      "sandwich": {
+        "added": {},
+        "removed": {
+          "mint-cookie-crunch-sammie": {
+            "name": "Mint Cookie Crunch Sammie",
+            "storeIds": [
+              "frances"
+            ]
+          }
+        }
+      }
+    }
   },
   "counts": {
     "totalItems": 25,

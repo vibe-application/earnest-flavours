@@ -323,6 +323,19 @@ export function resolvePreviousDayBaselineSnapshot({
     }
   }
 
+  if (
+    typeof existingMetadata.lastUpdatedAt === 'string' &&
+    existingMetadata.lastUpdatedAt.length > 0 &&
+    Array.isArray(existingFlavors)
+  ) {
+    // When the official site does not change for one or more days, the last
+    // committed snapshot is still the effective baseline for each skipped day.
+    return buildPreviousDayBaselineSnapshot(existingFlavors, {
+      baselineDay: previousDay,
+      observedAt: existingMetadata.lastUpdatedAt,
+    });
+  }
+
   return undefined;
 }
 
