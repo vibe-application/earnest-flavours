@@ -16,7 +16,6 @@
     "isVegan": false,
     "scoopStores": [],
     "pintStores": [
-      "fraser",
       "quebec",
       "northvan"
     ],
@@ -64,8 +63,7 @@
     "isVegan": true,
     "scoopStores": [
       "fraser",
-      "quebec",
-      "frances"
+      "quebec"
     ],
     "pintStores": [
       "fraser",
