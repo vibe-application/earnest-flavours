@@ -531,6 +531,44 @@ test('resolvePreviousDayBaselineSnapshot seeds a new baseline from the prior suc
   );
 });
 
+test('resolvePreviousDayBaselineSnapshot rolls the last committed snapshot forward across skipped no-change days', () => {
+  assert.deepEqual(
+    resolvePreviousDayBaselineSnapshot({
+      observedAt: '2026-04-14T18:00:00.000Z',
+      existingMetadata: {
+        lastUpdatedAt: '2026-04-12T23:30:00.000Z',
+      },
+      existingFlavors: [
+        {
+          id: 'berry-oat-crumble',
+          name: 'Berry Oat Crumble',
+          scoopStores: ['quebec'],
+          pintStores: ['quebec'],
+          sandwichStores: ['northvan'],
+        },
+      ],
+    }),
+    {
+      baselineDay: '2026-04-13',
+      observedAt: '2026-04-12T23:30:00.000Z',
+      flavorNamesByFlavorId: {
+        'berry-oat-crumble': 'Berry Oat Crumble',
+      },
+      servingTypes: {
+        scoop: {
+          'berry-oat-crumble': ['quebec'],
+        },
+        pint: {
+          'berry-oat-crumble': ['quebec'],
+        },
+        sandwich: {
+          'berry-oat-crumble': ['northvan'],
+        },
+      },
+    },
+  );
+});
+
 test('resolvePreviousDayBaselineSnapshot keeps the existing exact-yesterday baseline on same-day reruns', () => {
   const storedBaseline = {
     baselineDay: '2026-04-11',
