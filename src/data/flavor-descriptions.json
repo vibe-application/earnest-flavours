@@ -115,6 +115,11 @@
     "description": "Like a roasted peach topped with vanilla ice cream and a sprinkle of cinnamon! Our oat-coconut base with an added hint of cinnamon is swirled with a bright, roasted peach compote. Fresh peaches are sourced from Jobst-Hof Orchard, a family operated orchard in the beautiful Okanagan Valley."
   },
   {
+    "id": "vegan-raspberry",
+    "name": "Vegan Raspberry",
+    "description": "One of our original vegan flavours. Local raspberries from Mandair Farms pureed and blended into our signature vegan coconut base – it’s bright, tart, refreshing and looks as good as it tastes."
+  },
+  {
     "id": "vegan-strawberry-chocolate-sprinkle-sammie",
     "name": "Vegan Strawberry Chocolate Sprinkle Sammie",
     "description": "Bright strawberry ice cream is speckled with deliciously chocolatey sprinkles. Sandwiched with a layer of strawberry jam on soft chocolate cake, this fruity-chocolatey treat is perfectly balanced and scrumptious!"

@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-04-19T20:22:50.426Z",
+  "lastUpdatedAt": "2026-04-21T20:38:17.960Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated April 18, 2026 at 12pm",
-    "quebec": "Last updated April 16, 2026 at 12pm",
-    "frances": "Last updated April 19, 2026 at 12pm",
+    "quebec": "Last updated April 20, 2026 at 12pm",
+    "frances": "Last updated April 21, 2026 at 12pm",
     "northvan": "Last updated April 16, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 19, 2026 at 12pm|fraser:Last updated April 18, 2026 at 12pm|northvan:Last updated April 16, 2026 at 12pm|quebec:Last updated April 16, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated April 21, 2026 at 12pm|fraser:Last updated April 18, 2026 at 12pm|northvan:Last updated April 16, 2026 at 12pm|quebec:Last updated April 20, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,8 +15,8 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-04-18",
-    "observedAt": "2026-04-18T18:04:26.977Z",
+    "baselineDay": "2026-04-20",
+    "observedAt": "2026-04-19T20:22:50.426Z",
     "flavorNamesByFlavorId": {
       "carrot-cake": "Carrot Cake",
       "irish-cream": "Irish Cream",
@@ -58,8 +58,7 @@
         ],
         "vegan-chocolate": [
           "fraser",
-          "quebec",
-          "frances"
+          "quebec"
         ],
         "vegan-peaches-cream": [
           "northvan"
@@ -154,7 +153,6 @@
           "quebec"
         ],
         "irish-cream": [
-          "fraser",
           "quebec",
           "northvan"
         ],
@@ -286,14 +284,18 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-04-19",
-    "previousDay": "2026-04-18",
+    "currentDay": "2026-04-21",
+    "previousDay": "2026-04-20",
     "servingTypes": {
       "scoop": {
-        "added": {},
+        "added": {
+          "vegan-raspberry": [
+            "frances"
+          ]
+        },
         "removed": {
-          "vegan-chocolate": {
-            "name": "Vegan Chocolate",
+          "vegan-strawberry-rhubarb-ripple": {
+            "name": "Vegan Strawberry Rhubarb Ripple",
             "storeIds": [
               "frances"
             ]
@@ -306,7 +308,7 @@
           "irish-cream": {
             "name": "Irish Cream",
             "storeIds": [
-              "fraser"
+              "quebec"
             ]
           }
         }
@@ -318,9 +320,9 @@
     }
   },
   "counts": {
-    "totalItems": 25,
-    "iceCreamFlavors": 20,
-    "scoopItems": 18,
+    "totalItems": 26,
+    "iceCreamFlavors": 21,
+    "scoopItems": 19,
     "pintItems": 19,
     "sandwichItems": 5,
     "sandwichOnlyItems": 5
