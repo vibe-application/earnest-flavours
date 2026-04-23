@@ -189,16 +189,18 @@ test('ice cream and sandwich helpers return serving-appropriate flavors', () => 
 });
 
 test('current data includes expected sandwich inventory', () => {
-  const sandwichNames = getSandwiches().map((flavor) => flavor.name);
+  const sandwiches = getSandwiches();
+  const expectedSandwiches = flavors.filter((flavor) => flavor.sandwichStores.length > 0);
 
-  assert.equal(getSandwiches().length, 5);
-  assert.deepEqual(sandwichNames, [
-    'Classic Sammie',
-    'Mint Cookie Crunch Sammie',
-    'Vegan Chocolate Orange Sammie',
-    'Vegan Mocha Brownie Sammie',
-    'Vegan Strawberry Chocolate Sprinkle Sammie',
-  ]);
+  assert.equal(sandwiches.length, typedMetadata.counts.sandwichItems);
+  assert.equal(
+    sandwiches.every((flavor) => flavor.scoopStores.length === 0 && flavor.pintStores.length === 0),
+    true,
+  );
+  assert.deepEqual(
+    sandwiches.map((flavor) => flavor.id),
+    expectedSandwiches.map((flavor) => flavor.id),
+  );
 });
 
 test('search helper is case-insensitive and returns empty for missing flavors', () => {
