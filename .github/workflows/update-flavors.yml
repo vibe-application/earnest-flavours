@@ -23,7 +23,6 @@ jobs:
         with:
           ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
-          persist-credentials: false
         
       - name: Setup Node.js
         uses: actions/setup-node@v4
