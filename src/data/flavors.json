@@ -14,10 +14,10 @@
     "id": "irish-cream",
     "name": "Irish Cream",
     "isVegan": false,
-    "scoopStores": [],
-    "pintStores": [
-      "northvan"
+    "scoopStores": [
+      "quebec"
     ],
+    "pintStores": [],
     "sandwichStores": [],
     "description": "Your favourite Irish cream liqueur in frozen form. It’s creamy, slightly boozy, with a hint of chocolate and coffee."
   },
@@ -67,21 +67,11 @@
     "pintStores": [
       "fraser",
       "quebec",
-      "frances"
+      "frances",
+      "northvan"
     ],
     "sandwichStores": [],
     "description": "A vegan staple we have been running since day one! Surprisingly creamy and rich, the subtle bitterness of dark chocolate and cocoa powder add depth to the creaminess of our coconut milk base."
-  },
-  {
-    "id": "vegan-peaches-cream",
-    "name": "Vegan Peaches & Cream",
-    "isVegan": true,
-    "scoopStores": [
-      "northvan"
-    ],
-    "pintStores": [],
-    "sandwichStores": [],
-    "description": "Like a roasted peach topped with vanilla ice cream and a sprinkle of cinnamon! Our oat-coconut base with an added hint of cinnamon is swirled with a bright, roasted peach compote. Fresh peaches are sourced from Jobst-Hof Orchard, a family operated orchard in the beautiful Okanagan Valley."
   },
   {
     "id": "vegan-raspberry",
@@ -387,17 +377,6 @@
     "description": "Fresh mint, crunchy cookies, and rich chocolate combined into one delectable sammie! Sweet minty cookie base is swirled with pieces of our creme cookies and chunks of peppermint bark, all sealed together with a layer of fudge between soft chocolate cake."
   },
   {
-    "id": "vegan-chocolate-orange-sammie",
-    "name": "Vegan Chocolate Orange Sammie",
-    "isVegan": true,
-    "scoopStores": [],
-    "pintStores": [],
-    "sandwichStores": [
-      "northvan"
-    ],
-    "description": "Creamy chocolate-orange ice cream is swirled with ribbons of orange jelly. Sandwiched with a layer of orange-fudge and chocolate cake, this sammie tastes just like a Terry’s Chocolate Orange!"
-  },
-  {
     "id": "vegan-mocha-brownie-sammie",
     "name": "Vegan Mocha Brownie Sammie",
     "isVegan": true,
@@ -406,19 +385,9 @@
     "sandwichStores": [
       "fraser",
       "quebec",
-      "frances"
-    ],
-    "description": "House-made, cakey brownie chunks mixed into mocha ice cream, alongside delightfully crunchy chocolate sprinkles. Surrounded by soft chocolate cake and a layer of mocha fudge, this rich and decadent sammie is a must try for mocha fans."
-  },
-  {
-    "id": "vegan-strawberry-chocolate-sprinkle-sammie",
-    "name": "Vegan Strawberry Chocolate Sprinkle Sammie",
-    "isVegan": true,
-    "scoopStores": [],
-    "pintStores": [],
-    "sandwichStores": [
+      "frances",
       "northvan"
     ],
-    "description": "Bright strawberry ice cream is speckled with deliciously chocolatey sprinkles. Sandwiched with a layer of strawberry jam on soft chocolate cake, this fruity-chocolatey treat is perfectly balanced and scrumptious!"
+    "description": "House-made, cakey brownie chunks mixed into mocha ice cream, alongside delightfully crunchy chocolate sprinkles. Surrounded by soft chocolate cake and a layer of mocha fudge, this rich and decadent sammie is a must try for mocha fans."
   }
 ]
