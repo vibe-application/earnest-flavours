@@ -1,27 +1,5 @@
 [
   {
-    "id": "carrot-cake",
-    "name": "Carrot Cake",
-    "isVegan": false,
-    "scoopStores": [],
-    "pintStores": [
-      "quebec"
-    ],
-    "sandwichStores": [],
-    "description": "House-made spiced carrot cake and cream cheese fudge generously sprinkled through a lightly spiced ice cream, creating a classic dessert in ice cream form. Featuring spices from Gathering Place Trading and Carrots from Discovery Organics."
-  },
-  {
-    "id": "irish-cream",
-    "name": "Irish Cream",
-    "isVegan": false,
-    "scoopStores": [
-      "quebec"
-    ],
-    "pintStores": [],
-    "sandwichStores": [],
-    "description": "Your favourite Irish cream liqueur in frozen form. It’s creamy, slightly boozy, with a hint of chocolate and coffee."
-  },
-  {
     "id": "oatmeal-brown-sugar",
     "name": "Oatmeal Brown Sugar",
     "isVegan": false,
@@ -67,8 +45,7 @@
     "pintStores": [
       "fraser",
       "quebec",
-      "frances",
-      "northvan"
+      "frances"
     ],
     "sandwichStores": [],
     "description": "A vegan staple we have been running since day one! Surprisingly creamy and rich, the subtle bitterness of dark chocolate and cocoa powder add depth to the creaminess of our coconut milk base."
@@ -89,7 +66,6 @@
     "name": "Vegan Strawberry Rhubarb Ripple",
     "isVegan": true,
     "scoopStores": [
-      "fraser",
       "quebec",
       "northvan"
     ],
