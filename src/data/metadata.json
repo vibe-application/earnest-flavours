@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-04-24T20:33:23.891Z",
+  "lastUpdatedAt": "2026-04-25T20:25:32.447Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
-    "fraser": "Last updated April 23, 2026 at 12pm",
+    "fraser": "Last updated April 24, 2026 at 12pm",
     "quebec": "Last updated April 24, 2026 at 12pm",
     "frances": "Last updated April 21, 2026 at 12pm",
     "northvan": "Last updated April 23, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 21, 2026 at 12pm|fraser:Last updated April 23, 2026 at 12pm|northvan:Last updated April 23, 2026 at 12pm|quebec:Last updated April 24, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated April 21, 2026 at 12pm|fraser:Last updated April 24, 2026 at 12pm|northvan:Last updated April 23, 2026 at 12pm|quebec:Last updated April 24, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,11 +15,9 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-04-23",
-    "observedAt": "2026-04-23T23:14:35.346Z",
+    "baselineDay": "2026-04-24",
+    "observedAt": "2026-04-24T20:33:23.891Z",
     "flavorNamesByFlavorId": {
-      "carrot-cake": "Carrot Cake",
-      "irish-cream": "Irish Cream",
       "oatmeal-brown-sugar": "Oatmeal Brown Sugar",
       "strawberry": "Strawberry",
       "vegan-chocolate": "Vegan Chocolate",
@@ -44,9 +42,6 @@
     },
     "servingTypes": {
       "scoop": {
-        "irish-cream": [
-          "quebec"
-        ],
         "oatmeal-brown-sugar": [
           "fraser",
           "quebec",
@@ -65,7 +60,6 @@
           "frances"
         ],
         "vegan-strawberry-rhubarb-ripple": [
-          "fraser",
           "quebec",
           "northvan"
         ],
@@ -149,9 +143,6 @@
         ]
       },
       "pint": {
-        "carrot-cake": [
-          "quebec"
-        ],
         "oatmeal-brown-sugar": [
           "fraser",
           "quebec",
@@ -166,8 +157,7 @@
         "vegan-chocolate": [
           "fraser",
           "quebec",
-          "frances",
-          "northvan"
+          "frances"
         ],
         "vegan-strawberry-rhubarb-ripple": [
           "fraser",
@@ -276,55 +266,40 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-04-24",
-    "previousDay": "2026-04-23",
+    "currentDay": "2026-04-25",
+    "previousDay": "2026-04-24",
     "servingTypes": {
       "scoop": {
         "added": {},
-        "removed": {
-          "vegan-strawberry-rhubarb-ripple": {
-            "name": "Vegan Strawberry Rhubarb Ripple",
-            "storeIds": [
-              "fraser"
-            ]
-          },
-          "irish-cream": {
-            "name": "Irish Cream",
-            "storeIds": [
-              "quebec"
-            ]
-          }
-        }
+        "removed": {}
       },
       "pint": {
         "added": {},
+        "removed": {}
+      },
+      "sandwich": {
+        "added": {
+          "milk-cookies-sammie": [
+            "fraser"
+          ]
+        },
         "removed": {
-          "vegan-chocolate": {
-            "name": "Vegan Chocolate",
+          "mint-cookie-crunch-sammie": {
+            "name": "Mint Cookie Crunch Sammie",
             "storeIds": [
-              "northvan"
-            ]
-          },
-          "carrot-cake": {
-            "name": "Carrot Cake",
-            "storeIds": [
-              "quebec"
+              "fraser"
             ]
           }
         }
-      },
-      "sandwich": {
-        "added": {},
-        "removed": {}
       }
     }
   },
   "counts": {
-    "totalItems": 21,
+    "totalItems": 22,
     "iceCreamFlavors": 18,
     "scoopItems": 18,
     "pintItems": 17,
-    "sandwichItems": 3,
-    "sandwichOnlyItems": 3
+    "sandwichItems": 4,
+    "sandwichOnlyItems": 4
   }
 }
