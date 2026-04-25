@@ -65,10 +65,7 @@
     "id": "vegan-strawberry-rhubarb-ripple",
     "name": "Vegan Strawberry Rhubarb Ripple",
     "isVegan": true,
-    "scoopStores": [
-      "quebec",
-      "northvan"
-    ],
+    "scoopStores": [],
     "pintStores": [
       "fraser",
       "quebec",

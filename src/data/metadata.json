@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-04-25T20:25:32.447Z",
+  "lastUpdatedAt": "2026-04-25T23:59:57.528Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated April 24, 2026 at 12pm",
-    "quebec": "Last updated April 24, 2026 at 12pm",
+    "quebec": "Last updated April 25, 2026 at 12pm",
     "frances": "Last updated April 21, 2026 at 12pm",
-    "northvan": "Last updated April 23, 2026 at 12pm"
+    "northvan": "Last updated April 25, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 21, 2026 at 12pm|fraser:Last updated April 24, 2026 at 12pm|northvan:Last updated April 23, 2026 at 12pm|quebec:Last updated April 24, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated April 21, 2026 at 12pm|fraser:Last updated April 24, 2026 at 12pm|northvan:Last updated April 25, 2026 at 12pm|quebec:Last updated April 25, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -271,7 +271,15 @@
     "servingTypes": {
       "scoop": {
         "added": {},
-        "removed": {}
+        "removed": {
+          "vegan-strawberry-rhubarb-ripple": {
+            "name": "Vegan Strawberry Rhubarb Ripple",
+            "storeIds": [
+              "quebec",
+              "northvan"
+            ]
+          }
+        }
       },
       "pint": {
         "added": {},
@@ -297,7 +305,7 @@
   "counts": {
     "totalItems": 22,
     "iceCreamFlavors": 18,
-    "scoopItems": 18,
+    "scoopItems": 17,
     "pintItems": 17,
     "sandwichItems": 4,
     "sandwichOnlyItems": 4
