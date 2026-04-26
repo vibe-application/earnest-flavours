@@ -1,5 +1,23 @@
 [
   {
+    "id": "london-fog",
+    "name": "London Fog",
+    "isVegan": false,
+    "scoopStores": [
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Made with Assam and Darjeeling black tea, bergamot and vanilla, this ice cream flavour is based on the popular drink which was invented in Vancouver!"
+  },
+  {
     "id": "oatmeal-brown-sugar",
     "name": "Oatmeal Brown Sugar",
     "isVegan": false,
@@ -40,7 +58,8 @@
     "isVegan": true,
     "scoopStores": [
       "fraser",
-      "quebec"
+      "quebec",
+      "frances"
     ],
     "pintStores": [
       "fraser",
@@ -55,9 +74,13 @@
     "name": "Vegan Raspberry",
     "isVegan": true,
     "scoopStores": [
+      "quebec",
       "frances"
     ],
-    "pintStores": [],
+    "pintStores": [
+      "quebec",
+      "frances"
+    ],
     "sandwichStores": [],
     "description": "One of our original vegan flavours. Local raspberries from Mandair Farms pureed and blended into our signature vegan coconut base – it’s bright, tart, refreshing and looks as good as it tastes."
   },
@@ -69,7 +92,6 @@
     "pintStores": [
       "fraser",
       "quebec",
-      "frances",
       "northvan"
     ],
     "sandwichStores": [],
@@ -169,25 +191,6 @@
     ],
     "sandwichStores": [],
     "description": "A lighter, creamier frozen version of the muffin. Bright lemon ice cream speckled with dutch blue poppy seeds resulting in a beautiful, zesty treat."
-  },
-  {
-    "id": "london-fog",
-    "name": "London Fog",
-    "isVegan": false,
-    "scoopStores": [
-      "fraser",
-      "quebec",
-      "frances",
-      "northvan"
-    ],
-    "pintStores": [
-      "fraser",
-      "quebec",
-      "frances",
-      "northvan"
-    ],
-    "sandwichStores": [],
-    "description": "Made with Assam and Darjeeling black tea, bergamot and vanilla, this ice cream flavour is based on the popular drink which was invented in Vancouver!"
   },
   {
     "id": "matcha-green-tea",
@@ -343,7 +346,8 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
-      "fraser"
+      "fraser",
+      "frances"
     ],
     "description": "House-made chocolate chip cookie chunks are generously sprinkled throughout a light milky base, along with mini chocolate chips for a bit of chocolatey crunch. Chunks of cookie are also spread on top of the sammie with a thin layer of fudge."
   },

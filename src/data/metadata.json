@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-04-25T23:59:57.528Z",
+  "lastUpdatedAt": "2026-04-26T20:25:18.690Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
-    "fraser": "Last updated April 24, 2026 at 12pm",
-    "quebec": "Last updated April 25, 2026 at 12pm",
-    "frances": "Last updated April 21, 2026 at 12pm",
+    "fraser": "Last updated April 26, 2026 at 12pm",
+    "quebec": "Last updated April 26, 2026 at 12pm",
+    "frances": "Last updated April 26, 2026 at 12pm",
     "northvan": "Last updated April 25, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 21, 2026 at 12pm|fraser:Last updated April 24, 2026 at 12pm|northvan:Last updated April 25, 2026 at 12pm|quebec:Last updated April 25, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated April 26, 2026 at 12pm|fraser:Last updated April 26, 2026 at 12pm|northvan:Last updated April 25, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,8 +15,8 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-04-24",
-    "observedAt": "2026-04-24T20:33:23.891Z",
+    "baselineDay": "2026-04-25",
+    "observedAt": "2026-04-25T23:59:57.528Z",
     "flavorNamesByFlavorId": {
       "oatmeal-brown-sugar": "Oatmeal Brown Sugar",
       "strawberry": "Strawberry",
@@ -37,6 +37,7 @@
       "vegan-nanaimo-bar": "Vegan Nanaimo Bar",
       "whiskey-hazelnut": "Whiskey Hazelnut",
       "classic-sammie": "Classic Sammie",
+      "milk-cookies-sammie": "Milk & Cookies Sammie",
       "mint-cookie-crunch-sammie": "Mint Cookie Crunch Sammie",
       "vegan-mocha-brownie-sammie": "Vegan Mocha Brownie Sammie"
     },
@@ -58,10 +59,6 @@
         ],
         "vegan-raspberry": [
           "frances"
-        ],
-        "vegan-strawberry-rhubarb-ripple": [
-          "quebec",
-          "northvan"
         ],
         "chocolate": [
           "fraser",
@@ -251,8 +248,10 @@
           "frances",
           "northvan"
         ],
+        "milk-cookies-sammie": [
+          "fraser"
+        ],
         "mint-cookie-crunch-sammie": [
-          "fraser",
           "quebec",
           "northvan"
         ],
@@ -266,39 +265,50 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-04-25",
-    "previousDay": "2026-04-24",
+    "currentDay": "2026-04-26",
+    "previousDay": "2026-04-25",
     "servingTypes": {
       "scoop": {
-        "added": {},
-        "removed": {
-          "vegan-strawberry-rhubarb-ripple": {
-            "name": "Vegan Strawberry Rhubarb Ripple",
-            "storeIds": [
-              "quebec",
-              "northvan"
-            ]
-          }
-        }
-      },
-      "pint": {
-        "added": {},
-        "removed": {}
-      },
-      "sandwich": {
         "added": {
-          "milk-cookies-sammie": [
-            "fraser"
+          "vegan-chocolate": [
+            "frances"
+          ],
+          "vegan-raspberry": [
+            "quebec"
           ]
         },
         "removed": {
-          "mint-cookie-crunch-sammie": {
-            "name": "Mint Cookie Crunch Sammie",
+          "london-fog": {
+            "name": "London Fog",
             "storeIds": [
               "fraser"
             ]
           }
         }
+      },
+      "pint": {
+        "added": {
+          "vegan-raspberry": [
+            "quebec",
+            "frances"
+          ]
+        },
+        "removed": {
+          "vegan-strawberry-rhubarb-ripple": {
+            "name": "Vegan Strawberry Rhubarb Ripple",
+            "storeIds": [
+              "frances"
+            ]
+          }
+        }
+      },
+      "sandwich": {
+        "added": {
+          "milk-cookies-sammie": [
+            "frances"
+          ]
+        },
+        "removed": {}
       }
     }
   },
@@ -306,7 +316,7 @@
     "totalItems": 22,
     "iceCreamFlavors": 18,
     "scoopItems": 17,
-    "pintItems": 17,
+    "pintItems": 18,
     "sandwichItems": 4,
     "sandwichOnlyItems": 4
   }
