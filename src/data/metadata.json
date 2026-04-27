@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-04-26T20:25:18.690Z",
+  "lastUpdatedAt": "2026-04-27T20:46:38.144Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
-    "fraser": "Last updated April 26, 2026 at 12pm",
+    "fraser": "Last updated April 27, 2026 at 12pm",
     "quebec": "Last updated April 26, 2026 at 12pm",
     "frances": "Last updated April 26, 2026 at 12pm",
     "northvan": "Last updated April 25, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 26, 2026 at 12pm|fraser:Last updated April 26, 2026 at 12pm|northvan:Last updated April 25, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated April 26, 2026 at 12pm|fraser:Last updated April 27, 2026 at 12pm|northvan:Last updated April 25, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,9 +15,10 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-04-25",
-    "observedAt": "2026-04-25T23:59:57.528Z",
+    "baselineDay": "2026-04-26",
+    "observedAt": "2026-04-26T20:25:18.690Z",
     "flavorNamesByFlavorId": {
+      "london-fog": "London Fog",
       "oatmeal-brown-sugar": "Oatmeal Brown Sugar",
       "strawberry": "Strawberry",
       "vegan-chocolate": "Vegan Chocolate",
@@ -28,7 +29,6 @@
       "cookies-cream": "Cookies + Cream",
       "cream-cheese": "Cream Cheese",
       "lemon-poppy-seed": "Lemon Poppy Seed",
-      "london-fog": "London Fog",
       "matcha-green-tea": "Matcha Green Tea",
       "mint-chip": "Mint Chip",
       "salted-caramel": "Salted Caramel",
@@ -43,6 +43,11 @@
     },
     "servingTypes": {
       "scoop": {
+        "london-fog": [
+          "quebec",
+          "frances",
+          "northvan"
+        ],
         "oatmeal-brown-sugar": [
           "fraser",
           "quebec",
@@ -55,9 +60,11 @@
         ],
         "vegan-chocolate": [
           "fraser",
-          "quebec"
+          "quebec",
+          "frances"
         ],
         "vegan-raspberry": [
+          "quebec",
           "frances"
         ],
         "chocolate": [
@@ -85,12 +92,6 @@
           "northvan"
         ],
         "lemon-poppy-seed": [
-          "fraser",
-          "quebec",
-          "frances",
-          "northvan"
-        ],
-        "london-fog": [
           "fraser",
           "quebec",
           "frances",
@@ -140,6 +141,12 @@
         ]
       },
       "pint": {
+        "london-fog": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
         "oatmeal-brown-sugar": [
           "fraser",
           "quebec",
@@ -156,10 +163,13 @@
           "quebec",
           "frances"
         ],
+        "vegan-raspberry": [
+          "quebec",
+          "frances"
+        ],
         "vegan-strawberry-rhubarb-ripple": [
           "fraser",
           "quebec",
-          "frances",
           "northvan"
         ],
         "chocolate": [
@@ -187,12 +197,6 @@
           "northvan"
         ],
         "lemon-poppy-seed": [
-          "fraser",
-          "quebec",
-          "frances",
-          "northvan"
-        ],
-        "london-fog": [
           "fraser",
           "quebec",
           "frances",
@@ -249,7 +253,8 @@
           "northvan"
         ],
         "milk-cookies-sammie": [
-          "fraser"
+          "fraser",
+          "frances"
         ],
         "mint-cookie-crunch-sammie": [
           "quebec",
@@ -265,50 +270,41 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-04-26",
-    "previousDay": "2026-04-25",
+    "currentDay": "2026-04-27",
+    "previousDay": "2026-04-26",
     "servingTypes": {
       "scoop": {
         "added": {
-          "vegan-chocolate": [
-            "frances"
-          ],
           "vegan-raspberry": [
-            "quebec"
+            "fraser"
           ]
         },
-        "removed": {
-          "london-fog": {
-            "name": "London Fog",
-            "storeIds": [
-              "fraser"
-            ]
-          }
-        }
+        "removed": {}
       },
       "pint": {
-        "added": {
-          "vegan-raspberry": [
-            "quebec",
-            "frances"
-          ]
-        },
-        "removed": {
-          "vegan-strawberry-rhubarb-ripple": {
-            "name": "Vegan Strawberry Rhubarb Ripple",
-            "storeIds": [
-              "frances"
-            ]
-          }
-        }
+        "added": {},
+        "removed": {}
       },
       "sandwich": {
         "added": {
           "milk-cookies-sammie": [
-            "frances"
+            "quebec"
           ]
         },
-        "removed": {}
+        "removed": {
+          "milk-cookies-sammie": {
+            "name": "Milk & Cookies Sammie",
+            "storeIds": [
+              "fraser"
+            ]
+          },
+          "mint-cookie-crunch-sammie": {
+            "name": "Mint Cookie Crunch Sammie",
+            "storeIds": [
+              "quebec"
+            ]
+          }
+        }
       }
     }
   },

@@ -74,6 +74,7 @@
     "name": "Vegan Raspberry",
     "isVegan": true,
     "scoopStores": [
+      "fraser",
       "quebec",
       "frances"
     ],
@@ -346,7 +347,7 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
-      "fraser",
+      "quebec",
       "frances"
     ],
     "description": "House-made chocolate chip cookie chunks are generously sprinkled throughout a light milky base, along with mini chocolate chips for a bit of chocolatey crunch. Chunks of cookie are also spread on top of the sammie with a thin layer of fudge."
@@ -358,7 +359,6 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
-      "quebec",
       "northvan"
     ],
     "description": "Fresh mint, crunchy cookies, and rich chocolate combined into one delectable sammie! Sweet minty cookie base is swirled with pieces of our creme cookies and chunks of peppermint bark, all sealed together with a layer of fudge between soft chocolate cake."
