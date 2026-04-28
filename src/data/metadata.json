@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-04-27T20:46:38.144Z",
+  "lastUpdatedAt": "2026-04-28T20:55:34.803Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated April 27, 2026 at 12pm",
     "quebec": "Last updated April 26, 2026 at 12pm",
     "frances": "Last updated April 26, 2026 at 12pm",
-    "northvan": "Last updated April 25, 2026 at 12pm"
+    "northvan": "Last updated April 28, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 26, 2026 at 12pm|fraser:Last updated April 27, 2026 at 12pm|northvan:Last updated April 25, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated April 26, 2026 at 12pm|fraser:Last updated April 27, 2026 at 12pm|northvan:Last updated April 28, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,8 +15,8 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-04-26",
-    "observedAt": "2026-04-26T20:25:18.690Z",
+    "baselineDay": "2026-04-27",
+    "observedAt": "2026-04-27T20:46:38.144Z",
     "flavorNamesByFlavorId": {
       "london-fog": "London Fog",
       "oatmeal-brown-sugar": "Oatmeal Brown Sugar",
@@ -64,6 +64,7 @@
           "frances"
         ],
         "vegan-raspberry": [
+          "fraser",
           "quebec",
           "frances"
         ],
@@ -253,11 +254,10 @@
           "northvan"
         ],
         "milk-cookies-sammie": [
-          "fraser",
+          "quebec",
           "frances"
         ],
         "mint-cookie-crunch-sammie": [
-          "quebec",
           "northvan"
         ],
         "vegan-mocha-brownie-sammie": [
@@ -270,16 +270,23 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-04-27",
-    "previousDay": "2026-04-26",
+    "currentDay": "2026-04-28",
+    "previousDay": "2026-04-27",
     "servingTypes": {
       "scoop": {
         "added": {
           "vegan-raspberry": [
-            "fraser"
+            "northvan"
           ]
         },
-        "removed": {}
+        "removed": {
+          "cream-cheese": {
+            "name": "Cream Cheese",
+            "storeIds": [
+              "fraser"
+            ]
+          }
+        }
       },
       "pint": {
         "added": {},
@@ -288,23 +295,10 @@
       "sandwich": {
         "added": {
           "milk-cookies-sammie": [
-            "quebec"
+            "fraser"
           ]
         },
-        "removed": {
-          "milk-cookies-sammie": {
-            "name": "Milk & Cookies Sammie",
-            "storeIds": [
-              "fraser"
-            ]
-          },
-          "mint-cookie-crunch-sammie": {
-            "name": "Mint Cookie Crunch Sammie",
-            "storeIds": [
-              "quebec"
-            ]
-          }
-        }
+        "removed": {}
       }
     }
   },

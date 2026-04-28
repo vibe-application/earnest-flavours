@@ -1,5 +1,23 @@
 [
   {
+    "id": "cream-cheese",
+    "name": "Cream Cheese",
+    "isVegan": false,
+    "scoopStores": [
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "This ice cream is like a New York style cheesecake – smooth, creamy, and just the right amount of tartness balanced in our sweet cream base."
+  },
+  {
     "id": "london-fog",
     "name": "London Fog",
     "isVegan": false,
@@ -70,22 +88,6 @@
     "description": "A vegan staple we have been running since day one! Surprisingly creamy and rich, the subtle bitterness of dark chocolate and cocoa powder add depth to the creaminess of our coconut milk base."
   },
   {
-    "id": "vegan-raspberry",
-    "name": "Vegan Raspberry",
-    "isVegan": true,
-    "scoopStores": [
-      "fraser",
-      "quebec",
-      "frances"
-    ],
-    "pintStores": [
-      "quebec",
-      "frances"
-    ],
-    "sandwichStores": [],
-    "description": "One of our original vegan flavours. Local raspberries from Mandair Farms pureed and blended into our signature vegan coconut base – it’s bright, tart, refreshing and looks as good as it tastes."
-  },
-  {
     "id": "vegan-strawberry-rhubarb-ripple",
     "name": "Vegan Strawberry Rhubarb Ripple",
     "isVegan": true,
@@ -154,25 +156,6 @@
     ],
     "sandwichStores": [],
     "description": "Organic Chocolate Vanilla Cream Sandwich Cookies, featuring a darker chocolate flavour profile with a crisp cookie crunch. It’s all about the cookies, like a spoonful of childhood!"
-  },
-  {
-    "id": "cream-cheese",
-    "name": "Cream Cheese",
-    "isVegan": false,
-    "scoopStores": [
-      "fraser",
-      "quebec",
-      "frances",
-      "northvan"
-    ],
-    "pintStores": [
-      "fraser",
-      "quebec",
-      "frances",
-      "northvan"
-    ],
-    "sandwichStores": [],
-    "description": "This ice cream is like a New York style cheesecake – smooth, creamy, and just the right amount of tartness balanced in our sweet cream base."
   },
   {
     "id": "lemon-poppy-seed",
@@ -308,6 +291,23 @@
     "description": "This is the classic BC dessert bar in ice cream form! Dark chocolate chips and nanaimo bar crumble in our creamy coconut-cashew “custard” base."
   },
   {
+    "id": "vegan-raspberry",
+    "name": "Vegan Raspberry",
+    "isVegan": true,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "quebec",
+      "frances"
+    ],
+    "sandwichStores": [],
+    "description": "One of our original vegan flavours. Local raspberries from Mandair Farms pureed and blended into our signature vegan coconut base – it’s bright, tart, refreshing and looks as good as it tastes."
+  },
+  {
     "id": "whiskey-hazelnut",
     "name": "Whiskey Hazelnut",
     "isVegan": false,
@@ -347,6 +347,7 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
+      "fraser",
       "quebec",
       "frances"
     ],
