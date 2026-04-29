@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-04-28T20:55:34.803Z",
+  "lastUpdatedAt": "2026-04-29T00:12:31.761Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated April 27, 2026 at 12pm",
     "quebec": "Last updated April 26, 2026 at 12pm",
-    "frances": "Last updated April 26, 2026 at 12pm",
+    "frances": "Last updated April 28, 2026 at 12pm",
     "northvan": "Last updated April 28, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 26, 2026 at 12pm|fraser:Last updated April 27, 2026 at 12pm|northvan:Last updated April 28, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated April 28, 2026 at 12pm|fraser:Last updated April 27, 2026 at 12pm|northvan:Last updated April 28, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -285,6 +285,12 @@
             "storeIds": [
               "fraser"
             ]
+          },
+          "lemon-poppy-seed": {
+            "name": "Lemon Poppy Seed",
+            "storeIds": [
+              "northvan"
+            ]
           }
         }
       },
@@ -298,7 +304,14 @@
             "fraser"
           ]
         },
-        "removed": {}
+        "removed": {
+          "vegan-mocha-brownie-sammie": {
+            "name": "Vegan Mocha Brownie Sammie",
+            "storeIds": [
+              "frances"
+            ]
+          }
+        }
       }
     }
   },

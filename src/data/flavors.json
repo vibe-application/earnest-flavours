@@ -18,6 +18,24 @@
     "description": "This ice cream is like a New York style cheesecake – smooth, creamy, and just the right amount of tartness balanced in our sweet cream base."
   },
   {
+    "id": "lemon-poppy-seed",
+    "name": "Lemon Poppy Seed",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "A lighter, creamier frozen version of the muffin. Bright lemon ice cream speckled with dutch blue poppy seeds resulting in a beautiful, zesty treat."
+  },
+  {
     "id": "london-fog",
     "name": "London Fog",
     "isVegan": false,
@@ -156,25 +174,6 @@
     ],
     "sandwichStores": [],
     "description": "Organic Chocolate Vanilla Cream Sandwich Cookies, featuring a darker chocolate flavour profile with a crisp cookie crunch. It’s all about the cookies, like a spoonful of childhood!"
-  },
-  {
-    "id": "lemon-poppy-seed",
-    "name": "Lemon Poppy Seed",
-    "isVegan": false,
-    "scoopStores": [
-      "fraser",
-      "quebec",
-      "frances",
-      "northvan"
-    ],
-    "pintStores": [
-      "fraser",
-      "quebec",
-      "frances",
-      "northvan"
-    ],
-    "sandwichStores": [],
-    "description": "A lighter, creamier frozen version of the muffin. Bright lemon ice cream speckled with dutch blue poppy seeds resulting in a beautiful, zesty treat."
   },
   {
     "id": "matcha-green-tea",
@@ -373,7 +372,6 @@
     "sandwichStores": [
       "fraser",
       "quebec",
-      "frances",
       "northvan"
     ],
     "description": "House-made, cakey brownie chunks mixed into mocha ice cream, alongside delightfully crunchy chocolate sprinkles. Surrounded by soft chocolate cake and a layer of mocha fudge, this rich and decadent sammie is a must try for mocha fans."
