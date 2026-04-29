@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-04-29T00:12:31.761Z",
+  "lastUpdatedAt": "2026-04-29T20:46:59.253Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
-    "fraser": "Last updated April 27, 2026 at 12pm",
+    "fraser": "Last updated April 29, 2026 at 12pm",
     "quebec": "Last updated April 26, 2026 at 12pm",
     "frances": "Last updated April 28, 2026 at 12pm",
     "northvan": "Last updated April 28, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 28, 2026 at 12pm|fraser:Last updated April 27, 2026 at 12pm|northvan:Last updated April 28, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated April 28, 2026 at 12pm|fraser:Last updated April 29, 2026 at 12pm|northvan:Last updated April 28, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,26 +15,26 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-04-27",
-    "observedAt": "2026-04-27T20:46:38.144Z",
+    "baselineDay": "2026-04-28",
+    "observedAt": "2026-04-29T00:12:31.761Z",
     "flavorNamesByFlavorId": {
+      "cream-cheese": "Cream Cheese",
+      "lemon-poppy-seed": "Lemon Poppy Seed",
       "london-fog": "London Fog",
       "oatmeal-brown-sugar": "Oatmeal Brown Sugar",
       "strawberry": "Strawberry",
       "vegan-chocolate": "Vegan Chocolate",
-      "vegan-raspberry": "Vegan Raspberry",
       "vegan-strawberry-rhubarb-ripple": "Vegan Strawberry Rhubarb Ripple",
       "chocolate": "Chocolate",
       "cinnamon-bun": "Cinnamon Bun",
       "cookies-cream": "Cookies + Cream",
-      "cream-cheese": "Cream Cheese",
-      "lemon-poppy-seed": "Lemon Poppy Seed",
       "matcha-green-tea": "Matcha Green Tea",
       "mint-chip": "Mint Chip",
       "salted-caramel": "Salted Caramel",
       "tahitian-vanilla": "Tahitian Vanilla",
       "vegan-cookies-cream": "Vegan Cookies + Cream",
       "vegan-nanaimo-bar": "Vegan Nanaimo Bar",
+      "vegan-raspberry": "Vegan Raspberry",
       "whiskey-hazelnut": "Whiskey Hazelnut",
       "classic-sammie": "Classic Sammie",
       "milk-cookies-sammie": "Milk & Cookies Sammie",
@@ -43,6 +43,16 @@
     },
     "servingTypes": {
       "scoop": {
+        "cream-cheese": [
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "lemon-poppy-seed": [
+          "fraser",
+          "quebec",
+          "frances"
+        ],
         "london-fog": [
           "quebec",
           "frances",
@@ -63,11 +73,6 @@
           "quebec",
           "frances"
         ],
-        "vegan-raspberry": [
-          "fraser",
-          "quebec",
-          "frances"
-        ],
         "chocolate": [
           "fraser",
           "quebec",
@@ -81,18 +86,6 @@
           "northvan"
         ],
         "cookies-cream": [
-          "fraser",
-          "quebec",
-          "frances",
-          "northvan"
-        ],
-        "cream-cheese": [
-          "fraser",
-          "quebec",
-          "frances",
-          "northvan"
-        ],
-        "lemon-poppy-seed": [
           "fraser",
           "quebec",
           "frances",
@@ -134,6 +127,12 @@
           "frances",
           "northvan"
         ],
+        "vegan-raspberry": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
         "whiskey-hazelnut": [
           "fraser",
           "quebec",
@@ -142,6 +141,18 @@
         ]
       },
       "pint": {
+        "cream-cheese": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
+        "lemon-poppy-seed": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
+        ],
         "london-fog": [
           "fraser",
           "quebec",
@@ -161,10 +172,6 @@
         ],
         "vegan-chocolate": [
           "fraser",
-          "quebec",
-          "frances"
-        ],
-        "vegan-raspberry": [
           "quebec",
           "frances"
         ],
@@ -191,18 +198,6 @@
           "frances",
           "northvan"
         ],
-        "cream-cheese": [
-          "fraser",
-          "quebec",
-          "frances",
-          "northvan"
-        ],
-        "lemon-poppy-seed": [
-          "fraser",
-          "quebec",
-          "frances",
-          "northvan"
-        ],
         "matcha-green-tea": [
           "fraser",
           "quebec",
@@ -239,6 +234,10 @@
           "frances",
           "northvan"
         ],
+        "vegan-raspberry": [
+          "quebec",
+          "frances"
+        ],
         "whiskey-hazelnut": [
           "fraser",
           "quebec",
@@ -254,6 +253,7 @@
           "northvan"
         ],
         "milk-cookies-sammie": [
+          "fraser",
           "quebec",
           "frances"
         ],
@@ -263,33 +263,22 @@
         "vegan-mocha-brownie-sammie": [
           "fraser",
           "quebec",
-          "frances",
           "northvan"
         ]
       }
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-04-28",
-    "previousDay": "2026-04-27",
+    "currentDay": "2026-04-29",
+    "previousDay": "2026-04-28",
     "servingTypes": {
       "scoop": {
-        "added": {
-          "vegan-raspberry": [
-            "northvan"
-          ]
-        },
+        "added": {},
         "removed": {
-          "cream-cheese": {
-            "name": "Cream Cheese",
+          "vegan-nanaimo-bar": {
+            "name": "Vegan Nanaimo Bar",
             "storeIds": [
               "fraser"
-            ]
-          },
-          "lemon-poppy-seed": {
-            "name": "Lemon Poppy Seed",
-            "storeIds": [
-              "northvan"
             ]
           }
         }
@@ -300,27 +289,20 @@
       },
       "sandwich": {
         "added": {
-          "milk-cookies-sammie": [
-            "fraser"
+          "vegan-caramel-apple-crisp-sammie": [
+            "frances"
           ]
         },
-        "removed": {
-          "vegan-mocha-brownie-sammie": {
-            "name": "Vegan Mocha Brownie Sammie",
-            "storeIds": [
-              "frances"
-            ]
-          }
-        }
+        "removed": {}
       }
     }
   },
   "counts": {
-    "totalItems": 22,
+    "totalItems": 23,
     "iceCreamFlavors": 18,
     "scoopItems": 17,
     "pintItems": 18,
-    "sandwichItems": 4,
-    "sandwichOnlyItems": 4
+    "sandwichItems": 5,
+    "sandwichOnlyItems": 5
   }
 }

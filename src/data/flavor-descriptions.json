@@ -90,6 +90,11 @@
     "description": "Light coconut ice cream is sprinkled with dark chocolate flakes and generous handfuls of rich, gluten-friendly chocolate cake. Bright cherry compote is swirled throughout for a pop of bright fruitiness. Each bite is a symphony of decadent textures and flavours – everything you want from a black forest cake!"
   },
   {
+    "id": "vegan-caramel-apple-crisp-sammie",
+    "name": "Vegan Caramel Apple Crisp Sammie",
+    "description": "Sweet and crispy, this sammie is a delightful mix of apple-y brightness and rich caramel flavours. Our lightly spiced apple crisp ice cream has bits of toffee speckled throughout for a pop of caramely goodness in every bite! All sandwiched between vanilla-apple cake with a layer of apple-caramel to seal it together."
+  },
+  {
     "id": "vegan-chocolate",
     "name": "Vegan Chocolate",
     "description": "A vegan staple we have been running since day one! Surprisingly creamy and rich, the subtle bitterness of dark chocolate and cocoa powder add depth to the creaminess of our coconut milk base."

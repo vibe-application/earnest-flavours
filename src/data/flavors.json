@@ -106,6 +106,24 @@
     "description": "A vegan staple we have been running since day one! Surprisingly creamy and rich, the subtle bitterness of dark chocolate and cocoa powder add depth to the creaminess of our coconut milk base."
   },
   {
+    "id": "vegan-nanaimo-bar",
+    "name": "Vegan Nanaimo Bar",
+    "isVegan": true,
+    "scoopStores": [
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "This is the classic BC dessert bar in ice cream form! Dark chocolate chips and nanaimo bar crumble in our creamy coconut-cashew “custard” base."
+  },
+  {
     "id": "vegan-strawberry-rhubarb-ripple",
     "name": "Vegan Strawberry Rhubarb Ripple",
     "isVegan": true,
@@ -271,25 +289,6 @@
     "description": "A vegan twist on a childhood favourite that is brimming with chunks of cookies in a creamy vanilla base. Fun fact, we make this flavour with the exact same organic chocolate sandwich cookies we use in our dairy cookies and cream!"
   },
   {
-    "id": "vegan-nanaimo-bar",
-    "name": "Vegan Nanaimo Bar",
-    "isVegan": true,
-    "scoopStores": [
-      "fraser",
-      "quebec",
-      "frances",
-      "northvan"
-    ],
-    "pintStores": [
-      "fraser",
-      "quebec",
-      "frances",
-      "northvan"
-    ],
-    "sandwichStores": [],
-    "description": "This is the classic BC dessert bar in ice cream form! Dark chocolate chips and nanaimo bar crumble in our creamy coconut-cashew “custard” base."
-  },
-  {
     "id": "vegan-raspberry",
     "name": "Vegan Raspberry",
     "isVegan": true,
@@ -362,6 +361,17 @@
       "northvan"
     ],
     "description": "Fresh mint, crunchy cookies, and rich chocolate combined into one delectable sammie! Sweet minty cookie base is swirled with pieces of our creme cookies and chunks of peppermint bark, all sealed together with a layer of fudge between soft chocolate cake."
+  },
+  {
+    "id": "vegan-caramel-apple-crisp-sammie",
+    "name": "Vegan Caramel Apple Crisp Sammie",
+    "isVegan": true,
+    "scoopStores": [],
+    "pintStores": [],
+    "sandwichStores": [
+      "frances"
+    ],
+    "description": "Sweet and crispy, this sammie is a delightful mix of apple-y brightness and rich caramel flavours. Our lightly spiced apple crisp ice cream has bits of toffee speckled throughout for a pop of caramely goodness in every bite! All sandwiched between vanilla-apple cake with a layer of apple-caramel to seal it together."
   },
   {
     "id": "vegan-mocha-brownie-sammie",
