@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-04-29T20:46:59.253Z",
+  "lastUpdatedAt": "2026-04-30T20:46:16.556Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
-    "fraser": "Last updated April 29, 2026 at 12pm",
+    "fraser": "Last updated April 30, 2026 at 12pm",
     "quebec": "Last updated April 26, 2026 at 12pm",
     "frances": "Last updated April 28, 2026 at 12pm",
     "northvan": "Last updated April 28, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 28, 2026 at 12pm|fraser:Last updated April 29, 2026 at 12pm|northvan:Last updated April 28, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated April 28, 2026 at 12pm|fraser:Last updated April 30, 2026 at 12pm|northvan:Last updated April 28, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,8 +15,8 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-04-28",
-    "observedAt": "2026-04-29T00:12:31.761Z",
+    "baselineDay": "2026-04-29",
+    "observedAt": "2026-04-29T20:46:59.253Z",
     "flavorNamesByFlavorId": {
       "cream-cheese": "Cream Cheese",
       "lemon-poppy-seed": "Lemon Poppy Seed",
@@ -24,6 +24,7 @@
       "oatmeal-brown-sugar": "Oatmeal Brown Sugar",
       "strawberry": "Strawberry",
       "vegan-chocolate": "Vegan Chocolate",
+      "vegan-nanaimo-bar": "Vegan Nanaimo Bar",
       "vegan-strawberry-rhubarb-ripple": "Vegan Strawberry Rhubarb Ripple",
       "chocolate": "Chocolate",
       "cinnamon-bun": "Cinnamon Bun",
@@ -33,12 +34,12 @@
       "salted-caramel": "Salted Caramel",
       "tahitian-vanilla": "Tahitian Vanilla",
       "vegan-cookies-cream": "Vegan Cookies + Cream",
-      "vegan-nanaimo-bar": "Vegan Nanaimo Bar",
       "vegan-raspberry": "Vegan Raspberry",
       "whiskey-hazelnut": "Whiskey Hazelnut",
       "classic-sammie": "Classic Sammie",
       "milk-cookies-sammie": "Milk & Cookies Sammie",
       "mint-cookie-crunch-sammie": "Mint Cookie Crunch Sammie",
+      "vegan-caramel-apple-crisp-sammie": "Vegan Caramel Apple Crisp Sammie",
       "vegan-mocha-brownie-sammie": "Vegan Mocha Brownie Sammie"
     },
     "servingTypes": {
@@ -72,6 +73,11 @@
           "fraser",
           "quebec",
           "frances"
+        ],
+        "vegan-nanaimo-bar": [
+          "quebec",
+          "frances",
+          "northvan"
         ],
         "chocolate": [
           "fraser",
@@ -116,12 +122,6 @@
           "northvan"
         ],
         "vegan-cookies-cream": [
-          "fraser",
-          "quebec",
-          "frances",
-          "northvan"
-        ],
-        "vegan-nanaimo-bar": [
           "fraser",
           "quebec",
           "frances",
@@ -174,6 +174,12 @@
           "fraser",
           "quebec",
           "frances"
+        ],
+        "vegan-nanaimo-bar": [
+          "fraser",
+          "quebec",
+          "frances",
+          "northvan"
         ],
         "vegan-strawberry-rhubarb-ripple": [
           "fraser",
@@ -228,12 +234,6 @@
           "frances",
           "northvan"
         ],
-        "vegan-nanaimo-bar": [
-          "fraser",
-          "quebec",
-          "frances",
-          "northvan"
-        ],
         "vegan-raspberry": [
           "quebec",
           "frances"
@@ -260,6 +260,9 @@
         "mint-cookie-crunch-sammie": [
           "northvan"
         ],
+        "vegan-caramel-apple-crisp-sammie": [
+          "frances"
+        ],
         "vegan-mocha-brownie-sammie": [
           "fraser",
           "quebec",
@@ -269,14 +272,14 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-04-29",
-    "previousDay": "2026-04-28",
+    "currentDay": "2026-04-30",
+    "previousDay": "2026-04-29",
     "servingTypes": {
       "scoop": {
         "added": {},
         "removed": {
-          "vegan-nanaimo-bar": {
-            "name": "Vegan Nanaimo Bar",
+          "lemon-poppy-seed": {
+            "name": "Lemon Poppy Seed",
             "storeIds": [
               "fraser"
             ]
@@ -285,14 +288,23 @@
       },
       "pint": {
         "added": {},
-        "removed": {}
+        "removed": {
+          "lemon-poppy-seed": {
+            "name": "Lemon Poppy Seed",
+            "storeIds": [
+              "fraser"
+            ]
+          },
+          "vegan-strawberry-rhubarb-ripple": {
+            "name": "Vegan Strawberry Rhubarb Ripple",
+            "storeIds": [
+              "fraser"
+            ]
+          }
+        }
       },
       "sandwich": {
-        "added": {
-          "vegan-caramel-apple-crisp-sammie": [
-            "frances"
-          ]
-        },
+        "added": {},
         "removed": {}
       }
     }

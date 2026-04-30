@@ -22,12 +22,10 @@
     "name": "Lemon Poppy Seed",
     "isVegan": false,
     "scoopStores": [
-      "fraser",
       "quebec",
       "frances"
     ],
     "pintStores": [
-      "fraser",
       "quebec",
       "frances",
       "northvan"
@@ -129,7 +127,6 @@
     "isVegan": true,
     "scoopStores": [],
     "pintStores": [
-      "fraser",
       "quebec",
       "northvan"
     ],
