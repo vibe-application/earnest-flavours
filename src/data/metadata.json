@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-04-30T20:46:16.556Z",
+  "lastUpdatedAt": "2026-05-01T00:11:51.515Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated April 30, 2026 at 12pm",
     "quebec": "Last updated April 26, 2026 at 12pm",
-    "frances": "Last updated April 28, 2026 at 12pm",
+    "frances": "Last updated April 30, 2026 at 12pm",
     "northvan": "Last updated April 28, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 28, 2026 at 12pm|fraser:Last updated April 30, 2026 at 12pm|northvan:Last updated April 28, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated April 30, 2026 at 12pm|fraser:Last updated April 30, 2026 at 12pm|northvan:Last updated April 28, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -283,12 +283,30 @@
             "storeIds": [
               "fraser"
             ]
+          },
+          "london-fog": {
+            "name": "London Fog",
+            "storeIds": [
+              "frances"
+            ]
+          },
+          "vegan-raspberry": {
+            "name": "Vegan Raspberry",
+            "storeIds": [
+              "frances"
+            ]
           }
         }
       },
       "pint": {
         "added": {},
         "removed": {
+          "cream-cheese": {
+            "name": "Cream Cheese",
+            "storeIds": [
+              "frances"
+            ]
+          },
           "lemon-poppy-seed": {
             "name": "Lemon Poppy Seed",
             "storeIds": [

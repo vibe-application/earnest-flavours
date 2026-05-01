@@ -11,7 +11,6 @@
     "pintStores": [
       "fraser",
       "quebec",
-      "frances",
       "northvan"
     ],
     "sandwichStores": [],
@@ -39,7 +38,6 @@
     "isVegan": false,
     "scoopStores": [
       "quebec",
-      "frances",
       "northvan"
     ],
     "pintStores": [
@@ -120,6 +118,22 @@
     ],
     "sandwichStores": [],
     "description": "This is the classic BC dessert bar in ice cream form! Dark chocolate chips and nanaimo bar crumble in our creamy coconut-cashew “custard” base."
+  },
+  {
+    "id": "vegan-raspberry",
+    "name": "Vegan Raspberry",
+    "isVegan": true,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "northvan"
+    ],
+    "pintStores": [
+      "quebec",
+      "frances"
+    ],
+    "sandwichStores": [],
+    "description": "One of our original vegan flavours. Local raspberries from Mandair Farms pureed and blended into our signature vegan coconut base – it’s bright, tart, refreshing and looks as good as it tastes."
   },
   {
     "id": "vegan-strawberry-rhubarb-ripple",
@@ -284,23 +298,6 @@
     ],
     "sandwichStores": [],
     "description": "A vegan twist on a childhood favourite that is brimming with chunks of cookies in a creamy vanilla base. Fun fact, we make this flavour with the exact same organic chocolate sandwich cookies we use in our dairy cookies and cream!"
-  },
-  {
-    "id": "vegan-raspberry",
-    "name": "Vegan Raspberry",
-    "isVegan": true,
-    "scoopStores": [
-      "fraser",
-      "quebec",
-      "frances",
-      "northvan"
-    ],
-    "pintStores": [
-      "quebec",
-      "frances"
-    ],
-    "sandwichStores": [],
-    "description": "One of our original vegan flavours. Local raspberries from Mandair Farms pureed and blended into our signature vegan coconut base – it’s bright, tart, refreshing and looks as good as it tastes."
   },
   {
     "id": "whiskey-hazelnut",
