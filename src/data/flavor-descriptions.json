@@ -1,5 +1,10 @@
 [
   {
+    "id": "birthday-cake",
+    "name": "Birthday Cake",
+    "description": "What’s better than birthday cake with ice cream? Birthday cake IN ice cream! Bites of house-made cake throughout pink vanilla ice cream, complete with naturally coloured sprinkles. Happy birthday to us!"
+  },
+  {
     "id": "carrot-cake",
     "name": "Carrot Cake",
     "description": "House-made spiced carrot cake and cream cheese fudge generously sprinkled through a lightly spiced ice cream, creating a classic dessert in ice cream form. Featuring spices from Gathering Place Trading and Carrots from Discovery Organics."
@@ -18,6 +23,11 @@
     "id": "classic-sammie",
     "name": "Classic Sammie",
     "description": "Our take on a classic ice cream sandwich. Tahitian vanilla ice cream is sandwiched between chocolate cake and finished with a thin layer of fudge sauce. This flavour never goes out of style!"
+  },
+  {
+    "id": "coffee-crisp",
+    "name": "Coffee Crisp",
+    "description": "An Earnest take on the classic Canadian Coffee Crisp chocolate bar! A generous amount of chocolate-coated feuilletine (a french confection of thin crisp crepe) is sprinkled into our mocha ice cream base. Creamy, crunchy, chocolatey and mocha – all in one perfect scoop!"
   },
   {
     "id": "cookies-cream",
@@ -70,6 +80,11 @@
     "description": "Ice cream for breakfast – we think so! Simple comforting flavour made with lots of oats and brown sugar, which are cold-steeped in our ice cream base so they soften. Halfway between a bowl of cereal and a cookie, but in the form of ice cream. Friendly and comforting!"
   },
   {
+    "id": "pistachio",
+    "name": "Pistachio",
+    "description": "A classic flavour, finally at Earnest! Pistachio is the ultimate smooth, creamy, and nutty flavour. Pistachio butter is coming to us from our friends at Premier Nuts."
+  },
+  {
     "id": "salted-caramel",
     "name": "Salted Caramel",
     "description": "A classic for good reason. We’ve been making this one since day one and it remains a favourite still. Deeply caramelized sugar mixed with cream and salt from Vancouver Island Sea Salt Co. Its rich, creamly and buttery and the perfect balance of salty and sweet."
@@ -98,6 +113,11 @@
     "id": "vegan-chocolate",
     "name": "Vegan Chocolate",
     "description": "A vegan staple we have been running since day one! Surprisingly creamy and rich, the subtle bitterness of dark chocolate and cocoa powder add depth to the creaminess of our coconut milk base."
+  },
+  {
+    "id": "vegan-chocolate-cupcake",
+    "name": "Vegan Chocolate Cupcake",
+    "description": "Light chocolate ice cream dotted with pieces of gluten-free chocolate cake and naturally coloured sprinkles. Sweet chocolate frosting ripple completes this cupcake inspired flavour, resulting in a rich, chocolaty treat in celebration of Earnest’s birthday!"
   },
   {
     "id": "vegan-chocolate-orange-sammie",

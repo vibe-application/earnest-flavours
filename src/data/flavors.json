@@ -1,15 +1,61 @@
 [
   {
+    "id": "birthday-cake",
+    "name": "Birthday Cake",
+    "isVegan": false,
+    "scoopStores": [
+      "quebec",
+      "northvan"
+    ],
+    "pintStores": [
+      "quebec",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "What’s better than birthday cake with ice cream? Birthday cake IN ice cream! Bites of house-made cake throughout pink vanilla ice cream, complete with naturally coloured sprinkles. Happy birthday to us!"
+  },
+  {
+    "id": "cinnamon-bun",
+    "name": "Cinnamon Bun",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Get ready for a delightful treat with our cinnamon bun ice cream. We’ve taken freshly baked cinnamon buns, crafted in-house, and blended them into our creamy ice cream base, creating a delightful light bread texture that melts in your mouth. Each scoop is swirled with a rich, gooey cinnamon sauce that brings the sweet, sugary goodness of a freshly baked cinnamon bun right to your cone. This harmonious fusion of flavours and textures promises to transport you to a cozy bakery with every delectable spoonful."
+  },
+  {
+    "id": "coffee-crisp",
+    "name": "Coffee Crisp",
+    "isVegan": false,
+    "scoopStores": [
+      "quebec",
+      "northvan"
+    ],
+    "pintStores": [
+      "quebec",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "An Earnest take on the classic Canadian Coffee Crisp chocolate bar! A generous amount of chocolate-coated feuilletine (a french confection of thin crisp crepe) is sprinkled into our mocha ice cream base. Creamy, crunchy, chocolatey and mocha – all in one perfect scoop!"
+  },
+  {
     "id": "cream-cheese",
     "name": "Cream Cheese",
     "isVegan": false,
     "scoopStores": [
       "quebec",
-      "frances",
-      "northvan"
+      "frances"
     ],
     "pintStores": [
-      "fraser",
       "quebec",
       "northvan"
     ],
@@ -67,6 +113,21 @@
     "description": "Ice cream for breakfast – we think so! Simple comforting flavour made with lots of oats and brown sugar, which are cold-steeped in our ice cream base so they soften. Halfway between a bowl of cereal and a cookie, but in the form of ice cream. Friendly and comforting!"
   },
   {
+    "id": "pistachio",
+    "name": "Pistachio",
+    "isVegan": false,
+    "scoopStores": [
+      "quebec",
+      "northvan"
+    ],
+    "pintStores": [
+      "quebec",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "A classic flavour, finally at Earnest! Pistachio is the ultimate smooth, creamy, and nutty flavour. Pistachio butter is coming to us from our friends at Premier Nuts."
+  },
+  {
     "id": "strawberry",
     "name": "Strawberry",
     "isVegan": false,
@@ -102,13 +163,26 @@
     "description": "A vegan staple we have been running since day one! Surprisingly creamy and rich, the subtle bitterness of dark chocolate and cocoa powder add depth to the creaminess of our coconut milk base."
   },
   {
+    "id": "vegan-chocolate-cupcake",
+    "name": "Vegan Chocolate Cupcake",
+    "isVegan": true,
+    "scoopStores": [
+      "quebec",
+      "northvan"
+    ],
+    "pintStores": [
+      "quebec",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Light chocolate ice cream dotted with pieces of gluten-free chocolate cake and naturally coloured sprinkles. Sweet chocolate frosting ripple completes this cupcake inspired flavour, resulting in a rich, chocolaty treat in celebration of Earnest’s birthday!"
+  },
+  {
     "id": "vegan-nanaimo-bar",
     "name": "Vegan Nanaimo Bar",
     "isVegan": true,
     "scoopStores": [
-      "quebec",
-      "frances",
-      "northvan"
+      "frances"
     ],
     "pintStores": [
       "fraser",
@@ -130,7 +204,8 @@
     ],
     "pintStores": [
       "quebec",
-      "frances"
+      "frances",
+      "northvan"
     ],
     "sandwichStores": [],
     "description": "One of our original vegan flavours. Local raspberries from Mandair Farms pureed and blended into our signature vegan coconut base – it’s bright, tart, refreshing and looks as good as it tastes."
@@ -165,25 +240,6 @@
     ],
     "sandwichStores": [],
     "description": "Smooth, creamy, and oh-so-chocolatey! This ice cream is a lovely balance between our Milk Chocolate and Serious Chocolate flavours, and is sure to satisfy any chocolate-lover."
-  },
-  {
-    "id": "cinnamon-bun",
-    "name": "Cinnamon Bun",
-    "isVegan": false,
-    "scoopStores": [
-      "fraser",
-      "quebec",
-      "frances",
-      "northvan"
-    ],
-    "pintStores": [
-      "fraser",
-      "quebec",
-      "frances",
-      "northvan"
-    ],
-    "sandwichStores": [],
-    "description": "Get ready for a delightful treat with our cinnamon bun ice cream. We’ve taken freshly baked cinnamon buns, crafted in-house, and blended them into our creamy ice cream base, creating a delightful light bread texture that melts in your mouth. Each scoop is swirled with a rich, gooey cinnamon sauce that brings the sweet, sugary goodness of a freshly baked cinnamon bun right to your cone. This harmonious fusion of flavours and textures promises to transport you to a cozy bakery with every delectable spoonful."
   },
   {
     "id": "cookies-cream",
@@ -341,20 +397,10 @@
     "sandwichStores": [
       "fraser",
       "quebec",
-      "frances"
-    ],
-    "description": "House-made chocolate chip cookie chunks are generously sprinkled throughout a light milky base, along with mini chocolate chips for a bit of chocolatey crunch. Chunks of cookie are also spread on top of the sammie with a thin layer of fudge."
-  },
-  {
-    "id": "mint-cookie-crunch-sammie",
-    "name": "Mint Cookie Crunch Sammie",
-    "isVegan": false,
-    "scoopStores": [],
-    "pintStores": [],
-    "sandwichStores": [
+      "frances",
       "northvan"
     ],
-    "description": "Fresh mint, crunchy cookies, and rich chocolate combined into one delectable sammie! Sweet minty cookie base is swirled with pieces of our creme cookies and chunks of peppermint bark, all sealed together with a layer of fudge between soft chocolate cake."
+    "description": "House-made chocolate chip cookie chunks are generously sprinkled throughout a light milky base, along with mini chocolate chips for a bit of chocolatey crunch. Chunks of cookie are also spread on top of the sammie with a thin layer of fudge."
   },
   {
     "id": "vegan-caramel-apple-crisp-sammie",

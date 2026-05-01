@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-01T00:11:51.515Z",
+  "lastUpdatedAt": "2026-05-01T20:39:35.953Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated April 30, 2026 at 12pm",
-    "quebec": "Last updated April 26, 2026 at 12pm",
+    "quebec": "Last updated May 1, 2026 at 12pm",
     "frances": "Last updated April 30, 2026 at 12pm",
-    "northvan": "Last updated April 28, 2026 at 12pm"
+    "northvan": "Last updated May 1, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 30, 2026 at 12pm|fraser:Last updated April 30, 2026 at 12pm|northvan:Last updated April 28, 2026 at 12pm|quebec:Last updated April 26, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated April 30, 2026 at 12pm|fraser:Last updated April 30, 2026 at 12pm|northvan:Last updated May 1, 2026 at 12pm|quebec:Last updated May 1, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,8 +15,8 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-04-29",
-    "observedAt": "2026-04-29T20:46:59.253Z",
+    "baselineDay": "2026-04-30",
+    "observedAt": "2026-05-01T00:11:51.515Z",
     "flavorNamesByFlavorId": {
       "cream-cheese": "Cream Cheese",
       "lemon-poppy-seed": "Lemon Poppy Seed",
@@ -25,6 +25,7 @@
       "strawberry": "Strawberry",
       "vegan-chocolate": "Vegan Chocolate",
       "vegan-nanaimo-bar": "Vegan Nanaimo Bar",
+      "vegan-raspberry": "Vegan Raspberry",
       "vegan-strawberry-rhubarb-ripple": "Vegan Strawberry Rhubarb Ripple",
       "chocolate": "Chocolate",
       "cinnamon-bun": "Cinnamon Bun",
@@ -34,7 +35,6 @@
       "salted-caramel": "Salted Caramel",
       "tahitian-vanilla": "Tahitian Vanilla",
       "vegan-cookies-cream": "Vegan Cookies + Cream",
-      "vegan-raspberry": "Vegan Raspberry",
       "whiskey-hazelnut": "Whiskey Hazelnut",
       "classic-sammie": "Classic Sammie",
       "milk-cookies-sammie": "Milk & Cookies Sammie",
@@ -50,13 +50,11 @@
           "northvan"
         ],
         "lemon-poppy-seed": [
-          "fraser",
           "quebec",
           "frances"
         ],
         "london-fog": [
           "quebec",
-          "frances",
           "northvan"
         ],
         "oatmeal-brown-sugar": [
@@ -77,6 +75,11 @@
         "vegan-nanaimo-bar": [
           "quebec",
           "frances",
+          "northvan"
+        ],
+        "vegan-raspberry": [
+          "fraser",
+          "quebec",
           "northvan"
         ],
         "chocolate": [
@@ -122,12 +125,6 @@
           "northvan"
         ],
         "vegan-cookies-cream": [
-          "fraser",
-          "quebec",
-          "frances",
-          "northvan"
-        ],
-        "vegan-raspberry": [
           "fraser",
           "quebec",
           "frances",
@@ -144,11 +141,9 @@
         "cream-cheese": [
           "fraser",
           "quebec",
-          "frances",
           "northvan"
         ],
         "lemon-poppy-seed": [
-          "fraser",
           "quebec",
           "frances",
           "northvan"
@@ -181,8 +176,11 @@
           "frances",
           "northvan"
         ],
+        "vegan-raspberry": [
+          "quebec",
+          "frances"
+        ],
         "vegan-strawberry-rhubarb-ripple": [
-          "fraser",
           "quebec",
           "northvan"
         ],
@@ -233,10 +231,6 @@
           "quebec",
           "frances",
           "northvan"
-        ],
-        "vegan-raspberry": [
-          "quebec",
-          "frances"
         ],
         "whiskey-hazelnut": [
           "fraser",
@@ -272,49 +266,75 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-04-30",
-    "previousDay": "2026-04-29",
+    "currentDay": "2026-05-01",
+    "previousDay": "2026-04-30",
     "servingTypes": {
       "scoop": {
-        "added": {},
+        "added": {
+          "birthday-cake": [
+            "quebec",
+            "northvan"
+          ],
+          "coffee-crisp": [
+            "quebec",
+            "northvan"
+          ],
+          "pistachio": [
+            "quebec",
+            "northvan"
+          ],
+          "vegan-chocolate-cupcake": [
+            "quebec",
+            "northvan"
+          ]
+        },
         "removed": {
-          "lemon-poppy-seed": {
-            "name": "Lemon Poppy Seed",
+          "cinnamon-bun": {
+            "name": "Cinnamon Bun",
             "storeIds": [
-              "fraser"
+              "northvan"
             ]
           },
-          "london-fog": {
-            "name": "London Fog",
+          "cream-cheese": {
+            "name": "Cream Cheese",
             "storeIds": [
-              "frances"
+              "northvan"
             ]
           },
-          "vegan-raspberry": {
-            "name": "Vegan Raspberry",
+          "vegan-nanaimo-bar": {
+            "name": "Vegan Nanaimo Bar",
             "storeIds": [
-              "frances"
+              "quebec",
+              "northvan"
             ]
           }
         }
       },
       "pint": {
-        "added": {},
+        "added": {
+          "birthday-cake": [
+            "quebec",
+            "northvan"
+          ],
+          "coffee-crisp": [
+            "quebec",
+            "northvan"
+          ],
+          "pistachio": [
+            "quebec",
+            "northvan"
+          ],
+          "vegan-chocolate-cupcake": [
+            "quebec",
+            "northvan"
+          ],
+          "vegan-raspberry": [
+            "northvan"
+          ]
+        },
         "removed": {
           "cream-cheese": {
             "name": "Cream Cheese",
-            "storeIds": [
-              "frances"
-            ]
-          },
-          "lemon-poppy-seed": {
-            "name": "Lemon Poppy Seed",
-            "storeIds": [
-              "fraser"
-            ]
-          },
-          "vegan-strawberry-rhubarb-ripple": {
-            "name": "Vegan Strawberry Rhubarb Ripple",
             "storeIds": [
               "fraser"
             ]
@@ -322,17 +342,28 @@
         }
       },
       "sandwich": {
-        "added": {},
-        "removed": {}
+        "added": {
+          "milk-cookies-sammie": [
+            "northvan"
+          ]
+        },
+        "removed": {
+          "mint-cookie-crunch-sammie": {
+            "name": "Mint Cookie Crunch Sammie",
+            "storeIds": [
+              "northvan"
+            ]
+          }
+        }
       }
     }
   },
   "counts": {
-    "totalItems": 23,
-    "iceCreamFlavors": 18,
-    "scoopItems": 17,
-    "pintItems": 18,
-    "sandwichItems": 5,
-    "sandwichOnlyItems": 5
+    "totalItems": 26,
+    "iceCreamFlavors": 22,
+    "scoopItems": 21,
+    "pintItems": 22,
+    "sandwichItems": 4,
+    "sandwichOnlyItems": 4
   }
 }
