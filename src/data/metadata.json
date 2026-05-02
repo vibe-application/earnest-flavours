@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-01T20:39:35.953Z",
+  "lastUpdatedAt": "2026-05-02T00:10:11.624Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
-    "fraser": "Last updated April 30, 2026 at 12pm",
+    "fraser": "Last updated May 1, 2026 at 12pm",
     "quebec": "Last updated May 1, 2026 at 12pm",
-    "frances": "Last updated April 30, 2026 at 12pm",
+    "frances": "Last updated May 1, 2026 at 12pm",
     "northvan": "Last updated May 1, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated April 30, 2026 at 12pm|fraser:Last updated April 30, 2026 at 12pm|northvan:Last updated May 1, 2026 at 12pm|quebec:Last updated May 1, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated May 1, 2026 at 12pm|fraser:Last updated May 1, 2026 at 12pm|northvan:Last updated May 1, 2026 at 12pm|quebec:Last updated May 1, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -272,20 +272,31 @@
       "scoop": {
         "added": {
           "birthday-cake": [
+            "fraser",
             "quebec",
+            "frances",
             "northvan"
           ],
           "coffee-crisp": [
+            "fraser",
             "quebec",
+            "frances",
             "northvan"
           ],
           "pistachio": [
+            "fraser",
             "quebec",
+            "frances",
             "northvan"
           ],
           "vegan-chocolate-cupcake": [
+            "fraser",
             "quebec",
+            "frances",
             "northvan"
+          ],
+          "vegan-raspberry": [
+            "frances"
           ]
         },
         "removed": {
@@ -312,34 +323,39 @@
       },
       "pint": {
         "added": {
+          "lemon-poppy-seed": [
+            "fraser"
+          ],
           "birthday-cake": [
+            "fraser",
             "quebec",
+            "frances",
             "northvan"
           ],
           "coffee-crisp": [
+            "fraser",
             "quebec",
+            "frances",
             "northvan"
           ],
           "pistachio": [
+            "fraser",
             "quebec",
+            "frances",
             "northvan"
           ],
           "vegan-chocolate-cupcake": [
+            "fraser",
             "quebec",
+            "frances",
             "northvan"
           ],
           "vegan-raspberry": [
+            "fraser",
             "northvan"
           ]
         },
-        "removed": {
-          "cream-cheese": {
-            "name": "Cream Cheese",
-            "storeIds": [
-              "fraser"
-            ]
-          }
-        }
+        "removed": {}
       },
       "sandwich": {
         "added": {

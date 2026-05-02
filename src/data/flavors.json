@@ -1,20 +1,5 @@
 [
   {
-    "id": "birthday-cake",
-    "name": "Birthday Cake",
-    "isVegan": false,
-    "scoopStores": [
-      "quebec",
-      "northvan"
-    ],
-    "pintStores": [
-      "quebec",
-      "northvan"
-    ],
-    "sandwichStores": [],
-    "description": "What’s better than birthday cake with ice cream? Birthday cake IN ice cream! Bites of house-made cake throughout pink vanilla ice cream, complete with naturally coloured sprinkles. Happy birthday to us!"
-  },
-  {
     "id": "cinnamon-bun",
     "name": "Cinnamon Bun",
     "isVegan": false,
@@ -33,21 +18,6 @@
     "description": "Get ready for a delightful treat with our cinnamon bun ice cream. We’ve taken freshly baked cinnamon buns, crafted in-house, and blended them into our creamy ice cream base, creating a delightful light bread texture that melts in your mouth. Each scoop is swirled with a rich, gooey cinnamon sauce that brings the sweet, sugary goodness of a freshly baked cinnamon bun right to your cone. This harmonious fusion of flavours and textures promises to transport you to a cozy bakery with every delectable spoonful."
   },
   {
-    "id": "coffee-crisp",
-    "name": "Coffee Crisp",
-    "isVegan": false,
-    "scoopStores": [
-      "quebec",
-      "northvan"
-    ],
-    "pintStores": [
-      "quebec",
-      "northvan"
-    ],
-    "sandwichStores": [],
-    "description": "An Earnest take on the classic Canadian Coffee Crisp chocolate bar! A generous amount of chocolate-coated feuilletine (a french confection of thin crisp crepe) is sprinkled into our mocha ice cream base. Creamy, crunchy, chocolatey and mocha – all in one perfect scoop!"
-  },
-  {
     "id": "cream-cheese",
     "name": "Cream Cheese",
     "isVegan": false,
@@ -56,6 +26,7 @@
       "frances"
     ],
     "pintStores": [
+      "fraser",
       "quebec",
       "northvan"
     ],
@@ -71,6 +42,7 @@
       "frances"
     ],
     "pintStores": [
+      "fraser",
       "quebec",
       "frances",
       "northvan"
@@ -113,21 +85,6 @@
     "description": "Ice cream for breakfast – we think so! Simple comforting flavour made with lots of oats and brown sugar, which are cold-steeped in our ice cream base so they soften. Halfway between a bowl of cereal and a cookie, but in the form of ice cream. Friendly and comforting!"
   },
   {
-    "id": "pistachio",
-    "name": "Pistachio",
-    "isVegan": false,
-    "scoopStores": [
-      "quebec",
-      "northvan"
-    ],
-    "pintStores": [
-      "quebec",
-      "northvan"
-    ],
-    "sandwichStores": [],
-    "description": "A classic flavour, finally at Earnest! Pistachio is the ultimate smooth, creamy, and nutty flavour. Pistachio butter is coming to us from our friends at Premier Nuts."
-  },
-  {
     "id": "strawberry",
     "name": "Strawberry",
     "isVegan": false,
@@ -163,21 +120,6 @@
     "description": "A vegan staple we have been running since day one! Surprisingly creamy and rich, the subtle bitterness of dark chocolate and cocoa powder add depth to the creaminess of our coconut milk base."
   },
   {
-    "id": "vegan-chocolate-cupcake",
-    "name": "Vegan Chocolate Cupcake",
-    "isVegan": true,
-    "scoopStores": [
-      "quebec",
-      "northvan"
-    ],
-    "pintStores": [
-      "quebec",
-      "northvan"
-    ],
-    "sandwichStores": [],
-    "description": "Light chocolate ice cream dotted with pieces of gluten-free chocolate cake and naturally coloured sprinkles. Sweet chocolate frosting ripple completes this cupcake inspired flavour, resulting in a rich, chocolaty treat in celebration of Earnest’s birthday!"
-  },
-  {
     "id": "vegan-nanaimo-bar",
     "name": "Vegan Nanaimo Bar",
     "isVegan": true,
@@ -194,23 +136,6 @@
     "description": "This is the classic BC dessert bar in ice cream form! Dark chocolate chips and nanaimo bar crumble in our creamy coconut-cashew “custard” base."
   },
   {
-    "id": "vegan-raspberry",
-    "name": "Vegan Raspberry",
-    "isVegan": true,
-    "scoopStores": [
-      "fraser",
-      "quebec",
-      "northvan"
-    ],
-    "pintStores": [
-      "quebec",
-      "frances",
-      "northvan"
-    ],
-    "sandwichStores": [],
-    "description": "One of our original vegan flavours. Local raspberries from Mandair Farms pureed and blended into our signature vegan coconut base – it’s bright, tart, refreshing and looks as good as it tastes."
-  },
-  {
     "id": "vegan-strawberry-rhubarb-ripple",
     "name": "Vegan Strawberry Rhubarb Ripple",
     "isVegan": true,
@@ -221,6 +146,25 @@
     ],
     "sandwichStores": [],
     "description": "This delightful vegan flavour is perfect for reminiscing the summer sun. Local strawberries and rhubarb create our flavoursome and vibrant compote, swirled throughout our creamy vanilla ice cream."
+  },
+  {
+    "id": "birthday-cake",
+    "name": "Birthday Cake",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "What’s better than birthday cake with ice cream? Birthday cake IN ice cream! Bites of house-made cake throughout pink vanilla ice cream, complete with naturally coloured sprinkles. Happy birthday to us!"
   },
   {
     "id": "chocolate",
@@ -240,6 +184,25 @@
     ],
     "sandwichStores": [],
     "description": "Smooth, creamy, and oh-so-chocolatey! This ice cream is a lovely balance between our Milk Chocolate and Serious Chocolate flavours, and is sure to satisfy any chocolate-lover."
+  },
+  {
+    "id": "coffee-crisp",
+    "name": "Coffee Crisp",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "An Earnest take on the classic Canadian Coffee Crisp chocolate bar! A generous amount of chocolate-coated feuilletine (a french confection of thin crisp crepe) is sprinkled into our mocha ice cream base. Creamy, crunchy, chocolatey and mocha – all in one perfect scoop!"
   },
   {
     "id": "cookies-cream",
@@ -299,6 +262,25 @@
     "description": "The classic mint chocolate ice cream made with lots of house made dark chocolate chips! Like peppermint patty but better. No artificial food colouring is added so it’s white, not green. Fresh and minty, with the added crunch from the dark chocolate flakes."
   },
   {
+    "id": "pistachio",
+    "name": "Pistachio",
+    "isVegan": false,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "A classic flavour, finally at Earnest! Pistachio is the ultimate smooth, creamy, and nutty flavour. Pistachio butter is coming to us from our friends at Premier Nuts."
+  },
+  {
     "id": "salted-caramel",
     "name": "Salted Caramel",
     "isVegan": false,
@@ -337,6 +319,25 @@
     "description": "This flavour has been a core since day one. Our pure vanilla extract is sourced from premium slow-grown, sun-cured vanilla beans of the “Tahitian” variety. The flavour from the beans is cold-extracted to preserve its complex bouquet. These vanilla beans are brighter and more floral than the rounder, woodsier Madagascar variety."
   },
   {
+    "id": "vegan-chocolate-cupcake",
+    "name": "Vegan Chocolate Cupcake",
+    "isVegan": true,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "Light chocolate ice cream dotted with pieces of gluten-free chocolate cake and naturally coloured sprinkles. Sweet chocolate frosting ripple completes this cupcake inspired flavour, resulting in a rich, chocolaty treat in celebration of Earnest’s birthday!"
+  },
+  {
     "id": "vegan-cookies-cream",
     "name": "Vegan Cookies + Cream",
     "isVegan": true,
@@ -354,6 +355,25 @@
     ],
     "sandwichStores": [],
     "description": "A vegan twist on a childhood favourite that is brimming with chunks of cookies in a creamy vanilla base. Fun fact, we make this flavour with the exact same organic chocolate sandwich cookies we use in our dairy cookies and cream!"
+  },
+  {
+    "id": "vegan-raspberry",
+    "name": "Vegan Raspberry",
+    "isVegan": true,
+    "scoopStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "pintStores": [
+      "fraser",
+      "quebec",
+      "frances",
+      "northvan"
+    ],
+    "sandwichStores": [],
+    "description": "One of our original vegan flavours. Local raspberries from Mandair Farms pureed and blended into our signature vegan coconut base – it’s bright, tart, refreshing and looks as good as it tastes."
   },
   {
     "id": "whiskey-hazelnut",
