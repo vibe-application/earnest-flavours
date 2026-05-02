@@ -22,8 +22,7 @@
     "name": "Cream Cheese",
     "isVegan": false,
     "scoopStores": [
-      "quebec",
-      "frances"
+      "quebec"
     ],
     "pintStores": [
       "fraser",
@@ -37,10 +36,7 @@
     "id": "lemon-poppy-seed",
     "name": "Lemon Poppy Seed",
     "isVegan": false,
-    "scoopStores": [
-      "quebec",
-      "frances"
-    ],
+    "scoopStores": [],
     "pintStores": [
       "fraser",
       "quebec",
@@ -108,8 +104,7 @@
     "isVegan": true,
     "scoopStores": [
       "fraser",
-      "quebec",
-      "frances"
+      "quebec"
     ],
     "pintStores": [
       "fraser",
@@ -123,9 +118,7 @@
     "id": "vegan-nanaimo-bar",
     "name": "Vegan Nanaimo Bar",
     "isVegan": true,
-    "scoopStores": [
-      "frances"
-    ],
+    "scoopStores": [],
     "pintStores": [
       "fraser",
       "quebec",
