@@ -39,7 +39,6 @@
     "scoopStores": [],
     "pintStores": [
       "quebec",
-      "frances",
       "northvan"
     ],
     "sandwichStores": [],
@@ -420,6 +419,7 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
+      "quebec",
       "frances",
       "northvan"
     ],
@@ -433,7 +433,6 @@
     "pintStores": [],
     "sandwichStores": [
       "fraser",
-      "quebec",
       "northvan"
     ],
     "description": "House-made, cakey brownie chunks mixed into mocha ice cream, alongside delightfully crunchy chocolate sprinkles. Surrounded by soft chocolate cake and a layer of mocha fudge, this rich and decadent sammie is a must try for mocha fans."

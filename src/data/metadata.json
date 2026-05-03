@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-03T00:04:57.201Z",
+  "lastUpdatedAt": "2026-05-03T20:29:11.424Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated May 2, 2026 at 12pm",
-    "quebec": "Last updated May 1, 2026 at 12pm",
+    "quebec": "Last updated May 2, 2026 at 12pm",
     "frances": "Last updated May 2, 2026 at 12pm",
     "northvan": "Last updated May 2, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated May 2, 2026 at 12pm|fraser:Last updated May 2, 2026 at 12pm|northvan:Last updated May 2, 2026 at 12pm|quebec:Last updated May 1, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated May 2, 2026 at 12pm|fraser:Last updated May 2, 2026 at 12pm|northvan:Last updated May 2, 2026 at 12pm|quebec:Last updated May 2, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,8 +15,8 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-05-01",
-    "observedAt": "2026-05-02T00:10:11.624Z",
+    "baselineDay": "2026-05-02",
+    "observedAt": "2026-05-03T00:04:57.201Z",
     "flavorNamesByFlavorId": {
       "cinnamon-bun": "Cinnamon Bun",
       "cream-cheese": "Cream Cheese",
@@ -53,12 +53,7 @@
           "frances"
         ],
         "cream-cheese": [
-          "quebec",
-          "frances"
-        ],
-        "lemon-poppy-seed": [
-          "quebec",
-          "frances"
+          "quebec"
         ],
         "london-fog": [
           "quebec",
@@ -76,11 +71,7 @@
         ],
         "vegan-chocolate": [
           "fraser",
-          "quebec",
-          "frances"
-        ],
-        "vegan-nanaimo-bar": [
-          "frances"
+          "quebec"
         ],
         "birthday-cake": [
           "fraser",
@@ -174,7 +165,6 @@
           "northvan"
         ],
         "lemon-poppy-seed": [
-          "fraser",
           "quebec",
           "frances",
           "northvan"
@@ -224,7 +214,6 @@
           "northvan"
         ],
         "coffee-crisp": [
-          "fraser",
           "quebec",
           "frances",
           "northvan"
@@ -304,7 +293,8 @@
           "northvan"
         ],
         "vegan-caramel-apple-crisp-sammie": [
-          "frances"
+          "frances",
+          "northvan"
         ],
         "vegan-mocha-brownie-sammie": [
           "fraser",
@@ -315,38 +305,12 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-05-02",
-    "previousDay": "2026-05-01",
+    "currentDay": "2026-05-03",
+    "previousDay": "2026-05-02",
     "servingTypes": {
       "scoop": {
         "added": {},
-        "removed": {
-          "cream-cheese": {
-            "name": "Cream Cheese",
-            "storeIds": [
-              "frances"
-            ]
-          },
-          "vegan-chocolate": {
-            "name": "Vegan Chocolate",
-            "storeIds": [
-              "frances"
-            ]
-          },
-          "lemon-poppy-seed": {
-            "name": "Lemon Poppy Seed",
-            "storeIds": [
-              "quebec",
-              "frances"
-            ]
-          },
-          "vegan-nanaimo-bar": {
-            "name": "Vegan Nanaimo Bar",
-            "storeIds": [
-              "frances"
-            ]
-          }
-        }
+        "removed": {}
       },
       "pint": {
         "added": {},
@@ -354,13 +318,7 @@
           "lemon-poppy-seed": {
             "name": "Lemon Poppy Seed",
             "storeIds": [
-              "fraser"
-            ]
-          },
-          "coffee-crisp": {
-            "name": "Coffee Crisp",
-            "storeIds": [
-              "fraser"
+              "frances"
             ]
           }
         }
@@ -368,10 +326,17 @@
       "sandwich": {
         "added": {
           "vegan-caramel-apple-crisp-sammie": [
-            "northvan"
+            "quebec"
           ]
         },
-        "removed": {}
+        "removed": {
+          "vegan-mocha-brownie-sammie": {
+            "name": "Vegan Mocha Brownie Sammie",
+            "storeIds": [
+              "quebec"
+            ]
+          }
+        }
       }
     }
   },
