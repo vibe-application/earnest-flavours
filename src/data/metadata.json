@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-02T20:28:15.643Z",
+  "lastUpdatedAt": "2026-05-03T00:04:57.201Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
-    "fraser": "Last updated May 1, 2026 at 12pm",
+    "fraser": "Last updated May 2, 2026 at 12pm",
     "quebec": "Last updated May 1, 2026 at 12pm",
     "frances": "Last updated May 2, 2026 at 12pm",
-    "northvan": "Last updated May 1, 2026 at 12pm"
+    "northvan": "Last updated May 2, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated May 2, 2026 at 12pm|fraser:Last updated May 1, 2026 at 12pm|northvan:Last updated May 1, 2026 at 12pm|quebec:Last updated May 1, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated May 2, 2026 at 12pm|fraser:Last updated May 2, 2026 at 12pm|northvan:Last updated May 2, 2026 at 12pm|quebec:Last updated May 1, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -350,10 +350,27 @@
       },
       "pint": {
         "added": {},
-        "removed": {}
+        "removed": {
+          "lemon-poppy-seed": {
+            "name": "Lemon Poppy Seed",
+            "storeIds": [
+              "fraser"
+            ]
+          },
+          "coffee-crisp": {
+            "name": "Coffee Crisp",
+            "storeIds": [
+              "fraser"
+            ]
+          }
+        }
       },
       "sandwich": {
-        "added": {},
+        "added": {
+          "vegan-caramel-apple-crisp-sammie": [
+            "northvan"
+          ]
+        },
         "removed": {}
       }
     }
