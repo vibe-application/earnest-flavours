@@ -21,9 +21,7 @@
     "id": "cream-cheese",
     "name": "Cream Cheese",
     "isVegan": false,
-    "scoopStores": [
-      "quebec"
-    ],
+    "scoopStores": [],
     "pintStores": [
       "fraser",
       "quebec",
