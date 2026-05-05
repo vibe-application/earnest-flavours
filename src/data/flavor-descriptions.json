@@ -25,6 +25,11 @@
     "description": "Our take on a classic ice cream sandwich. Tahitian vanilla ice cream is sandwiched between chocolate cake and finished with a thin layer of fudge sauce. This flavour never goes out of style!"
   },
   {
+    "id": "coffee",
+    "name": "Coffee",
+    "description": "Made with organic, fair-trade coffee from Mount Hagen, this ice cream tastes just like a creamy iced coffee! The perfect balance of rich coffee and sweet cream, this flavour is sure to satisfy any coffee-lover."
+  },
+  {
     "id": "coffee-crisp",
     "name": "Coffee Crisp",
     "description": "An Earnest take on the classic Canadian Coffee Crisp chocolate bar! A generous amount of chocolate-coated feuilletine (a french confection of thin crisp crepe) is sprinkled into our mocha ice cream base. Creamy, crunchy, chocolatey and mocha – all in one perfect scoop!"

@@ -4,12 +4,10 @@
     "name": "Cinnamon Bun",
     "isVegan": false,
     "scoopStores": [
-      "fraser",
       "quebec",
       "frances"
     ],
     "pintStores": [
-      "fraser",
       "quebec",
       "frances",
       "northvan"
@@ -18,12 +16,22 @@
     "description": "Get ready for a delightful treat with our cinnamon bun ice cream. We’ve taken freshly baked cinnamon buns, crafted in-house, and blended them into our creamy ice cream base, creating a delightful light bread texture that melts in your mouth. Each scoop is swirled with a rich, gooey cinnamon sauce that brings the sweet, sugary goodness of a freshly baked cinnamon bun right to your cone. This harmonious fusion of flavours and textures promises to transport you to a cozy bakery with every delectable spoonful."
   },
   {
+    "id": "coffee",
+    "name": "Coffee",
+    "isVegan": false,
+    "scoopStores": [
+      "frances"
+    ],
+    "pintStores": [],
+    "sandwichStores": [],
+    "description": "Made with organic, fair-trade coffee from Mount Hagen, this ice cream tastes just like a creamy iced coffee! The perfect balance of rich coffee and sweet cream, this flavour is sure to satisfy any coffee-lover."
+  },
+  {
     "id": "cream-cheese",
     "name": "Cream Cheese",
     "isVegan": false,
     "scoopStores": [],
     "pintStores": [
-      "fraser",
       "quebec",
       "northvan"
     ],
@@ -118,7 +126,6 @@
     "pintStores": [
       "fraser",
       "quebec",
-      "frances",
       "northvan"
     ],
     "sandwichStores": [],
@@ -184,7 +191,6 @@
       "northvan"
     ],
     "pintStores": [
-      "fraser",
       "quebec",
       "frances",
       "northvan"
@@ -260,7 +266,6 @@
       "northvan"
     ],
     "pintStores": [
-      "fraser",
       "quebec",
       "frances",
       "northvan"
