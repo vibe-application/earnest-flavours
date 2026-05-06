@@ -33,6 +33,7 @@
     "scoopStores": [],
     "pintStores": [
       "quebec",
+      "frances",
       "northvan"
     ],
     "sandwichStores": [],
@@ -191,7 +192,6 @@
       "northvan"
     ],
     "pintStores": [
-      "quebec",
       "frances",
       "northvan"
     ],
