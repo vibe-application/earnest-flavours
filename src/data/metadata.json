@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-06T00:10:30.266Z",
+  "lastUpdatedAt": "2026-05-06T21:00:00.550Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
-    "fraser": "Last updated May 5, 2026 at 12pm",
+    "fraser": "Last updated May 6, 2026 at 12pm",
     "quebec": "Last updated May 5, 2026 at 12pm",
     "frances": "Last updated May 5, 2026 at 12pm",
     "northvan": "Last updated May 4, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated May 5, 2026 at 12pm|fraser:Last updated May 5, 2026 at 12pm|northvan:Last updated May 4, 2026 at 12pm|quebec:Last updated May 5, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated May 5, 2026 at 12pm|fraser:Last updated May 6, 2026 at 12pm|northvan:Last updated May 4, 2026 at 12pm|quebec:Last updated May 5, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,10 +15,11 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-05-04",
-    "observedAt": "2026-05-05T00:13:04.925Z",
+    "baselineDay": "2026-05-05",
+    "observedAt": "2026-05-06T00:10:30.266Z",
     "flavorNamesByFlavorId": {
       "cinnamon-bun": "Cinnamon Bun",
+      "coffee": "Coffee",
       "cream-cheese": "Cream Cheese",
       "lemon-poppy-seed": "Lemon Poppy Seed",
       "london-fog": "London Fog",
@@ -48,8 +49,10 @@
     "servingTypes": {
       "scoop": {
         "cinnamon-bun": [
-          "fraser",
           "quebec",
+          "frances"
+        ],
+        "coffee": [
           "frances"
         ],
         "london-fog": [
@@ -151,14 +154,13 @@
       },
       "pint": {
         "cinnamon-bun": [
-          "fraser",
           "quebec",
           "frances",
           "northvan"
         ],
         "cream-cheese": [
-          "fraser",
           "quebec",
+          "frances",
           "northvan"
         ],
         "lemon-poppy-seed": [
@@ -190,7 +192,6 @@
         "vegan-nanaimo-bar": [
           "fraser",
           "quebec",
-          "frances",
           "northvan"
         ],
         "vegan-strawberry-rhubarb-ripple": [
@@ -209,8 +210,6 @@
           "northvan"
         ],
         "coffee-crisp": [
-          "fraser",
-          "quebec",
           "frances",
           "northvan"
         ],
@@ -233,7 +232,6 @@
           "northvan"
         ],
         "pistachio": [
-          "fraser",
           "quebec",
           "frances",
           "northvan"
@@ -301,60 +299,30 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-05-05",
-    "previousDay": "2026-05-04",
+    "currentDay": "2026-05-06",
+    "previousDay": "2026-05-05",
     "servingTypes": {
       "scoop": {
-        "added": {
-          "coffee": [
-            "frances"
-          ]
-        },
-        "removed": {
-          "cinnamon-bun": {
-            "name": "Cinnamon Bun",
-            "storeIds": [
-              "fraser"
-            ]
-          }
-        }
+        "added": {},
+        "removed": {}
       },
       "pint": {
         "added": {
-          "cream-cheese": [
-            "frances"
+          "cinnamon-bun": [
+            "fraser"
+          ],
+          "coffee-crisp": [
+            "fraser"
+          ],
+          "pistachio": [
+            "fraser"
           ]
         },
         "removed": {
-          "cinnamon-bun": {
-            "name": "Cinnamon Bun",
+          "lemon-poppy-seed": {
+            "name": "Lemon Poppy Seed",
             "storeIds": [
-              "fraser"
-            ]
-          },
-          "cream-cheese": {
-            "name": "Cream Cheese",
-            "storeIds": [
-              "fraser"
-            ]
-          },
-          "vegan-nanaimo-bar": {
-            "name": "Vegan Nanaimo Bar",
-            "storeIds": [
-              "frances"
-            ]
-          },
-          "coffee-crisp": {
-            "name": "Coffee Crisp",
-            "storeIds": [
-              "fraser",
               "quebec"
-            ]
-          },
-          "pistachio": {
-            "name": "Pistachio",
-            "storeIds": [
-              "fraser"
             ]
           }
         }
