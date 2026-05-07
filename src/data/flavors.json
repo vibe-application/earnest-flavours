@@ -4,8 +4,7 @@
     "name": "Cinnamon Bun",
     "isVegan": false,
     "scoopStores": [
-      "quebec",
-      "frances"
+      "quebec"
     ],
     "pintStores": [
       "fraser",
@@ -412,8 +411,6 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
-      "fraser",
-      "quebec",
       "frances",
       "northvan"
     ],
