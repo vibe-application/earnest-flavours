@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-06T21:00:00.550Z",
+  "lastUpdatedAt": "2026-05-07T00:09:56.704Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated May 6, 2026 at 12pm",
     "quebec": "Last updated May 5, 2026 at 12pm",
-    "frances": "Last updated May 5, 2026 at 12pm",
+    "frances": "Last updated May 6, 2026 at 12pm",
     "northvan": "Last updated May 4, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated May 5, 2026 at 12pm|fraser:Last updated May 6, 2026 at 12pm|northvan:Last updated May 4, 2026 at 12pm|quebec:Last updated May 5, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated May 6, 2026 at 12pm|fraser:Last updated May 6, 2026 at 12pm|northvan:Last updated May 4, 2026 at 12pm|quebec:Last updated May 5, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -303,13 +303,20 @@
     "previousDay": "2026-05-05",
     "servingTypes": {
       "scoop": {
-        "added": {},
+        "added": {
+          "london-fog": [
+            "frances"
+          ]
+        },
         "removed": {}
       },
       "pint": {
         "added": {
           "cinnamon-bun": [
             "fraser"
+          ],
+          "vegan-strawberry-rhubarb-ripple": [
+            "frances"
           ],
           "coffee-crisp": [
             "fraser"

@@ -57,6 +57,7 @@
     "isVegan": false,
     "scoopStores": [
       "quebec",
+      "frances",
       "northvan"
     ],
     "pintStores": [
@@ -138,7 +139,8 @@
     "isVegan": true,
     "scoopStores": [],
     "pintStores": [
-      "quebec"
+      "quebec",
+      "frances"
     ],
     "sandwichStores": [],
     "description": "This delightful vegan flavour is perfect for reminiscing the summer sun. Local strawberries and rhubarb create our flavoursome and vibrant compote, swirled throughout our creamy vanilla ice cream."
