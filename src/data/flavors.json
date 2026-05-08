@@ -3,9 +3,7 @@
     "id": "cinnamon-bun",
     "name": "Cinnamon Bun",
     "isVegan": false,
-    "scoopStores": [
-      "quebec"
-    ],
+    "scoopStores": [],
     "pintStores": [
       "fraser",
       "quebec",

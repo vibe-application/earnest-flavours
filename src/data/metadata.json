@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-07T20:54:31.288Z",
+  "lastUpdatedAt": "2026-05-08T20:44:16.154Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
-    "fraser": "Last updated May 6, 2026 at 12pm",
-    "quebec": "Last updated May 7, 2026 at 12pm",
+    "fraser": "Last updated May 8, 2026 at 12pm",
+    "quebec": "Last updated May 8, 2026 at 12pm",
     "frances": "Last updated May 6, 2026 at 12pm",
     "northvan": "Last updated May 4, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated May 6, 2026 at 12pm|fraser:Last updated May 6, 2026 at 12pm|northvan:Last updated May 4, 2026 at 12pm|quebec:Last updated May 7, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated May 6, 2026 at 12pm|fraser:Last updated May 8, 2026 at 12pm|northvan:Last updated May 4, 2026 at 12pm|quebec:Last updated May 8, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,8 +15,8 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-05-06",
-    "observedAt": "2026-05-07T00:09:56.704Z",
+    "baselineDay": "2026-05-07",
+    "observedAt": "2026-05-07T20:54:31.288Z",
     "flavorNamesByFlavorId": {
       "cinnamon-bun": "Cinnamon Bun",
       "coffee": "Coffee",
@@ -49,8 +49,7 @@
     "servingTypes": {
       "scoop": {
         "cinnamon-bun": [
-          "quebec",
-          "frances"
+          "quebec"
         ],
         "coffee": [
           "frances"
@@ -285,8 +284,6 @@
           "northvan"
         ],
         "milk-cookies-sammie": [
-          "fraser",
-          "quebec",
           "frances",
           "northvan"
         ],
@@ -303,8 +300,8 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-05-07",
-    "previousDay": "2026-05-06",
+    "currentDay": "2026-05-08",
+    "previousDay": "2026-05-07",
     "servingTypes": {
       "scoop": {
         "added": {},
@@ -312,7 +309,7 @@
           "cinnamon-bun": {
             "name": "Cinnamon Bun",
             "storeIds": [
-              "frances"
+              "quebec"
             ]
           }
         }
@@ -323,22 +320,14 @@
       },
       "sandwich": {
         "added": {},
-        "removed": {
-          "milk-cookies-sammie": {
-            "name": "Milk & Cookies Sammie",
-            "storeIds": [
-              "fraser",
-              "quebec"
-            ]
-          }
-        }
+        "removed": {}
       }
     }
   },
   "counts": {
     "totalItems": 27,
     "iceCreamFlavors": 23,
-    "scoopItems": 19,
+    "scoopItems": 18,
     "pintItems": 22,
     "sandwichItems": 4,
     "sandwichOnlyItems": 4
