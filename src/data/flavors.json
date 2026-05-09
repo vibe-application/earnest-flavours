@@ -192,6 +192,7 @@
     ],
     "pintStores": [
       "fraser",
+      "quebec",
       "frances",
       "northvan"
     ],
@@ -409,7 +410,6 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
-      "frances",
       "northvan"
     ],
     "description": "House-made chocolate chip cookie chunks are generously sprinkled throughout a light milky base, along with mini chocolate chips for a bit of chocolatey crunch. Chunks of cookie are also spread on top of the sammie with a thin layer of fudge."
