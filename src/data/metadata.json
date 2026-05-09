@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-09T00:15:38.047Z",
+  "lastUpdatedAt": "2026-05-09T20:31:35.281Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated May 8, 2026 at 12pm",
     "quebec": "Last updated May 8, 2026 at 12pm",
-    "frances": "Last updated May 8, 2026 at 12pm",
-    "northvan": "Last updated May 4, 2026 at 12pm"
+    "frances": "Last updated May 9, 2026 at 12pm",
+    "northvan": "Last updated May 8, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated May 8, 2026 at 12pm|fraser:Last updated May 8, 2026 at 12pm|northvan:Last updated May 4, 2026 at 12pm|quebec:Last updated May 8, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated May 9, 2026 at 12pm|fraser:Last updated May 8, 2026 at 12pm|northvan:Last updated May 8, 2026 at 12pm|quebec:Last updated May 8, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,8 +15,8 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-05-07",
-    "observedAt": "2026-05-07T20:54:31.288Z",
+    "baselineDay": "2026-05-08",
+    "observedAt": "2026-05-09T00:15:38.047Z",
     "flavorNamesByFlavorId": {
       "cinnamon-bun": "Cinnamon Bun",
       "coffee": "Coffee",
@@ -48,9 +48,6 @@
     },
     "servingTypes": {
       "scoop": {
-        "cinnamon-bun": [
-          "quebec"
-        ],
         "coffee": [
           "frances"
         ],
@@ -212,6 +209,7 @@
         ],
         "coffee-crisp": [
           "fraser",
+          "quebec",
           "frances",
           "northvan"
         ],
@@ -284,7 +282,6 @@
           "northvan"
         ],
         "milk-cookies-sammie": [
-          "frances",
           "northvan"
         ],
         "vegan-caramel-apple-crisp-sammie": [
@@ -300,47 +297,70 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-05-08",
-    "previousDay": "2026-05-07",
+    "currentDay": "2026-05-09",
+    "previousDay": "2026-05-08",
     "servingTypes": {
       "scoop": {
         "added": {},
         "removed": {
-          "cinnamon-bun": {
-            "name": "Cinnamon Bun",
+          "coffee": {
+            "name": "Coffee",
             "storeIds": [
-              "quebec"
+              "frances"
             ]
           }
         }
       },
       "pint": {
         "added": {
-          "coffee-crisp": [
+          "lemon-poppy-seed": [
             "quebec"
           ]
         },
-        "removed": {}
-      },
-      "sandwich": {
-        "added": {},
         "removed": {
-          "milk-cookies-sammie": {
-            "name": "Milk & Cookies Sammie",
+          "cinnamon-bun": {
+            "name": "Cinnamon Bun",
             "storeIds": [
+              "northvan"
+            ]
+          },
+          "vegan-chocolate": {
+            "name": "Vegan Chocolate",
+            "storeIds": [
+              "frances"
+            ]
+          },
+          "vegan-nanaimo-bar": {
+            "name": "Vegan Nanaimo Bar",
+            "storeIds": [
+              "fraser"
+            ]
+          },
+          "vegan-strawberry-rhubarb-ripple": {
+            "name": "Vegan Strawberry Rhubarb Ripple",
+            "storeIds": [
+              "quebec",
               "frances"
             ]
           }
         }
+      },
+      "sandwich": {
+        "added": {
+          "carrot-cake-sammie": [
+            "frances"
+          ]
+        },
+        "removed": {}
       }
     }
   },
   "counts": {
-    "totalItems": 27,
-    "iceCreamFlavors": 23,
-    "scoopItems": 18,
-    "pintItems": 22,
-    "sandwichItems": 4,
-    "sandwichOnlyItems": 4
+    "totalItems": 26,
+    "iceCreamFlavors": 21,
+    "scoopItems": 17,
+    "pintItems": 21,
+    "sandwichItems": 5,
+    "sandwichOnlyItems": 5
   }
 }

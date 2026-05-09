@@ -7,22 +7,10 @@
     "pintStores": [
       "fraser",
       "quebec",
-      "frances",
-      "northvan"
+      "frances"
     ],
     "sandwichStores": [],
     "description": "Get ready for a delightful treat with our cinnamon bun ice cream. We’ve taken freshly baked cinnamon buns, crafted in-house, and blended them into our creamy ice cream base, creating a delightful light bread texture that melts in your mouth. Each scoop is swirled with a rich, gooey cinnamon sauce that brings the sweet, sugary goodness of a freshly baked cinnamon bun right to your cone. This harmonious fusion of flavours and textures promises to transport you to a cozy bakery with every delectable spoonful."
-  },
-  {
-    "id": "coffee",
-    "name": "Coffee",
-    "isVegan": false,
-    "scoopStores": [
-      "frances"
-    ],
-    "pintStores": [],
-    "sandwichStores": [],
-    "description": "Made with organic, fair-trade coffee from Mount Hagen, this ice cream tastes just like a creamy iced coffee! The perfect balance of rich coffee and sweet cream, this flavour is sure to satisfy any coffee-lover."
   },
   {
     "id": "cream-cheese",
@@ -43,6 +31,7 @@
     "isVegan": false,
     "scoopStores": [],
     "pintStores": [
+      "quebec",
       "northvan"
     ],
     "sandwichStores": [],
@@ -111,8 +100,7 @@
     ],
     "pintStores": [
       "fraser",
-      "quebec",
-      "frances"
+      "quebec"
     ],
     "sandwichStores": [],
     "description": "A vegan staple we have been running since day one! Surprisingly creamy and rich, the subtle bitterness of dark chocolate and cocoa powder add depth to the creaminess of our coconut milk base."
@@ -123,24 +111,11 @@
     "isVegan": true,
     "scoopStores": [],
     "pintStores": [
-      "fraser",
       "quebec",
       "northvan"
     ],
     "sandwichStores": [],
     "description": "This is the classic BC dessert bar in ice cream form! Dark chocolate chips and nanaimo bar crumble in our creamy coconut-cashew “custard” base."
-  },
-  {
-    "id": "vegan-strawberry-rhubarb-ripple",
-    "name": "Vegan Strawberry Rhubarb Ripple",
-    "isVegan": true,
-    "scoopStores": [],
-    "pintStores": [
-      "quebec",
-      "frances"
-    ],
-    "sandwichStores": [],
-    "description": "This delightful vegan flavour is perfect for reminiscing the summer sun. Local strawberries and rhubarb create our flavoursome and vibrant compote, swirled throughout our creamy vanilla ice cream."
   },
   {
     "id": "birthday-cake",
@@ -388,6 +363,17 @@
     ],
     "sandwichStores": [],
     "description": "An Earnest Ice Cream original, made from day one and remains a favourite and top-seller. Roasted, salted BC hazelnuts in Whiskey ice cream base. A smooth, boozy flavour with a buttery crunch."
+  },
+  {
+    "id": "carrot-cake-sammie",
+    "name": "Carrot Cake Sammie",
+    "isVegan": false,
+    "scoopStores": [],
+    "pintStores": [],
+    "sandwichStores": [
+      "frances"
+    ],
+    "description": "Our carrot cake ice cream in sammie form: lightly spiced ice cream is sprinkled with loads of soft carrot cake chunks and rich cream cheese fudge. A layer of caramel seals our spiced cake around this decadent treat!"
   },
   {
     "id": "classic-sammie",
