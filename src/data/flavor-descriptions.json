@@ -110,6 +110,11 @@
     "description": "This flavour has been a core since day one. Our pure vanilla extract is sourced from premium slow-grown, sun-cured vanilla beans of the “Tahitian” variety. The flavour from the beans is cold-extracted to preserve its complex bouquet. These vanilla beans are brighter and more floral than the rounder, woodsier Madagascar variety."
   },
   {
+    "id": "vegan-apple-crisp",
+    "name": "Vegan Apple Crisp",
+    "description": "BC Honeycrisp apples roasted with brown sugar and whiskey for a lovely caramelized flavour. Swirled into a lightly spiced oat-coconut base, along with generous handfuls of oat crisp crumble. Like a warm apple crisp a la mode!"
+  },
+  {
     "id": "vegan-black-forest",
     "name": "Vegan Black Forest",
     "description": "Light coconut ice cream is sprinkled with dark chocolate flakes and generous handfuls of rich, gluten-friendly chocolate cake. Bright cherry compote is swirled throughout for a pop of bright fruitiness. Each bite is a symphony of decadent textures and flavours – everything you want from a black forest cake!"
