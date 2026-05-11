@@ -3,9 +3,10 @@
     "id": "cinnamon-bun",
     "name": "Cinnamon Bun",
     "isVegan": false,
-    "scoopStores": [],
+    "scoopStores": [
+      "frances"
+    ],
     "pintStores": [
-      "quebec",
       "frances"
     ],
     "sandwichStores": [],
@@ -17,8 +18,7 @@
     "isVegan": false,
     "scoopStores": [],
     "pintStores": [
-      "quebec",
-      "frances"
+      "quebec"
     ],
     "sandwichStores": [],
     "description": "This ice cream is like a New York style cheesecake – smooth, creamy, and just the right amount of tartness balanced in our sweet cream base."
@@ -29,8 +29,7 @@
     "isVegan": false,
     "scoopStores": [],
     "pintStores": [
-      "quebec",
-      "northvan"
+      "quebec"
     ],
     "sandwichStores": [],
     "description": "A lighter, creamier frozen version of the muffin. Bright lemon ice cream speckled with dutch blue poppy seeds resulting in a beautiful, zesty treat."
@@ -41,7 +40,6 @@
     "isVegan": false,
     "scoopStores": [
       "quebec",
-      "frances",
       "northvan"
     ],
     "pintStores": [
@@ -59,8 +57,7 @@
     "isVegan": false,
     "scoopStores": [
       "fraser",
-      "quebec",
-      "northvan"
+      "quebec"
     ],
     "pintStores": [
       "fraser",
@@ -92,11 +89,8 @@
     "id": "vegan-chocolate",
     "name": "Vegan Chocolate",
     "isVegan": true,
-    "scoopStores": [
-      "fraser"
-    ],
+    "scoopStores": [],
     "pintStores": [
-      "fraser",
       "quebec"
     ],
     "sandwichStores": [],
@@ -368,6 +362,7 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
+      "quebec",
       "frances"
     ],
     "description": "Our carrot cake ice cream in sammie form: lightly spiced ice cream is sprinkled with loads of soft carrot cake chunks and rich cream cheese fudge. A layer of caramel seals our spiced cake around this decadent treat!"
@@ -405,9 +400,30 @@
     "pintStores": [],
     "sandwichStores": [
       "quebec",
-      "frances",
       "northvan"
     ],
     "description": "Sweet and crispy, this sammie is a delightful mix of apple-y brightness and rich caramel flavours. Our lightly spiced apple crisp ice cream has bits of toffee speckled throughout for a pop of caramely goodness in every bite! All sandwiched between vanilla-apple cake with a layer of apple-caramel to seal it together."
+  },
+  {
+    "id": "vegan-fudgey-chocolate-cookie-sammie",
+    "name": "Vegan Fudgey Chocolate Cookie Sammie",
+    "isVegan": true,
+    "scoopStores": [],
+    "pintStores": [],
+    "sandwichStores": [
+      "frances"
+    ],
+    "description": "The ultimate chocolate decadence sammie! Chocolate ice cream is sprinkled with chocolate chips and chocolate sandwich cookie pieces, topped with a thick layer of fudge and sandwiched with soft chocolate cake. Rich and oh-so-chocolatey!"
+  },
+  {
+    "id": "vegan-mocha-brownie-sammie",
+    "name": "Vegan Mocha Brownie Sammie",
+    "isVegan": true,
+    "scoopStores": [],
+    "pintStores": [],
+    "sandwichStores": [
+      "fraser"
+    ],
+    "description": "House-made, cakey brownie chunks mixed into mocha ice cream, alongside delightfully crunchy chocolate sprinkles. Surrounded by soft chocolate cake and a layer of mocha fudge, this rich and decadent sammie is a must try for mocha fans."
   }
 ]
