@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-11T21:07:23.635Z",
+  "lastUpdatedAt": "2026-05-12T21:08:22.032Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
-    "fraser": "Last updated May 10, 2026 at 12pm",
+    "fraser": "Last updated May 12, 2026 at 12pm",
     "quebec": "Last updated May 11, 2026 at 12pm",
     "frances": "Last updated May 11, 2026 at 12pm",
-    "northvan": "Last updated May 10, 2026 at 12pm"
+    "northvan": "Last updated May 12, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated May 11, 2026 at 12pm|fraser:Last updated May 10, 2026 at 12pm|northvan:Last updated May 10, 2026 at 12pm|quebec:Last updated May 11, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated May 11, 2026 at 12pm|fraser:Last updated May 12, 2026 at 12pm|northvan:Last updated May 12, 2026 at 12pm|quebec:Last updated May 11, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,8 +15,8 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-05-10",
-    "observedAt": "2026-05-10T20:34:38.412Z",
+    "baselineDay": "2026-05-11",
+    "observedAt": "2026-05-11T21:07:23.635Z",
     "flavorNamesByFlavorId": {
       "cinnamon-bun": "Cinnamon Bun",
       "cream-cheese": "Cream Cheese",
@@ -42,27 +42,27 @@
       "carrot-cake-sammie": "Carrot Cake Sammie",
       "classic-sammie": "Classic Sammie",
       "vegan-apple-crisp": "Vegan Apple Crisp",
-      "vegan-caramel-apple-crisp-sammie": "Vegan Caramel Apple Crisp Sammie"
+      "vegan-caramel-apple-crisp-sammie": "Vegan Caramel Apple Crisp Sammie",
+      "vegan-fudgey-chocolate-cookie-sammie": "Vegan Fudgey Chocolate Cookie Sammie",
+      "vegan-mocha-brownie-sammie": "Vegan Mocha Brownie Sammie"
     },
     "servingTypes": {
       "scoop": {
+        "cinnamon-bun": [
+          "frances"
+        ],
         "london-fog": [
           "quebec",
-          "frances",
           "northvan"
         ],
         "oatmeal-brown-sugar": [
           "fraser",
-          "quebec",
-          "northvan"
+          "quebec"
         ],
         "strawberry": [
           "fraser",
           "quebec",
           "frances"
-        ],
-        "vegan-chocolate": [
-          "fraser"
         ],
         "birthday-cake": [
           "fraser",
@@ -145,16 +145,13 @@
       },
       "pint": {
         "cinnamon-bun": [
-          "quebec",
           "frances"
         ],
         "cream-cheese": [
-          "quebec",
-          "frances"
+          "quebec"
         ],
         "lemon-poppy-seed": [
-          "quebec",
-          "northvan"
+          "quebec"
         ],
         "london-fog": [
           "fraser",
@@ -174,7 +171,6 @@
           "northvan"
         ],
         "vegan-chocolate": [
-          "fraser",
           "quebec"
         ],
         "vegan-nanaimo-bar": [
@@ -262,6 +258,7 @@
       },
       "sandwich": {
         "carrot-cake-sammie": [
+          "quebec",
           "frances"
         ],
         "classic-sammie": [
@@ -275,92 +272,36 @@
         ],
         "vegan-caramel-apple-crisp-sammie": [
           "quebec",
-          "frances",
           "northvan"
+        ],
+        "vegan-fudgey-chocolate-cookie-sammie": [
+          "frances"
+        ],
+        "vegan-mocha-brownie-sammie": [
+          "fraser"
         ]
       }
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-05-11",
-    "previousDay": "2026-05-10",
+    "currentDay": "2026-05-12",
+    "previousDay": "2026-05-11",
     "servingTypes": {
       "scoop": {
-        "added": {
-          "cinnamon-bun": [
-            "frances"
-          ]
-        },
-        "removed": {
-          "london-fog": {
-            "name": "London Fog",
-            "storeIds": [
-              "frances"
-            ]
-          },
-          "oatmeal-brown-sugar": {
-            "name": "Oatmeal Brown Sugar",
-            "storeIds": [
-              "northvan"
-            ]
-          },
-          "vegan-chocolate": {
-            "name": "Vegan Chocolate",
-            "storeIds": [
-              "fraser"
-            ]
-          }
-        }
+        "added": {},
+        "removed": {}
       },
       "pint": {
         "added": {},
-        "removed": {
-          "cinnamon-bun": {
-            "name": "Cinnamon Bun",
-            "storeIds": [
-              "quebec"
-            ]
-          },
-          "cream-cheese": {
-            "name": "Cream Cheese",
-            "storeIds": [
-              "frances"
-            ]
-          },
-          "lemon-poppy-seed": {
-            "name": "Lemon Poppy Seed",
-            "storeIds": [
-              "northvan"
-            ]
-          },
-          "vegan-chocolate": {
-            "name": "Vegan Chocolate",
-            "storeIds": [
-              "fraser"
-            ]
-          }
-        }
+        "removed": {}
       },
       "sandwich": {
         "added": {
           "carrot-cake-sammie": [
-            "quebec"
-          ],
-          "vegan-fudgey-chocolate-cookie-sammie": [
-            "frances"
-          ],
-          "vegan-mocha-brownie-sammie": [
-            "fraser"
+            "northvan"
           ]
         },
-        "removed": {
-          "vegan-caramel-apple-crisp-sammie": {
-            "name": "Vegan Caramel Apple Crisp Sammie",
-            "storeIds": [
-              "frances"
-            ]
-          }
-        }
+        "removed": {}
       }
     }
   },
