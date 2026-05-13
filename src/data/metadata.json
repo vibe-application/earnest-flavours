@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-12T21:08:22.032Z",
+  "lastUpdatedAt": "2026-05-13T01:22:05.472Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated May 12, 2026 at 12pm",
-    "quebec": "Last updated May 11, 2026 at 12pm",
+    "quebec": "Last updated May 12, 2026 at 12pm",
     "frances": "Last updated May 11, 2026 at 12pm",
     "northvan": "Last updated May 12, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated May 11, 2026 at 12pm|fraser:Last updated May 12, 2026 at 12pm|northvan:Last updated May 12, 2026 at 12pm|quebec:Last updated May 11, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated May 11, 2026 at 12pm|fraser:Last updated May 12, 2026 at 12pm|northvan:Last updated May 12, 2026 at 12pm|quebec:Last updated May 12, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -289,7 +289,14 @@
     "servingTypes": {
       "scoop": {
         "added": {},
-        "removed": {}
+        "removed": {
+          "oatmeal-brown-sugar": {
+            "name": "Oatmeal Brown Sugar",
+            "storeIds": [
+              "quebec"
+            ]
+          }
+        }
       },
       "pint": {
         "added": {},
