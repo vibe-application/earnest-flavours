@@ -14,17 +14,6 @@
     "description": "Get ready for a delightful treat with our cinnamon bun ice cream. We’ve taken freshly baked cinnamon buns, crafted in-house, and blended them into our creamy ice cream base, creating a delightful light bread texture that melts in your mouth. Each scoop is swirled with a rich, gooey cinnamon sauce that brings the sweet, sugary goodness of a freshly baked cinnamon bun right to your cone. This harmonious fusion of flavours and textures promises to transport you to a cozy bakery with every delectable spoonful."
   },
   {
-    "id": "cream-cheese",
-    "name": "Cream Cheese",
-    "isVegan": false,
-    "scoopStores": [],
-    "pintStores": [
-      "quebec"
-    ],
-    "sandwichStores": [],
-    "description": "This ice cream is like a New York style cheesecake – smooth, creamy, and just the right amount of tartness balanced in our sweet cream base."
-  },
-  {
     "id": "lemon-poppy-seed",
     "name": "Lemon Poppy Seed",
     "isVegan": false,
