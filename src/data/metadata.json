@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-14T01:24:02.486Z",
+  "lastUpdatedAt": "2026-05-15T00:15:36.523Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
-    "fraser": "Last updated May 13, 2026 at 12pm",
+    "fraser": "Last updated May 14, 2026 at 12pm",
     "quebec": "Last updated May 13, 2026 at 12pm",
     "frances": "Last updated May 11, 2026 at 12pm",
     "northvan": "Last updated May 12, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated May 11, 2026 at 12pm|fraser:Last updated May 13, 2026 at 12pm|northvan:Last updated May 12, 2026 at 12pm|quebec:Last updated May 13, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated May 11, 2026 at 12pm|fraser:Last updated May 14, 2026 at 12pm|northvan:Last updated May 12, 2026 at 12pm|quebec:Last updated May 13, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,11 +15,10 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-05-12",
-    "observedAt": "2026-05-13T01:22:05.472Z",
+    "baselineDay": "2026-05-13",
+    "observedAt": "2026-05-14T01:24:02.486Z",
     "flavorNamesByFlavorId": {
       "cinnamon-bun": "Cinnamon Bun",
-      "cream-cheese": "Cream Cheese",
       "lemon-poppy-seed": "Lemon Poppy Seed",
       "london-fog": "London Fog",
       "oatmeal-brown-sugar": "Oatmeal Brown Sugar",
@@ -144,10 +143,8 @@
       },
       "pint": {
         "cinnamon-bun": [
+          "fraser",
           "frances"
-        ],
-        "cream-cheese": [
-          "quebec"
         ],
         "lemon-poppy-seed": [
           "quebec"
@@ -284,40 +281,55 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-05-13",
-    "previousDay": "2026-05-12",
+    "currentDay": "2026-05-14",
+    "previousDay": "2026-05-13",
     "servingTypes": {
       "scoop": {
         "added": {},
         "removed": {}
       },
       "pint": {
+        "added": {},
+        "removed": {}
+      },
+      "sandwich": {
         "added": {
-          "cinnamon-bun": [
+          "carrot-cake-sammie": [
+            "fraser"
+          ],
+          "vegan-caramel-apple-crisp-sammie": [
             "fraser"
           ]
         },
         "removed": {
-          "cream-cheese": {
-            "name": "Cream Cheese",
+          "classic-sammie": {
+            "name": "Classic Sammie",
             "storeIds": [
-              "quebec"
+              "fraser"
+            ]
+          },
+          "vegan-apple-crisp": {
+            "name": "Vegan Apple Crisp",
+            "storeIds": [
+              "fraser"
+            ]
+          },
+          "vegan-mocha-brownie-sammie": {
+            "name": "Vegan Mocha Brownie Sammie",
+            "storeIds": [
+              "fraser"
             ]
           }
         }
-      },
-      "sandwich": {
-        "added": {},
-        "removed": {}
       }
     }
   },
   "counts": {
-    "totalItems": 26,
+    "totalItems": 24,
     "iceCreamFlavors": 20,
     "scoopItems": 17,
     "pintItems": 20,
-    "sandwichItems": 6,
-    "sandwichOnlyItems": 6
+    "sandwichItems": 4,
+    "sandwichOnlyItems": 4
   }
 }

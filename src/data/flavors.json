@@ -351,6 +351,7 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
+      "fraser",
       "quebec",
       "frances",
       "northvan"
@@ -364,23 +365,11 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
-      "fraser",
       "quebec",
       "frances",
       "northvan"
     ],
     "description": "Our take on a classic ice cream sandwich. Tahitian vanilla ice cream is sandwiched between chocolate cake and finished with a thin layer of fudge sauce. This flavour never goes out of style!"
-  },
-  {
-    "id": "vegan-apple-crisp",
-    "name": "Vegan Apple Crisp",
-    "isVegan": true,
-    "scoopStores": [],
-    "pintStores": [],
-    "sandwichStores": [
-      "fraser"
-    ],
-    "description": "BC Honeycrisp apples roasted with brown sugar and whiskey for a lovely caramelized flavour. Swirled into a lightly spiced oat-coconut base, along with generous handfuls of oat crisp crumble. Like a warm apple crisp a la mode!"
   },
   {
     "id": "vegan-caramel-apple-crisp-sammie",
@@ -389,6 +378,7 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
+      "fraser",
       "quebec",
       "northvan"
     ],
@@ -404,16 +394,5 @@
       "frances"
     ],
     "description": "The ultimate chocolate decadence sammie! Chocolate ice cream is sprinkled with chocolate chips and chocolate sandwich cookie pieces, topped with a thick layer of fudge and sandwiched with soft chocolate cake. Rich and oh-so-chocolatey!"
-  },
-  {
-    "id": "vegan-mocha-brownie-sammie",
-    "name": "Vegan Mocha Brownie Sammie",
-    "isVegan": true,
-    "scoopStores": [],
-    "pintStores": [],
-    "sandwichStores": [
-      "fraser"
-    ],
-    "description": "House-made, cakey brownie chunks mixed into mocha ice cream, alongside delightfully crunchy chocolate sprinkles. Surrounded by soft chocolate cake and a layer of mocha fudge, this rich and decadent sammie is a must try for mocha fans."
   }
 ]
