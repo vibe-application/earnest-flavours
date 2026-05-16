@@ -1,5 +1,16 @@
 [
   {
+    "id": "butter-pecan",
+    "name": "Butter Pecan",
+    "isVegan": false,
+    "scoopStores": [
+      "quebec"
+    ],
+    "pintStores": [],
+    "sandwichStores": [],
+    "description": "Whiskey Hazelnut’s cousin! Pecan pieces are roasted with butter and salt, and added to our ice cream base with organic vanilla. Comfort in a scoop!"
+  },
+  {
     "id": "cinnamon-bun",
     "name": "Cinnamon Bun",
     "isVegan": false,
@@ -37,6 +48,7 @@
     "pintStores": [
       "fraser",
       "quebec",
+      "frances",
       "northvan"
     ],
     "sandwichStores": [],
@@ -77,7 +89,6 @@
     "isVegan": true,
     "scoopStores": [],
     "pintStores": [
-      "quebec",
       "northvan"
     ],
     "sandwichStores": [],
@@ -351,6 +362,7 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
+      "fraser",
       "quebec",
       "frances",
       "northvan"

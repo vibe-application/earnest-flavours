@@ -5,6 +5,11 @@
     "description": "What’s better than birthday cake with ice cream? Birthday cake IN ice cream! Bites of house-made cake throughout pink vanilla ice cream, complete with naturally coloured sprinkles. Happy birthday to us!"
   },
   {
+    "id": "butter-pecan",
+    "name": "Butter Pecan",
+    "description": "Whiskey Hazelnut’s cousin! Pecan pieces are roasted with butter and salt, and added to our ice cream base with organic vanilla. Comfort in a scoop!"
+  },
+  {
     "id": "carrot-cake",
     "name": "Carrot Cake",
     "description": "House-made spiced carrot cake and cream cheese fudge generously sprinkled through a lightly spiced ice cream, creating a classic dessert in ice cream form. Featuring spices from Gathering Place Trading and Carrots from Discovery Organics."

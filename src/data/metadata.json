@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-15T20:46:22.822Z",
+  "lastUpdatedAt": "2026-05-16T20:35:24.505Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
     "fraser": "Last updated May 15, 2026 at 12pm",
-    "quebec": "Last updated May 15, 2026 at 12pm",
+    "quebec": "Last updated May 16, 2026 at 12pm",
     "frances": "Last updated May 15, 2026 at 12pm",
     "northvan": "Last updated May 15, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated May 15, 2026 at 12pm|fraser:Last updated May 15, 2026 at 12pm|northvan:Last updated May 15, 2026 at 12pm|quebec:Last updated May 15, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated May 15, 2026 at 12pm|fraser:Last updated May 15, 2026 at 12pm|northvan:Last updated May 15, 2026 at 12pm|quebec:Last updated May 16, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,11 +15,10 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-05-14",
-    "observedAt": "2026-05-15T00:15:36.523Z",
+    "baselineDay": "2026-05-15",
+    "observedAt": "2026-05-15T20:46:22.822Z",
     "flavorNamesByFlavorId": {
       "cinnamon-bun": "Cinnamon Bun",
-      "lemon-poppy-seed": "Lemon Poppy Seed",
       "london-fog": "London Fog",
       "oatmeal-brown-sugar": "Oatmeal Brown Sugar",
       "strawberry": "Strawberry",
@@ -45,15 +44,9 @@
     },
     "servingTypes": {
       "scoop": {
-        "cinnamon-bun": [
-          "frances"
-        ],
         "london-fog": [
           "quebec",
           "northvan"
-        ],
-        "oatmeal-brown-sugar": [
-          "fraser"
         ],
         "strawberry": [
           "fraser",
@@ -142,10 +135,8 @@
       "pint": {
         "cinnamon-bun": [
           "fraser",
+          "quebec",
           "frances"
-        ],
-        "lemon-poppy-seed": [
-          "quebec"
         ],
         "london-fog": [
           "fraser",
@@ -274,35 +265,26 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-05-15",
-    "previousDay": "2026-05-14",
+    "currentDay": "2026-05-16",
+    "previousDay": "2026-05-15",
     "servingTypes": {
       "scoop": {
-        "added": {},
-        "removed": {
-          "cinnamon-bun": {
-            "name": "Cinnamon Bun",
-            "storeIds": [
-              "frances"
-            ]
-          },
-          "oatmeal-brown-sugar": {
-            "name": "Oatmeal Brown Sugar",
-            "storeIds": [
-              "fraser"
-            ]
-          }
-        }
-      },
-      "pint": {
         "added": {
-          "cinnamon-bun": [
+          "butter-pecan": [
             "quebec"
           ]
         },
+        "removed": {}
+      },
+      "pint": {
+        "added": {
+          "oatmeal-brown-sugar": [
+            "frances"
+          ]
+        },
         "removed": {
-          "lemon-poppy-seed": {
-            "name": "Lemon Poppy Seed",
+          "vegan-nanaimo-bar": {
+            "name": "Vegan Nanaimo Bar",
             "storeIds": [
               "quebec"
             ]
@@ -310,15 +292,19 @@
         }
       },
       "sandwich": {
-        "added": {},
+        "added": {
+          "classic-sammie": [
+            "fraser"
+          ]
+        },
         "removed": {}
       }
     }
   },
   "counts": {
-    "totalItems": 23,
-    "iceCreamFlavors": 19,
-    "scoopItems": 15,
+    "totalItems": 24,
+    "iceCreamFlavors": 20,
+    "scoopItems": 16,
     "pintItems": 19,
     "sandwichItems": 4,
     "sandwichOnlyItems": 4
