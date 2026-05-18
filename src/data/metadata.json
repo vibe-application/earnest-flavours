@@ -1,13 +1,13 @@
 {
-  "lastUpdatedAt": "2026-05-16T20:35:24.505Z",
+  "lastUpdatedAt": "2026-05-18T20:58:38.248Z",
   "source": "https://earnesticecream.com",
   "sourceLastUpdatedByStore": {
-    "fraser": "Last updated May 15, 2026 at 12pm",
-    "quebec": "Last updated May 16, 2026 at 12pm",
+    "fraser": "Last updated May 17, 2026 at 12pm",
+    "quebec": "Last updated May 18, 2026 at 12pm",
     "frances": "Last updated May 15, 2026 at 12pm",
     "northvan": "Last updated May 15, 2026 at 12pm"
   },
-  "sourceLastUpdatedSignature": "frances:Last updated May 15, 2026 at 12pm|fraser:Last updated May 15, 2026 at 12pm|northvan:Last updated May 15, 2026 at 12pm|quebec:Last updated May 16, 2026 at 12pm",
+  "sourceLastUpdatedSignature": "frances:Last updated May 15, 2026 at 12pm|fraser:Last updated May 17, 2026 at 12pm|northvan:Last updated May 15, 2026 at 12pm|quebec:Last updated May 18, 2026 at 12pm",
   "stores": {
     "fraser": "https://earnesticecream.com/locations/fraser-st/",
     "quebec": "https://earnesticecream.com/locations/quebec-st/",
@@ -15,9 +15,10 @@
     "northvan": "https://earnesticecream.com/locations/north-van/"
   },
   "previousDayBaselineSnapshot": {
-    "baselineDay": "2026-05-15",
-    "observedAt": "2026-05-15T20:46:22.822Z",
+    "baselineDay": "2026-05-17",
+    "observedAt": "2026-05-16T20:35:24.505Z",
     "flavorNamesByFlavorId": {
+      "butter-pecan": "Butter Pecan",
       "cinnamon-bun": "Cinnamon Bun",
       "london-fog": "London Fog",
       "oatmeal-brown-sugar": "Oatmeal Brown Sugar",
@@ -44,6 +45,9 @@
     },
     "servingTypes": {
       "scoop": {
+        "butter-pecan": [
+          "quebec"
+        ],
         "london-fog": [
           "quebec",
           "northvan"
@@ -147,6 +151,7 @@
         "oatmeal-brown-sugar": [
           "fraser",
           "quebec",
+          "frances",
           "northvan"
         ],
         "strawberry": [
@@ -159,7 +164,6 @@
           "quebec"
         ],
         "vegan-nanaimo-bar": [
-          "quebec",
           "northvan"
         ],
         "birthday-cake": [
@@ -249,6 +253,7 @@
           "northvan"
         ],
         "classic-sammie": [
+          "fraser",
           "quebec",
           "frances",
           "northvan"
@@ -265,45 +270,44 @@
     }
   },
   "previousDayAvailabilityDiff": {
-    "currentDay": "2026-05-16",
-    "previousDay": "2026-05-15",
+    "currentDay": "2026-05-18",
+    "previousDay": "2026-05-17",
     "servingTypes": {
       "scoop": {
         "added": {
-          "butter-pecan": [
+          "oatmeal-brown-sugar": [
             "quebec"
           ]
         },
-        "removed": {}
-      },
-      "pint": {
-        "added": {
-          "oatmeal-brown-sugar": [
-            "frances"
-          ]
-        },
         "removed": {
-          "vegan-nanaimo-bar": {
-            "name": "Vegan Nanaimo Bar",
+          "butter-pecan": {
+            "name": "Butter Pecan",
             "storeIds": [
               "quebec"
             ]
           }
         }
       },
-      "sandwich": {
-        "added": {
-          "classic-sammie": [
-            "fraser"
-          ]
-        },
+      "pint": {
+        "added": {},
         "removed": {}
+      },
+      "sandwich": {
+        "added": {},
+        "removed": {
+          "classic-sammie": {
+            "name": "Classic Sammie",
+            "storeIds": [
+              "fraser"
+            ]
+          }
+        }
       }
     }
   },
   "counts": {
-    "totalItems": 24,
-    "iceCreamFlavors": 20,
+    "totalItems": 23,
+    "iceCreamFlavors": 19,
     "scoopItems": 16,
     "pintItems": 19,
     "sandwichItems": 4,
