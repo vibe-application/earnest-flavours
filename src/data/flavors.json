@@ -33,9 +33,7 @@
     "id": "oatmeal-brown-sugar",
     "name": "Oatmeal Brown Sugar",
     "isVegan": false,
-    "scoopStores": [
-      "quebec"
-    ],
+    "scoopStores": [],
     "pintStores": [
       "fraser",
       "quebec",
@@ -353,6 +351,7 @@
     "scoopStores": [],
     "pintStores": [],
     "sandwichStores": [
+      "fraser",
       "quebec",
       "frances",
       "northvan"
